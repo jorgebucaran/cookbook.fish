@@ -38,13 +38,13 @@ fish is not the default shell of any \*nix distribution yet, so you need to down
 
 [homebrew]: http://brew.sh
 
-## OS X with [homebrew]
+#### OS X with [homebrew]
 
 ```bash
 brew install fish
 ```
 
-## Debian
+#### Debian
 
 ```bash
 wget http://download.opensuse.org/repositories/shells:fish:release:2/Debian_8.0/Release.key
@@ -54,7 +54,7 @@ apt-get update
 apt-get install fish
 ```
 
-## Ubuntu
+#### Ubuntu
 
 ```bash
 sudo apt-add-repository ppa:fish-shell/release-2
@@ -62,7 +62,7 @@ sudo apt-get update
 sudo apt-get install fish
 ```
 
-## CentOS
+#### CentOS
 
 ```bash
 cd /etc/yum.repos.d/
@@ -70,7 +70,7 @@ wget http://download.opensuse.org/repositories/shells:fish:release:2/CentOS_7/sh
 yum install fish
 ```
 
-### Fedora
+#### Fedora
 
 ```bash
 cd /etc/yum.repos.d/
@@ -78,19 +78,19 @@ wget http://download.opensuse.org/repositories/shells:fish:release:2/Fedora_23/s
 yum install fish
 ```
 
-### Arch Linux
+#### Arch Linux
 
 ```bash
 pacman -S fish
 ```
 
-### Gentoo
+#### Gentoo
 
 ```bash
 emerge fish
 ```
 
-### From source
+#### From source
 
 ```bash
 sudo apt-get -y install git gettext automake autoconf ncurses-dev build-essential libncurses5-dev
