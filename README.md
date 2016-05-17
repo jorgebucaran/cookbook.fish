@@ -34,7 +34,72 @@ It's the fish way. Why? Read the [fish design document](http://fishshell.com/doc
 
 ### Getting fish
 
-fish is not the default shell of any \*nix distribution yet, so you need to download and install it yourself. You can find install instructions on the official [website](https://fishshell.com).
+fish is not the default shell of any \*nix distribution yet, so you need to download and install it yourself. You can find directions in the official [website](https://fishshell.com), but if you are impatient, try this:
+
+[homebrew]: http://brew.sh
+
+## OS X with [homebrew]
+
+```bash
+brew install fish
+```
+
+## Debian
+
+```bash
+wget http://download.opensuse.org/repositories/shells:fish:release:2/Debian_8.0/Release.key
+apt-key add - < Release.key
+echo 'deb http://download.opensuse.org/repositories/shells:/fish:/release:/2/Debian_8.0/ /' >> /etc/apt/sources.list.d/fish.list
+apt-get update
+apt-get install fish
+```
+
+## Ubuntu
+
+```bash
+sudo apt-add-repository ppa:fish-shell/release-2
+sudo apt-get update
+sudo apt-get install fish
+```
+
+## CentOS
+
+```bash
+cd /etc/yum.repos.d/
+wget http://download.opensuse.org/repositories/shells:fish:release:2/CentOS_7/shells:fish:release:2.repo
+yum install fish
+```
+
+### Fedora
+
+```bash
+cd /etc/yum.repos.d/
+wget http://download.opensuse.org/repositories/shells:fish:release:2/Fedora_23/shells:fish:release:2.repo
+yum install fish
+```
+
+### Arch Linux
+
+```bash
+pacman -S fish
+```
+
+### Gentoo
+
+```bash
+emerge fish
+```
+
+### From source
+
+```bash
+sudo apt-get -y install git gettext automake autoconf ncurses-dev build-essential libncurses5-dev
+
+git clone -q --depth 1 https://github.com/fish-shell/fish-shell
+cd fish-shell
+autoreconf && ./configure
+make && sudo make install
+```
 
 Once you have downloaded fish and put it somewhere in your $PATH like /usr/local/bin, you can make it your default login shell.
 
