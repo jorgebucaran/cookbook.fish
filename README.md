@@ -42,7 +42,9 @@ fish is not the default shell of any \*nix distribution yet, so you need to down
 
 ```bash
 brew install fish
-```
+```  
+
+[OS X Fish Tutorial](https://github.com/ellerbrock/tutorial-fish-shell-setup-osx) - How to Setup Fish Shell with Fisherman, Powerline Fonts, iTerm2 and Budspencer Theme on OS X.
 
 #### Debian
 
