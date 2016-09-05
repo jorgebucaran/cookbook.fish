@@ -278,8 +278,7 @@ Similar to the [`type`], [`builtin`] and [`functions`] builtins, \*nix systems o
 
 <h1></h1>
 
-Licensed [CC BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/) by [Jorge Bucaran](https://github.com/bucaran).
-
+Licensed [CC BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)
 Inspired by O'Reilly's [bash cookbook](http://shop.oreilly.com/product/9780596526788.do).
 
 <!-- Links -->
