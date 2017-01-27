@@ -2,13 +2,25 @@
 
 # [fish-shell] cookbook
 
-Tips and recipes for fish, from shell to plate.
+Comprehensive. Friendly. Indispensable. With more than enough simple and delicious recipes. Low in fat, versatile, and healthful.
+
+## Table of Contents
+
+* [Introduction](#introduction)
+* [Setup](#setup)
+    * [Installing fish](#installing-fish)
+    * [Make fish your default shell](#make-fish-your-default-shell)
+* [Getting help](#getting-help)
+* [Modes and Stuff](#modes-and-stuff)
+    * [Login shell](#login-shell)
+    * [Interactive and non-interactive shell](#interactive-and-non-interactive-shell)
+
 
 ## Introduction
 
-Well-known shells are bash, ash, csh, ksh and the popular zsh. All these shells are [POSIX], so well-written POSIX-compliant scripts will run without little or no modifications in any of them.
+Well-known shells are bash, ash, csh, ksh and the popular zsh. All these shells are [POSIX], so well-written POSIX-compliant scripts should run without modification in any of them. That's about the only good reason to learn POSIX shell.
 
-fish is not quite a POSIX shell. Your bash scripts will \*not\* run in fish without modification. This is not a problem for most users that have learned the fish script syntax, but newcomers may find this behavior inconvenient.
+fish is not quite a POSIX shell. Your bash scripts will **not** run in fish without modification.
 
 ```sh
 make && make install
@@ -20,31 +32,24 @@ will cause fish to error with: "Unsupported use of '&&'. In fish, please use 'CO
 make; and make install
 ```
 
-It's the fish way. Why? Read the [fish design document](http://fishshell.com/docs/current/design.html) to find the answer.
+It's fishy. Why? Read the [fish design document](http://fishshell.com/docs/current/design.html) to understand the decisions behding fish design.
 
-## Table of Contents
+## Setup
 
-* [Getting fish](#getting-fish)
-* [Getting help](#getting-help)
-* [What's up with all the wiggly symbols?](#whats-up-with-all-the-wiggly-symbols)
-* [Finding your current location](#finding-your-current-location)
-* [Check if a command is available](#check-if-a-command-is-available)
-* [Find and run commands](#find-and-run-commands)
-* [Get information about file](get#information#about#file)
+### Installing fish
 
-### Getting fish
+AFIK fish is not the default shell of any \*nix distribution, so you need to download and install it yourself. You can find directions in the official [website](https://fishshell.com), but here you go:
 
-fish is not the default shell of any \*nix distribution yet, so you need to download and install it yourself. You can find directions in the official [website](https://fishshell.com), but if you are impatient, try this:
-
-[homebrew]: http://brew.sh
-
-#### OS X with [homebrew]
+<details>
+<summary>macOS with Homebrew</summary>
 
 ```bash
-brew install fish
+brew update && brew install fish
 ```
+</details>
 
-#### Debian
+<details>
+<summary>Debian</summary>
 
 ```bash
 wget http://download.opensuse.org/repositories/shells:fish:release:2/Debian_8.0/Release.key
@@ -53,44 +58,61 @@ echo 'deb http://download.opensuse.org/repositories/shells:/fish:/release:/2/Deb
 apt-get update
 apt-get install fish
 ```
+</details>
 
-#### Ubuntu
+
+<details>
+<summary>Ubuntu</summary>
 
 ```bash
 sudo apt-add-repository ppa:fish-shell/release-2
 sudo apt-get update
 sudo apt-get install fish
 ```
+</details>
 
-#### CentOS
+<details>
+<summary>CentOS</summary>
+
 
 ```bash
 cd /etc/yum.repos.d/
 wget http://download.opensuse.org/repositories/shells:fish:release:2/CentOS_7/shells:fish:release:2.repo
 yum install fish
 ```
+</details>
 
-#### Fedora
+<details>
+<summary>Fedora</summary>
+
 
 ```bash
 cd /etc/yum.repos.d/
 wget http://download.opensuse.org/repositories/shells:fish:release:2/Fedora_23/shells:fish:release:2.repo
 yum install fish
 ```
+</details>
 
-#### Arch Linux
+
+<details>
+<summary>Arch Linux</summary>
 
 ```bash
 pacman -S fish
 ```
+</details>
 
-#### Gentoo
+
+<details>
+<summary>Gentoo</summary>
 
 ```bash
 emerge fish
 ```
+</details>
 
-#### From source
+<details>
+<summary>From source</summary>
 
 ```bash
 sudo apt-get -y install git gettext automake autoconf ncurses-dev build-essential libncurses5-dev
@@ -100,186 +122,130 @@ cd fish-shell
 autoreconf && ./configure
 make && sudo make install
 ```
+</details>
 
-Once you have downloaded fish and put it somewhere in your $PATH like /usr/local/bin, you can make it your default login shell.
+### Make fish your default shell
+
+Once you have downloaded fish and put it somewhere in your `$PATH` like /usr/local/bin, make it your default login shell.
 
 ```fish
 echo "/usr/local/bin/fish" | sudo tee -a /etc/shells
 chsh -s /usr/local/bin/fish
 ```
 
-### Getting help
+<details>
+<summary>Why?</summary>
+
+> If you don't make fish your default shell, you'll have to run `fish` at the start of your default shell (sh, ash, bash, etc.) everytime you create a new session or open a new terminal window / tab.
+</details>
+
+## Getting help
 
 [`help`]: http://fishshell.com/docs/current/commands.html#help
 
 The fastest way to get help about a fish builtin or topic, is via the [`help`] command.
 
 ```
-help help
+help function
 ```
 
-opens a page using your default browser and access the help documentation about the `help` command offline.
+access the offline help documentation for the `function` builtin using your default browser.
 
 fish also includes man pages for all of its utilities.
 
 ```
-man fish
+man function
 ```
 
-shows the man page for the `fish` program itself.
+displays the man page for the `function` builtin.
 
-### What's up with all the wiggly symbols?
 
-![1](https://cloud.githubusercontent.com/assets/8317250/15318202/0287251a-1c60-11e6-9966-ca1249b880fe.png)
+## Modes and Stuff
 
-The tilde \`~' is an abbreviation of the [home directory](http://www.linfo.org/home_directory.html), for example /users/bucaran/home, /Users/bucaran, etc. It depends on your OS.
+When you begin a new fish session, you are greeted like so:
 
-The \`[@](https://en.wikipedia.org/wiki/At_sign)' means _at_. I can see *bucaran*, my user, is logged into/at *mbp*, my computer name. Quite useful when you are logged into 5 different remote terminals, all with a different username.
+```
+Welcome to fish, the friendly interactive shell
+```
 
-The forward slash \`/' is the path delimiter. At a glance, I can see the current directory is in the vicinity of ~ (home), somewhere inside *s/fish-handbook*. The *s* is the first letter of the parent directory, *src* in my case.
+> **Tip**: To get rid of this message, run only once `set -U fish_greeting`. See [Universal variables](#universal-variables) to learn more.
 
-As of fish >=2.3, you can customize the length of the abbreviated path:
+You are running fish in interactive mode. As it turns out, shells have modes.
+
+fish supports login, interactive and non-interactive shells. After [making fish your default shell](#make-fish-your-default-shell), you'll get a login and interactive shell on every new terminal by default.
+
+[REPL]: https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop
+
+An interactive shell is what you'd expect if you didn't care about such things as shell modes. It's like a fancy [REPL] session.
+
+### Login shell
+
+To run a command only when using a login shell:
 
 ```fish
-set fish_prompt_pwd_dir_length NUMBER
+if status --is-login
+    echo "Annoying generic message."
+end
+```
+
+If you put that inside `~/.config/fish/config.fish` you'll see that message every time you create a new session, but you won't when creating a sub shell, e.g. running `fish` inside the current session.
+
+But why would you run `fish` inside the current session? Well, it has its uses. During an interactive session (more on interactive sessions later), you could create a sub shell to start a clean environment, try a few commands and eventually exit and return to the original session.
+
+### Interactive and non-interactive shell
+
+If you want to run a command only on starting an interactive shell, use:
+
+```fish
+if status --is-interactive
+    echo "We live in an interactive world!"
+end
+```
+
+If you put that inside `~/.config/fish/config.fish` you'll see that message at the start of every session as well as for sub shells.
+
+Surely, you ask, if there are interactive shells, that means there must be non-interactive shells too. That's not a question, but yes, non-interactive shells are a thing too and in fact, they are very common.
+
+For starters, there is no user input in non-interactive shells. When you run fish with a command or file to execute, like so:
+
+```fish
+fish -c "sleep 1"
 ```
 
 or
 
 ```fish
-set fish_prompt_pwd_dir_length 0
+fish ./my_script.fish
 ```
 
-to do without abbreviations.
-
-![2](https://cloud.githubusercontent.com/assets/8317250/15318203/02888f22-1c60-11e6-8210-8fca1f350968.png)
-
-The greater than symbol \`>' seems to indicate the end of the prompt here.
-
-* Learn more about [characters](http://www.linfo.org/character.html) in Unix.
-
-### Finding your current location
-
-You can find out where you are via the environment variable $PWD.
+That's a non interactive shell. You can verify this is so running:
 
 ```fish
-echo $PWD
-/Users/bucaran/src/cookbook
+fish -c "status --is-interactive"
 ```
 
-Another way to retrieve the current directory is via the `pwd` builtin function.
+which should set the special `$status` variable to 1.
 
 ```fish
-pwd
-/Users/bucaran/src/cookbook
+echo $status
 ```
 
-In fish, both $PWD and `pwd` always resolve symbolic links. This means that, if you are inside a directory that is a symbolic reference to another directory, you always get the path to "another directory".
 
-In fish, $PWD is also a read-only variable:
+If this is not immediately useful to you, don't worry, but here is a use case.
 
-```
-set PWD foo
-```
-
-errors with "set: Tried to change the read-only variable 'PWD'". So, I assume it's safe and easier to use in scripting instead of the arguably more expensive `pwd` function call.
-
-### Check if a command is available
-
-> See also [Find and run commands](#find-and-run-commands).
-
-[`type`]: http://fishshell.com/docs/current/commands.html#type
-[`builtin`]: http://fishshell.com/docs/current/commands.html#builtin
-[`functions`]: http://fishshell.com/docs/current/commands.html#functions
-[`command`]: http://fishshell.com/docs/current/commands.html#command
-
-Use [`type`] to query information about existing commands, builtins or functions.
+Your fish configuration in ~/.config/fish/config.fish is slowing down your shell start. There are usually a few other ways to counteract this (see [Function Autoloading](#function-autoloading)), but depending on the situation, you could use `status --is-login` or `status --is-interactive` to speed up the starting of non-login or non-interactive shells respectively.
 
 ```fish
-if not type --quiet "$command_name"
-    echo "'$command_name' is not a valid command."
-    exit 1
+if status --is-interactive
+    # Bottleneck / Slow code
 end
 ```
 
-Sometimes you know the command type in advance. Then, you may prefer one of the following alternatives.
+This won't fix the slow session start, but at least it won't make non-interactive sub shells just as slow.
 
-* [`builtin`] for fish builtins:
-```fish
-if not contains -- "$command_name" (builtin --names)
-    exit
-end
-```
 
-* [`command`] for regular external commands / binaries:
-```fish
-if not command --search "$command_name" > /dev/null
-    exit 1
-end
-```
-
-* [`functions`] for user defined functions:
-```fish
-if not functions --query "$command_name"
-    exit
-end
-```
-
-### Find and run commands
-
-> See also [Check if a command is available](#check-if-a-command-is-available).
-
-To run a command type the name of the command and press return.
-
-```
-ls
-```
-
-If you know at least the first letter of the command you are looking for, type it and press tab. fish will display a pager you can browse to select the command interactively.
-
-![3](https://cloud.githubusercontent.com/assets/8317250/15318204/0288cc9e-1c60-11e6-8c8f-afe468bd41bc.png)
-
-fish knows what names to treat as commands by looking at the PATH environment variable. This variable contains a list of paths, and every binary file inside any of those paths can be run directly by its name.
-
-Print your PATH contents.
-
-```
-printf "%s\n" $PATH
-/usr/local/bin
-/usr/bin
-/bin
-```
-
-or list every command in your system and display them in columns.
-
-```
-ls $PATH | column
-```
-
-If the list is truncated, use:
-
-```
-ls $PATH | column | less
-```
-
-Use `k` and `j` to navigate the list down / up, and `q` to exit.
-
-The PATH variable is created at the start of the fish process during the environment initialization. You can later modify, prepend or append to this variable yourself, e.g, in your config.fish.
-
-[`which`]: http://www.computerhope.com/unix/uwhich.htm
-[`apropos`]: http://www.computerhope.com/unix/apropos.htm
-[`whatis`]: http://www.computerhope.com/unix/whatis.htm
-
-Similar to the [`type`], [`builtin`] and [`functions`] builtins, \*nix systems often include one or more shell-agnostic alternatives, e.g, [`which`], [`apropos`], [`whatis`], etc. These commands overlap in functionality, but also display unique features. Consult your system's manpage for details.
-
-### Get information about file
-
-...
-
-<h1></h1>
 
 Licensed [CC BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)
-Inspired by O'Reilly's [bash cookbook](http://shop.oreilly.com/product/9780596526788.do).
 
 <!-- Links -->
 
@@ -288,3 +254,8 @@ Inspired by O'Reilly's [bash cookbook](http://shop.oreilly.com/product/978059652
 [slack-link]: https://fisherman-wharf.herokuapp.com
 [slack-badge]: https://fisherman-wharf.herokuapp.com/badge.svg
 [POSIX]: https://en.wikipedia.org/wiki/POSIX
+
+
+<details>
+<summary>TITLE</summary>
+</details>
