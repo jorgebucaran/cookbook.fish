@@ -2,7 +2,7 @@
 
 # [fish-shell] cookbook
 
-Comprehensive. Friendly. Indispensable. With more than enough simple and delicious recipes. Low in fat, versatile, and healthful.
+Comprehensive. Friendly. Indispensable. With more than enough simple and delicious recipes. Low in fat, versatile, and healthful. Enjoy!
 
 ## Table of Contents
 
@@ -13,19 +13,34 @@ Comprehensive. Friendly. Indispensable. With more than enough simple and delicio
 * [Getting help](#getting-help)
 * [What's up with all the wiggly symbols?](#whats-up-with-all-the-wiggly-symbols)
 * [Finding your current location](#finding-your-current-location)
-* [Modes and Stuff](#modes-and-stuff)
+* [Shell modes](#shell-modes)
     * [Login shell](#login-shell)
     * [Interactive and non-interactive shell](#interactive-and-non-interactive-shell)
     * [Exit codes](#exit-codes)
 * [Commands, functions and builtins](#commands-functions-and-builtins)
     * [Check if a command is available](#check-if-a-command-is-available)
     * [Find and run commands](#find-and-run-commands)
+* [Autosuggestions](#autosuggestions)
+* [Tab completions](#tab-completions)
+* [Basic concepts](#basic-concepts)
+    * [Comments](#comments)
+        * [Shebang](#shebang)
+    * [Variables](#variables)
+        * [Local variables](#local-variables)
+        * [Global variables](#global-variables)
+        * [Exported variables](#exported-variables)
+        * [Universal variables](#universal-variables)
+    * [Lists](#lists)
+    * [Functions](#functions)
+    * [Conditionals](#conditionals)
+    * [Loops](#loops)
+    * [Command Substitutions](#command-substitutions)
 
 ## Introduction
 
 Well-known shells are bash, ash, csh, ksh and the popular zsh. All these shells are [POSIX], so well-written POSIX-compliant scripts should run without modification in any of them. That's about the only good reason to learn POSIX shell.
 
-fish is not quite a POSIX shell. Your bash scripts will **not** run in fish without modification.
+fish is not a POSIX shell. Your bash scripts will **not** run in fish without some modification.
 
 ```sh
 make && make install
@@ -33,11 +48,17 @@ make && make install
 
 will cause fish to error with: "Unsupported use of '&&'. In fish, please use 'COMMAND; and COMMAND'."
 
+That's simple enough.
+
 ```fish
 make; and make install
 ```
 
-It's fishy. Why? Read the [fish design document](http://fishshell.com/docs/current/design.html) to understand the decisions behding fish design.
+Check out the [fish design document](http://fishshell.com/docs/current/design.html) to understand fish design principles.
+
+Here is a quote from the same document:
+
+> Fish should be user friendly, but not at the expense of expressiveness. Most tradeoffs between power and ease of use can be avoided with careful design.
 
 ## Setup
 
@@ -46,7 +67,7 @@ It's fishy. Why? Read the [fish design document](http://fishshell.com/docs/curre
 AFIK fish is not the default shell of any \*nix distribution, so you need to download and install it yourself. You can find directions in the official [website](https://fishshell.com), but here you go:
 
 <details>
-<summary>macOS with Homebrew</summary>
+<summary>macOS with homebrew</summary>
 
 ```bash
 brew update && brew install fish
@@ -131,24 +152,18 @@ make && sudo make install
 
 ### Make fish your default shell
 
-Once you have downloaded fish and put it somewhere in your `$PATH` like /usr/local/bin, make it your default login shell.
+Once you have installed fish and it's somewhere in your `$PATH`, e.g. /usr/local/bin, you can make it your default login shell.
 
 ```fish
-echo "/usr/local/bin/fish" | sudo tee -a /etc/shells
+echo /usr/local/bin/fish | sudo tee -a /etc/shells
 chsh -s /usr/local/bin/fish
 ```
 
-<details>
-<summary>Why?</summary>
-
-> If you don't make fish your default shell, you'll have to run `fish` at the start of your default shell (sh, ash, bash, etc.) everytime you create a new session or open a new terminal window / tab.
-</details>
+> If you don't make fish your default shell, you'll need to run `fish` at the start of every shell session.
 
 ## Getting help
 
-[`help`]: http://fishshell.com/docs/current/commands.html#help
-
-The fastest way to get help about a fish builtin or topic, is via the [`help`] command.
+The fastest way to get help about a fish builtin or topic, is via the [`help`](http://fishshell.com/docs/current/commands.html#help) command.
 
 ```
 help function
@@ -166,8 +181,6 @@ displays the man page for the `function` builtin.
 
 ## What's up with all the wiggly symbols?
 
-If you are coming from another shell, this section might be boring, or fun!
-
 Maybe your shell looks like this:
 
 ```
@@ -176,11 +189,13 @@ x@mbp ~/C/fish-shell>
 
 The tilde `~` is an abbreviation of the [home directory](http://www.linfo.org/home_directory.html), for example /users/x/home, /Users/x, etc.
 
-The `@` means at. I can see `x`, my user, is logged into mbp, the name I gave to my workstation. Useful when you are logged into 5 different remote terminals, and all with a different username.
+The `@` means at. I can see `x`, my user, is logged into `mbp`, which is the name I gave to my workstation.
 
 The forward slash `/` is the path delimiter. At a glance, I can see the current directory is in the vicinity of `~`, somewhere inside C/fish-shell. The C is the first letter of the parent directory, Code in my case.
 
-As of fish >=2.3, you can customize the length of the abbreviated path:
+
+<details>
+<summary>As of fish >=2.3, you can customize the length of the abbreviated path.</summary>
 
 ```fish
 set fish_prompt_pwd_dir_length NUMBER
@@ -194,10 +209,11 @@ for no abbreviations.
 ```
 x@mbp ~/Code/fish-shell
 ```
+</details>
 
 The greater than symbol `>` is used here to indicate the end of the prompt.
 
-By the way, you can customize all of this stuff. You don't like these conventions? Create your own prompt the way you like it. See [Rolling out your own prompt](#rolling-out-your-own-prompt).
+You can customize all of this stuff. You don't like these conventions? Create your own prompt the way you like it. See [Rolling out your own prompt](#rolling-out-your-own-prompt).
 
 ## Finding your current location
 
@@ -215,12 +231,12 @@ pwd
 /Users/x/Code/fish-shell
 ```
 
-In fish, both `$PWD` and `pwd` always resolve symbolic links. This means that, if you are inside a directory that is a symbolic reference to another directory, you always get the path to the real directory.
+In fish, both `$PWD` and `pwd` always resolve symbolic links. This means that, if you are inside a directory that is a symbolic reference to another, you always get the path to the real directory.
 
-Interactively, `pwd` is faster to type. For scripting, `$PWD` is a function call less expensive.
+Interactively, `pwd` is easier to type. For scripting, `$PWD` is a function call less expensive.
 
 <details>
-<summary>See an example</summary>
+<summary>Example</summary>
 
 ```fish
 set -l cwd (pwd)
@@ -232,7 +248,7 @@ echo "The current working directory is: $PWD"
 ```
 </details>
 
-## Modes and Stuff
+## Shell modes
 
 When you begin a new fish session, you are greeted like so:
 
@@ -240,15 +256,13 @@ When you begin a new fish session, you are greeted like so:
 Welcome to fish, the friendly interactive shell
 ```
 
-> **Tip**: To get rid of this message, run only once `set -U fish_greeting`. See [Universal variables](#universal-variables) to learn more.
+> **Tip**: To get rid of this message, run `set -U fish_greeting`. See [Universal variables](#universal-variables) to learn more.
 
 You are running fish in interactive mode. As it turns out, shells have modes.
 
 fish supports login, interactive and non-interactive shells. After [making fish your default shell](#make-fish-your-default-shell), you'll get a login and interactive shell on every new terminal by default.
 
-[REPL]: https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop
-
-An interactive shell is what you'd expect if you didn't care about such things as shell modes. It's like a fancy [REPL] session.
+An interactive shell is what you'd expect if you didn't care about such things as shell modes. It's a fancy [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) session.
 
 ### Login shell
 
@@ -297,10 +311,6 @@ fish -c "status --is-interactive"
 ```
 
 which should set the special `$status` variable to 1.
-
-```fish
-echo $status
-```
 
 If this is not immediately useful to you, don't worry, but here is a use case.
 
@@ -398,34 +408,128 @@ end
 
 ### Find and run commands
 
-To run a command type the name of the command and press return.
+I bet you already know this, but to run a command: type the name of the command and press return.
 
+
+```
 ls
-If you know at least the first letter of the command you are looking for, type it and press tab. fish will display a pager you can browse to select the command interactively.
+```
 
-3
+Or, start typing the command you are looking for, and press tab. fish will use the builtin pager which you can browse and select the command interactively.
 
-fish knows what names to treat as commands by looking at the PATH environment variable. This variable contains a list of paths, and every binary file inside any of those paths can be run directly by its name.
+fish knows what commands are available by looking at the `$PATH` environment variable. This variable contains a list of paths, and every binary file inside any of those paths can be run by their name.
 
 Print your PATH contents.
 
+```
 printf "%s\n" $PATH
 /usr/local/bin
 /usr/bin
 /bin
+```
+
 or list every command in your system and display them in columns.
 
+```
 ls $PATH | column
+```
+
 If the list is truncated, use:
 
+```
 ls $PATH | column | less
-Use k and j to navigate the list down / up, and q to exit.
+```
 
-The PATH variable is created at the start of the fish process during the environment initialization. You can later modify, prepend or append to this variable yourself, e.g, in your config.fish.
+Use `k` and `j` to navigate the list down / up, and `q` to exit.
 
-Similar to the type, builtin and functions builtins, *nix systems often include one or more shell-agnostic alternatives, e.g, which, apropos, whatis, etc. These commands overlap in functionality, but also display unique features. Consult your system's manpage for details.
+The `$PATH` variable is created at the start of the fish process during the environment initialization. You can  modify, prepend or append to this variable yourself, e.g, in ~/.config/fish/config.fish.
+
+Similar to the `type`, `builtin` and `functions` builtins previously introduced, \*nix systems often include one or more shell-agnostic alternatives, e.g, `which`, `apropos`, `whatis`, etc. These commands overlap in functionality, but also possess unique features. Consult your system's manpage for details.
 
 
+## Autosuggestions
+
+REQUIRES GIF
+
+## Tab completions
+
+REQUIRES GIF
+
+## Basic concepts
+## Comments
+
+Comments start with `#` and continue on to the end of the line. Comments are ignored by fish, so you use them to document your code.
+
+### Shebang
+
+There is a special type of comment known as the [shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)) used to tell the operating system to run a program using the path of your script as an argument. The shebang is always written at the beginning of the script.
+
+To run a script with `fish` use a shebang like so:
+
+```fish
+#!/usr/bin/env fish
+```
+
+<details>
+<summary>Example</summary>
+
+```fish
+#!/usr/bin/env fish
+
+if status --is-interactive
+    echo "We live in an interactive world!"
+end
+```
+
+Save that to a file and mark it as executable.
+
+```fish
+chmod +x my_script
+```
+
+The system above allow us to run the script directly by using its path
+
+```fish
+./my_script
+```
+
+instead of
+
+```fish
+fish my_script
+```
+</details>
+
+## Variables
+
+Variables in fish have no types and sport local, global, exported and universal scopes.
+
+### Local variables
+### Global variables
+### Exported variables
+### Universal variables
+
+
+
+
+## Lists
+
+
+## Functions
+
+
+## Conditionals
+
+
+## Loops
+
+
+## Command
+
+
+
+
+http://www.in-ulm.de/~mascheck/various/shebang/
 
 
 Licensed [CC BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)
@@ -434,6 +538,7 @@ Licensed [CC BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 [fish]: https://github.com/fish-shell/fish-shell
 [fish-shell]: https://github.com/fish-shell/fish-shell
+[Fisherman]: https://github.com/fisherman/fisherman
 [slack-link]: https://fisherman-wharf.herokuapp.com
 [slack-badge]: https://fisherman-wharf.herokuapp.com/badge.svg
 [POSIX]: https://en.wikipedia.org/wiki/POSIX
