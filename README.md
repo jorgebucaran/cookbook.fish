@@ -182,15 +182,16 @@ functions mkdirp > ~/.config/fish/functions/mkdirp.fish
 ```
 
 ### How to create a private function in fish?
-[Fish does not have private functions](http://stackoverflow.com/a/27657662/2903889). Instead use a custom namespace to prefix a function you want to treat as private.
+[You can't](http://stackoverflow.com/a/27657662/2903889). Functions in fish are public.
+
+As a workaround, use a custom namespace to prefix a function you want to treat as private.
 
 ```fish
 function _prefix_my_function
-
 end
 ```
 
-It's not impossible to simulate private functions in fish, but it requires a bit of hacking.
+It's not impossible to simulate private scope using [`functions -e`](http://fishshell.com/docs/current/commands.html#functions), but it's likely to perform slowly.
 
 <details>
 <summary>Example</summary>
