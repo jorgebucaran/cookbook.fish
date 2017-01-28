@@ -176,7 +176,7 @@ alias rimraf "rm -rf"
 ```
 </details>
 
-Avoid using `alias` inside ~/.config/fish/config.fish. See [What's wrong with aliases?](#whats-wrong-with-aliases)
+Avoid using `alias` inside ~/.config/fish/config.fish. [Why?](#whats-wrong-with-aliases)
 
 ### What's wrong with aliases?
 Aliases created with `alias` will not be available in new shell sessions. If that's the behavior you wanted, then `alias` is acceptable for interactive use.
