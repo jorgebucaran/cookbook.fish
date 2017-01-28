@@ -12,6 +12,8 @@ This document is a living book of recipes to solve particular programming proble
   * [How to find out where fish is installed?](#how-to-find-out-where-fish-is-installed)
   * [How to learn fish?](#how-to-learn-fish)
   * [Where to ask for help?](#where-to-ask-for-help)
+* [How to define an alias in fish shell?](#how-to-define-an-alias-in-fish-shell)
+* [What's wrong with aliases?](#whats-wrong-with-aliases)
 
 ## Introduction
 Well-known shells are bash, ash, csh, ksh and the popular zsh. All these shells are [POSIX](https://en.wikipedia.org/wiki/POSIX), so well-written POSIX-compliant scripts should run without modification in any of them. That's about the only good reason to learn POSIX shell.
@@ -149,6 +151,39 @@ The best way to learn fish is to read the official [documentation](http://fishsh
 * [Gitter Channel](https://gitter.im/fish-shell/fish-shell)
 * [StackOverflow](http://stackoverflow.com/questions/tagged/fish)
 * [Subreddit](https://www.reddit.com/r/fishshell/)
+
+### How to define an alias in fish shell?
+
+Create a [`function`](http://fishshell.com/docs/current/commands.html#function) and save it to ~/.config/fish/functions.
+
+<details>
+<summary>Example</summary>
+
+```fish
+function rimraf
+    rm -rf $argv
+end
+```
+</details>
+
+Interactively, using the [`alias`](http://fishshell.com/docs/current/commands.html#alias) function is okay.
+
+<details>
+<summary>Example</summary>
+
+```fish
+alias rimraf "rm -rf"
+```
+</details>
+
+Avoid `alias` inside ~/.config/fish/config.fish. See [What's wrong with aliases?](#whats-wrong-with-aliases).
+
+### What's wrong with aliases?
+Aliases created with `alias` will not be available in new shell sessions. If that's the behavior you wanted, then `alias` is acceptable for interactive use.
+
+To persist aliases across shell sessions, create a [`function`](http://fishshell.com/docs/current/commands.html#function) and save it to ~/.config/fish/functions. This takes advantage of fish function [lazy-loading / autoloading](http://fishshell.com/docs/current/tutorial.html#tut_autoload) mechanism.
+
+Using `alias` inside ~/.config/fish/config.fish will slow down your shell start as each alias/function will be eagerly loaded.
 
 
 Licensed [CC BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)
