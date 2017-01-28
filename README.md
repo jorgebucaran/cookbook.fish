@@ -142,16 +142,13 @@ which fish
 ```
 </details>
 
-
 ### How to learn fish?
 The best way to learn fish is to read the official [documentation](http://fishshell.com/docs/current/index.html) and [tutorial](http://fishshell.com/docs/current/tutorial.html).
 
 ### Where to ask for help?
-* Use the [`help`](http://fishshell.com/docs/current/commands.html#help) builtin.
+* [Gitter Channel](https://gitter.im/fish-shell/fish-shell)
+* [StackOverflow](http://stackoverflow.com/questions/tagged/fish)
 * [Subreddit](https://www.reddit.com/r/fishshell/)
-* [Gitter Channel](https://gitter.im/fish-shell/fish-shell).
-* [StackOverflow](http://stackoverflow.com/questions/tagged/fish).
-* [Fisherman Slack](https://fisherman-wharf.herokuapp.com)
 
 
 Licensed [CC BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)
