@@ -301,7 +301,7 @@ end
 
 ```fish
 if not contains -- "$command_name" (builtin --names)
-    exit
+    exit 1
 end
 ```
 </details>
@@ -311,7 +311,7 @@ end
 
 ```fish
 if not functions --query "$command_name"
-    exit
+    exit 1
 end
 ```
 </details>
