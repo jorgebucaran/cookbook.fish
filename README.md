@@ -18,6 +18,10 @@ This document is a living book of recipes to solve particular programming proble
     * [How to create a private function in fish?](#how-to-create-a-private-function-in-fish)
     * [Should function names and file names match?](#should-function-names-and-file-names-match)
     * [Can I define more than one function in a file?](#can-i-define-more-than-one-function-in-a-file)
+    * [How to show the definition of a function in fish?](#how-to-show-the-definition-of-a-function-in-fish)
+    * [What's the difference between functions, builtins and commands in fish?](#whats-the-difference-between-functions-builtins-and-commands-in-fish)
+    * [How do I list the functions defined in fish?](#how-do-i-list-the-functions-defined-in-fish)
+    * [How to check if a command / function exists in fish?](#how-to-check-if-a-command-function-exists-in-fish)
 * [Aliases](#aliases)
     * [How to define an alias in fish?](#how-to-define-an-alias-in-fish)
     * [What's wrong with aliases?](#whats-wrong-with-aliases)
@@ -185,14 +189,14 @@ functions mkdirp > ~/.config/fish/functions/mkdirp.fish
 
 You can't. In fish, functions are always public.
 
-As a workaround, use a custom namespace to prefix a function you want to treat as private.
+As a workaround, use a custom namespace to prefix any function you want to treat as private.
 
 ```fish
 function _prefix_my_function
 end
 ```
 
-It's not impossible to simulate private scope using [`functions -e`](http://fishshell.com/docs/current/commands.html#functions), but it's likely to perform slowly.
+It's not impossible to simulate private scope using [`functions -e`](http://fishshell.com/docs/current/commands.html#functions), however it's likely to perform poorly.
 
 <details>
 <summary>Example</summary>
@@ -201,7 +205,7 @@ It's not impossible to simulate private scope using [`functions -e`](http://fish
 function foo
     function _foo
         echo Foo
-        functions -e _foo
+        functions -e _foo # Erase _foo
     end
     _foo
 end
@@ -249,6 +253,90 @@ bar
 
 ### Can I define more than one function in a file?
 Yes, you can. Note that [fish does not have private functions](http://stackoverflow.com/a/27657662/2903889), so every function in the file ends up in the global scope when the file is loaded. Also, every function is eagerly loaded as well, which it's not as effective as using one function per file.
+
+### How to show the definition of a function in fish?
+If you know the command is a function, use the [`functions`](http://fishshell.com/docs/current/commands.html#functions) builtin.
+
+```fish
+functions my_function
+```
+
+If you are not sure whether the command is a function, a builtin or a system command, use [`type`](http://fishshell.com/docs/current/commands.html#type).
+
+```fish
+type fish
+fish is /usr/local/bin/fish
+```
+
+### What's the difference between functions, builtins and commands in fish?
+System commands are executable scripts, binaries or symbolic links to binaries present in your [`$PATH`](https://fishshell.com/docs/current/tutorial.html#tut_path) variable. A command runs as a child process and has only access to environment variables which have been exported. Example: `fish`.
+
+Functions are used-defined. Some functions are included with your fish distribution. Example: [`eval`](http://fishshell.com/docs/current/commands.html#eval).
+
+Builtins are commands compiled with the fish executable. Builtins have access to the environment, so they behave like functions. Builtins do not spawn a child process. Example: [`functions`](http://fishshell.com/docs/current/commands.html#functions).
+
+### How do I list the functions defined in fish?
+Use the [`functions`](http://fishshell.com/docs/current/commands.html#functions) builtin without arguments.
+
+The list will omit functions whose name start with an underscore. Functions that start with an underscore are often called _hidden_. To show everything, use `functions -a` or `functions --all`.
+
+Alternatively, launch the fish Web-based configuration and navigate to the /functions tab.
+
+```
+fish_config functions
+```
+
+### How to check if a command / function exists in fish?
+
+Use the [`type`](http://fishshell.com/docs/current/commands.html#type) function to query information about commands, builtins or functions.
+
+```fish
+if not type --quiet "$command_name"
+    exit 1
+end
+```
+
+If you know whether a command is a system command, builtin or function:
+
+<details>
+<summary>Use <code><a href="http://fishshell.com/docs/current/commands.html#builtin">builtin --names</a></code> to query builtins.</summary>
+
+```fish
+if not contains -- "$command_name" (builtin --names)
+    exit
+end
+```
+</details>
+
+<details>
+<summary>Use <code><a href="http://fishshell.com/docs/current/commands.html#functions">functions --query</a></code> to check if a function exists.</summary>
+
+```fish
+if not functions --query "$command_name"
+    exit
+end
+```
+</details>
+
+<details>
+<summary>Use <code><a href="http://fishshell.com/docs/current/commands.html#command">command --search</a></code> for other commands.</summary>
+
+```fish
+if not command --search "$command_name" > /dev/null
+    exit 1
+end
+```
+
+Easier in fish >= 2.5
+
+```fish
+if not command --search --quiet "$command_name"
+    exit 1
+end
+```
+</details>
+
+
 
 ## Aliases
 ### How to define an alias in fish?
