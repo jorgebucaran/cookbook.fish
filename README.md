@@ -9,6 +9,7 @@ This document is a living book of recipes to solve particular programming proble
 * [Setup](#setup)
   * [How to install fish?](#how-to-install-fish)
   * [How to make fish my default shell?](#how-to-make-fish-my-default-shell)
+  * [How to find out where fish is installed?](#how-to-find-out-where-fish-is-installed)
   * [How to learn fish?](#how-to-learn-fish)
   * [Where to ask for help?](#where-to-ask-for-help)
 
@@ -123,14 +124,14 @@ make && sudo make install
 ### How to make fish my default shell?
 Once you have installed fish and it's somewhere in your `$PATH`, e.g. /usr/local/bin, you can make it your default login shell.
 
-> If you don't make fish your default shell, you'll need to run `fish` at the start of every shell session.
-
 ```fish
 echo /usr/local/bin/fish | sudo tee -a /etc/shells
 chsh -s /usr/local/bin/fish
 ```
 
-If you are not sure about the location where fish is installed, use `which` to find out.
+### How to find out where fish is installed?
+
+Use `which` to find out.
 
 ```fish
 which fish
