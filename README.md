@@ -336,28 +336,20 @@ end
 
 ## Aliases
 ### How to define an alias in fish?
-
 Create a [`function`](http://fishshell.com/docs/current/commands.html#function) and save it to ~/.config/fish/functions.
 
-<details>
-<summary>Example</summary>
 
 ```fish
 function rimraf
     rm -rf $argv
 end
 ```
-</details>
 
 For backwards compatibility with POSIX shells, use the [`alias`](http://fishshell.com/docs/current/commands.html#alias) function.
-
-<details>
-<summary>Example</summary>
 
 ```fish
 alias rimraf "rm -rf"
 ```
-</details>
 
 Avoid using `alias` inside ~/.config/fish/config.fish. See the [next section](#whats-wrong-with-aliases).
 
