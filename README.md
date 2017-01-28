@@ -169,7 +169,7 @@ function mkdirp
 end
 ```
 
-To make this function available to future fish sessions save it to ~/.config/fish/functions. A simple way to accomplish this is using the [`funcsave`](http://fishshell.com/docs/current/commands.html#funcsave) function.
+To make this function available in future fish sessions save it to ~/.config/fish/functions/mkdirp.fish. A clean way to accomplish this is using the [`funcsave`](http://fishshell.com/docs/current/commands.html#funcsave) function.
 
 ```fish
 funcsave mkdirp
