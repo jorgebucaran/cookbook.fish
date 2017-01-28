@@ -1,20 +1,18 @@
-[![Slack Room](https://fisherman-wharf.herokuapp.com/badge.svg)](https://fisherman-wharf.herokuapp.com)
-
 # [fish-shell](https://github.com/fish-shell/fish-shell) cookbook
 
-Comprehensive. Friendly. Indispensable. With more than enough simple and delicious recipes. Low in fat, versatile, and healthful. Enjoy!
+[![Slack Room](https://fisherman-wharf.herokuapp.com/badge.svg)](https://fisherman-wharf.herokuapp.com)
+
+This document is a living book of recipes to solve particular programming problems using fish-shell. Whether you are in the mood for mackerel or salmon on the grill, there is always a distinctive and delicious way to prepare any type of fish.
 
 ## Table of Contents
-
 * [Introduction](#introduction)
 * [Setup](#setup)
-    * [Installing fish](#installing-fish)
-    * [Make fish your default shell](#make-fish-your-default-shell)
-* [Getting help](#getting-help)
-
+  * [How to install fish?](#how-to-install-fish)
+  * [How to make fish my default shell?](#how-to-make-fish-my-default-shell)
+  * [How to learn fish?](#how-to-learn-fish)
+  * [Where to ask for help?](#where-to-ask-for-help)
 
 ## Introduction
-
 Well-known shells are bash, ash, csh, ksh and the popular zsh. All these shells are [POSIX](https://en.wikipedia.org/wiki/POSIX), so well-written POSIX-compliant scripts should run without modification in any of them. That's about the only good reason to learn POSIX shell.
 
 fish is not a POSIX shell. Your bash scripts will **not** run in fish without some modification.
@@ -23,25 +21,22 @@ fish is not a POSIX shell. Your bash scripts will **not** run in fish without so
 make && make install
 ```
 
-will cause fish to error with: "Unsupported use of '&&'. In fish, please use 'COMMAND; and COMMAND'."
+will error with: "Unsupported use of '&&'. In fish, please use 'COMMAND; and COMMAND'."
 
-That's simple enough.
+That's easy to fix.
 
 ```fish
 make; and make install
 ```
 
-Check out the [fish design document](http://fishshell.com/docs/current/design.html) to understand fish design principles.
-
-Here is a quote from the same document:
+Here is a quote from the [fish design document](http://fishshell.com/docs/current/design.html):
 
 > Fish should be user friendly, but not at the expense of expressiveness. Most tradeoffs between power and ease of use can be avoided with careful design.
 
 ## Setup
+### How to install fish?
 
-### Installing fish
-
-AFIK fish is not the default shell of any \*nix distribution, so you need to download and install it yourself. You can find directions in the official [website](https://fishshell.com) or follow the directions provided here for your OS.
+You can find directions in the official [website](https://fishshell.com) or follow the directions provided here for your OS.
 
 <details>
 <summary>macOS with homebrew</summary>
@@ -77,7 +72,6 @@ sudo apt-get install fish
 <details>
 <summary>CentOS</summary>
 
-
 ```bash
 cd /etc/yum.repos.d/
 wget http://download.opensuse.org/repositories/shells:fish:release:2/CentOS_7/shells:fish:release:2.repo
@@ -87,7 +81,6 @@ yum install fish
 
 <details>
 <summary>Fedora</summary>
-
 
 ```bash
 cd /etc/yum.repos.d/
@@ -127,50 +120,38 @@ make && sudo make install
 ```
 </details>
 
-### Make fish your default shell
-
+### How to make fish my default shell?
 Once you have installed fish and it's somewhere in your `$PATH`, e.g. /usr/local/bin, you can make it your default login shell.
+
+> If you don't make fish your default shell, you'll need to run `fish` at the start of every shell session.
 
 ```fish
 echo /usr/local/bin/fish | sudo tee -a /etc/shells
 chsh -s /usr/local/bin/fish
 ```
 
-> If you don't make fish your default shell, you'll need to run `fish` at the start of every shell session.
+If you are not sure about the location where fish is installed, use `which` to find out.
 
-## Getting help
-
-The official documentation includes a tutorial and
-
-The fastest way to get help about a fish builtin or topic, is via the [`help`](http://fishshell.com/docs/current/commands.html#help) command.
-
-```
-help function
+```fish
+which fish
 ```
 
-access the offline help documentation for the `function` builtin using your default browser.
+### How to learn fish?
+The best way to learn fish is to read the official [documentation](http://fishshell.com/docs/current/index.html) and [tutorial](http://fishshell.com/docs/current/tutorial.html).
 
-fish also includes man pages for all of its utilities.
-
-```
-man function
-```
-
-displays the man page for the `function` builtin.
-
-
-
-
+### Where to ask for help?
+* Use the [`help`](http://fishshell.com/docs/current/commands.html#help) builtin.
+* [Subreddit](https://www.reddit.com/r/fishshell/)
+* [Gitter Channel](https://gitter.im/fish-shell/fish-shell).
+* [StackOverflow](http://stackoverflow.com/questions/tagged/fish).
+* [Fisherman Slack](https://fisherman-wharf.herokuapp.com)
 
 
 Licensed [CC BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)
 
-<!-- Links -->
 
-
-
-
-
+<!--
 <details>
-<summary></summary>
+<summary>Template</summary>
 </details>
+-->
