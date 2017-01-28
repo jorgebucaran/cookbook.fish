@@ -131,11 +131,17 @@ chsh -s /usr/local/bin/fish
 
 ### How to find out where fish is installed?
 
-Use `which` to find out.
+Use [`which`](https://linux.die.net/man/1/which).
+
+<details>
+<summary>Example</summary>
 
 ```fish
 which fish
+/usr/local/bin/fish
 ```
+</details>
+
 
 ### How to learn fish?
 The best way to learn fish is to read the official [documentation](http://fishshell.com/docs/current/index.html) and [tutorial](http://fishshell.com/docs/current/tutorial.html).
