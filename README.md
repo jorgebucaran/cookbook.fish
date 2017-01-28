@@ -296,8 +296,6 @@ if not type --quiet "$command_name"
 end
 ```
 
-If you know whether a command is a system command, builtin or function:
-
 <details>
 <summary>Use <code><a href="http://fishshell.com/docs/current/commands.html#builtin">builtin --names</a></code> to query builtins.</summary>
 
