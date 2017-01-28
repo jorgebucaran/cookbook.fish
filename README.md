@@ -182,7 +182,8 @@ functions mkdirp > ~/.config/fish/functions/mkdirp.fish
 ```
 
 ### How to create a private function in fish?
-[You can't](http://stackoverflow.com/a/27657662/2903889). Functions in fish are public.
+
+You can't. In fish, functions are always public.
 
 As a workaround, use a custom namespace to prefix a function you want to treat as private.
 
