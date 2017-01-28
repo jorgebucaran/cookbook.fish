@@ -21,7 +21,7 @@ This document is a living book of recipes to solve particular programming proble
     * [How to show the definition of a function in fish?](#how-to-show-the-definition-of-a-function-in-fish)
     * [What's the difference between functions, builtins and commands in fish?](#whats-the-difference-between-functions-builtins-and-commands-in-fish)
     * [How do I list the functions defined in fish?](#how-do-i-list-the-functions-defined-in-fish)
-    * [How to check if a command / function exists in fish?](#how-to-check-if-a-command-function-exists-in-fish)
+    * [How to check if a function exists in fish?](#how-to-check-if-a-function-exists-in-fish)
 * [Aliases](#aliases)
     * [How to define an alias in fish?](#how-to-define-an-alias-in-fish)
     * [What's wrong with aliases?](#whats-wrong-with-aliases)
@@ -286,7 +286,7 @@ Alternatively, launch the fish Web-based configuration and navigate to the /func
 fish_config functions
 ```
 
-### How to check if a command / function exists in fish?
+### How to check if a function exists in fish?
 
 Use the [`type`](http://fishshell.com/docs/current/commands.html#type) function to query information about commands, builtins or functions.
 
@@ -335,8 +335,6 @@ if not command --search --quiet "$command_name"
 end
 ```
 </details>
-
-
 
 ## Aliases
 ### How to define an alias in fish?
