@@ -651,17 +651,47 @@ Licensed [CC BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 ## Configuration
 ### Where's the .bash_profile or .bashrc equivalent in fish?
-...
+Your fish configuration is saved to ~/.config/fish/config.fish.
+
+During shell start, fish looks for that file, and if it exists, sources its contents.
 
 ## IO
 ### How to read from a file in fish?
-...
+To read a file line by line use the [`read`](http://fishshell.com/docs/current/commands.html#read) builtin.
+
+```fish
+while read -la line
+    echo $line
+end < $my_file
+```
 
 ### How to read from stdin in fish?
 ...
 
 ### How to redirect stdout or stderr to a file in fish?
-...
+Redirect stderr to `$my_file`.
+```fish
+my_command ^ $my_file
+```
+or
+```fish
+my_command 2> $my_file
+```
+
+Redirect stdout to `$my_file`.
+```fish
+my_command > $my_file
+```
+
+Redirect stdout to stderr.
+```fish
+my_command >&2
+```
+
+Redirect stderr to stdout.
+```fish
+my_command 2>&1
+```
 
 ## Concurrency
 ### How to run a command in the background in fish?
