@@ -314,10 +314,10 @@ set foo 42
 
 The `set` builtin accepts the following flags to explicitly declare the scope of the variable:
 
-* `-l`, `--local`: available only inside the block where it is created
+* `-l`, `--local`: available only to the innermost block
 * `-g`, `--global`: available outside blocks and by other functions
 * `-U`, `--universal`: shared between all fish sessions and persisted across restarts of the shell
-* `-x`, `--export`: available to any child process spawned in current session
+* `-x`, `--export`: available to any child process spawned in the current session
 
 If no scope modifier is used, the variable will be local to the current function, otherwise it will be global.
 
@@ -419,13 +419,31 @@ set --long
 ```
 
 ### How to set the `$PATH` persistently in fish?
-...
+The correct way to persistently add a path to your `$PATH` is using fish `$fish_user_paths` variable.
+
+```fish
+set -U fish_user_paths $fish_user_paths my_path
+```
+
+See [`$PATH`](http://fishshell.com/docs/current/tutorial.html#tut_path) in the fish tutorial for more information.
 
 ### How to remove a path from the `$PATH` in fish?
-...
+Use the [`set`](http://fishshell.com/docs/current/commands.html#set) builtin with the `-e` or `--erase` flag in combination with the [`contains`](http://fishshell.com/docs/current/commands.html#contains) builtin to find the index of the path you want to remove.
+
+```fish
+if set -l index (contains -i $my_path $PATH)
+    set -e PATH[$index]
+end
+```
 
 ### How to check if a path exists in the `$PATH` in fish?
-...
+Use the [`contains`](http://fishshell.com/docs/current/commands.html#contains) builtin.
+
+```fish
+if contains $my_path $PATH
+    # $my_path is in $PATH
+end
+```
 
 ## Functions
 ### How to create a function in fish?
@@ -633,17 +651,47 @@ Licensed [CC BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 ## Configuration
 ### Where's the .bash_profile or .bashrc equivalent in fish?
-...
+Your fish configuration is saved to ~/.config/fish/config.fish.
+
+During shell start, fish looks for that file, and if it exists, sources its contents.
 
 ## IO
 ### How to read from a file in fish?
-...
+To read a file line by line use the [`read`](http://fishshell.com/docs/current/commands.html#read) builtin.
+
+```fish
+while read -la line
+    echo $line
+end < $my_file
+```
 
 ### How to read from stdin in fish?
 ...
 
 ### How to redirect stdout or stderr to a file in fish?
-...
+Redirect stderr to `$my_file`.
+```fish
+my_command ^ $my_file
+```
+or
+```fish
+my_command 2> $my_file
+```
+
+Redirect stdout to `$my_file`.
+```fish
+my_command > $my_file
+```
+
+Redirect stdout to stderr.
+```fish
+my_command >&2
+```
+
+Redirect stderr to stdout.
+```fish
+my_command 2>&1
+```
 
 ## Concurrency
 ### How to run a command in the background in fish?
