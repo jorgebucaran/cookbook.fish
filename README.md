@@ -168,14 +168,11 @@ chsh -s /usr/local/bin/fish
 ### How to find out where fish is installed?
 Use [`which`](https://linux.die.net/man/1/which).
 
-<details>
-<summary>Example</summary>
-
 ```fish
 which fish
 /usr/local/bin/fish
 ```
-</details>
+
 
 ## Getting Started
 ### How to learn fish?
@@ -309,13 +306,117 @@ echo $status
 
 ## Variables
 ### How to set environment variables in fish?
-...
+Use the [`set`](http://fishshell.com/docs/current/commands.html#set) builtin.
+
+```fish
+set foo 42
+```
+
+The `set` builtin accepts the following flags to explicitly declare the scope of the variable:
+
+* `-l`, `--local`: can be accessed only inside the block where the variable was created
+* `-g`, `--global`: can be accessed outside blocks and by other functions
+* `-U`, `--universal`: is shared between all fish sessions and persisted across restarts of the shell
+* `-x`, `--export`: can be accessed by any child process spawned in current session
+
+If no scope modifier is used, the variable will be local to the current function, otherwise it will be global.
+
+If the variable has already been defined, the previous scope will be used.
+
+<details>
+<summary>Local Variables</summary>
+
+The variable `foo` will not be available outside the `if` block.
+
+```fish
+if true
+    set -l foo 42
+end
+
+echo "foo=$foo" # foo=
+```
+</details>
+
+<details>
+<summary>Global Variables</summary>
+
+The variable `foo` will be avaiable outside the `if` block.
+
+```fish
+if true
+    set -g foo 42
+end
+
+echo "foo=$foo" # foo=42
+```
+</details>
+
+<details>
+<summary>Universal Variables</summary>
+
+The variable `foo` will be preserved and available to future shell sessions.
+
+```fish
+set -U foo 42
+fish
+echo "foo=$foo" # foo=42
+```
+</details>
+
+
+<details>
+<summary>Exported Variables</summary>
+
+The variable `foo` will be local and exported, therefore available to the `fish` child process created inside the `if` block.
+
+```fish
+if true
+    set -lx foo 42
+    fish -c 'echo "foo=$foo"' # foo=42
+end
+```
+
+The variable `foo` will be global, but since it's not exported, it won't be available to the `fish` child process.
+
+```fish
+set -g foo 42
+fish -c 'echo "foo=$foo"' # foo=
+```
+
+The variable `GPG_AGENT_INFO` will be universal and exported, therefore preserved across future shell sessions and child processes.
+
+```fish
+set -Ux GPG_AGENT_INFO /Users/x/.gnupg/S.gpg-agent:12345:2
+```
+</details>
+
 
 ### How to export a variable in fish?
-...
+Use the [`set`](http://fishshell.com/docs/current/commands.html#set) builtin and the scope modifier `-x` or `--export`.
+
+```fish
+set -x foo 42
+fish -c 'echo "foo=$foo"' # foo=42
+```
 
 ### How to list all environment variables in fish?
-...
+Use the [`set`](http://fishshell.com/docs/current/commands.html#set) builtin without any modifier flags.
+
+```fish
+set
+```
+
+To print only the variable names, without the values, use `--name`.
+
+```fish
+set --names
+```
+
+To not truncate long lines use `--long`.
+
+```fish
+set --long
+```
 
 ### How to set the `$PATH` persistently in fish?
 ...
