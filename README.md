@@ -314,10 +314,10 @@ set foo 42
 
 The `set` builtin accepts the following flags to explicitly declare the scope of the variable:
 
-* `-l`, `--local`: can be accessed only inside the block where the variable was created
-* `-g`, `--global`: can be accessed outside blocks and by other functions
-* `-U`, `--universal`: is shared between all fish sessions and persisted across restarts of the shell
-* `-x`, `--export`: can be accessed by any child process spawned in current session
+* `-l`, `--local`: available only inside the block where it is created
+* `-g`, `--global`: available outside blocks and by other functions
+* `-U`, `--universal`: shared between all fish sessions and persisted across restarts of the shell
+* `-x`, `--export`: available to any child process spawned in current session
 
 If no scope modifier is used, the variable will be local to the current function, otherwise it will be global.
 
