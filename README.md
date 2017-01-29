@@ -6,7 +6,6 @@ This document is a living book of recipes to solve particular programming proble
 
 ## Table of Contents
 * [Introduction](#introduction)
-    * [Why this guide?](#why-this-guide)
 * [Setup](#setup)
     * [How to install fish?](#how-to-install-fish)
     * [How to make fish my default shell?](#how-to-make-fish-my-default-shell)
@@ -18,6 +17,8 @@ This document is a living book of recipes to solve particular programming proble
     * [How to find my current location in fish?](#how-to-find-my-current-location-in-fish)
     * [How to find and run commands in fish?](#how-to-find-and-run-commands-in-fish)
     * [How to check if a command succeeded in fish?](#how-to-check-if-a-command-succeeded-in-fish)
+* [Configuration](#configuration)
+    * [Where's the .bash_profile or .bashrc equivalent in fish?](#wheres-the-bash_profile-or-bashrc-equivalent-in-fish)
 * [Variables](#variables)
     * [How to set environment variables in fish?](#how-to-set-environment-variables-in-fish)
     * [How to export a variable in fish?](#how-to-export-a-variable-in-fish)
@@ -38,8 +39,6 @@ This document is a living book of recipes to solve particular programming proble
 * [Aliases](#aliases)
     * [How to define an alias in fish?](#how-to-define-an-alias-in-fish)
     * [What's wrong with aliases?](#whats-wrong-with-aliases)
-* [Configuration](#configuration)
-    * [Where's the .bash_profile or .bashrc equivalent in fish?](#wheres-the-bash_profile-or-bashrc-equivalent-in-fish)
 * [IO](#io)
     * [How to read from a file in fish?](#how-to-read-from-a-file-in-fish)
     * [How to read from stdin in fish?](#how-to-read-from-stdin-with-fish)
@@ -48,6 +47,7 @@ This document is a living book of recipes to solve particular programming proble
     * [How to run a command in the background in fish?](#how-to-run-a-command-in-the-background-in-fish)
     * [How to synchronize two or more background tasks in fish?](#how-to-synchronize-two-or-more-background-tasks-in-fish)
     * [How to wait for a background process in fish?](#how-to-wait-for-a-background-process-in-fish)
+
 
 ## Introduction
 Well-known shells are bash, ash, csh, ksh and the popular zsh. All these shells are [POSIX](https://en.wikipedia.org/wiki/POSIX), so well-written POSIX-compliant scripts should run without modification in any of them. That's about the only good reason to learn POSIX shell.
@@ -70,8 +70,6 @@ Here is a quote from the [fish design document](http://fishshell.com/docs/curren
 
 > Fish should be user friendly, but not at the expense of expressiveness. Most tradeoffs between power and ease of use can be avoided with careful design.
 
-### Why this guide?
-...
 
 ## Setup
 ### How to install fish?
@@ -97,7 +95,6 @@ apt-get update
 apt-get install fish
 ```
 </details>
-
 
 <details>
 <summary>Ubuntu</summary>
@@ -129,7 +126,6 @@ yum install fish
 ```
 </details>
 
-
 <details>
 <summary>Arch Linux</summary>
 
@@ -137,7 +133,6 @@ yum install fish
 pacman -S fish
 ```
 </details>
-
 
 <details>
 <summary>Gentoo</summary>
@@ -160,6 +155,7 @@ make && sudo make install
 ```
 </details>
 
+
 ### How to make fish my default shell?
 Once you have installed fish and it's somewhere in your `$PATH`, e.g. /usr/local/bin, you can make it your default login shell.
 
@@ -168,8 +164,8 @@ echo /usr/local/bin/fish | sudo tee -a /etc/shells
 chsh -s /usr/local/bin/fish
 ```
 
-### How to find out where fish is installed?
 
+### How to find out where fish is installed?
 Use [`which`](https://linux.die.net/man/1/which).
 
 <details>
@@ -191,7 +187,7 @@ The best way to learn fish is to read the official [documentation](http://fishsh
 * [Subreddit](https://www.reddit.com/r/fishshell/)
 
 ### What's a prompt and what are all these ugly characters?
-The prompt is where you type commands and interact with your shell interpreter, i.e, fish. Read more about the prompt on UNIX [here](https://en.wikipedia.org/wiki/Command-line_interface#Command_prompt).
+The prompt is where you type commands and interact with your shell interpreter, e.g, fish. Read more about the UNIX prompt [here](https://en.wikipedia.org/wiki/Command-line_interface#Command_prompt).
 
 Maybe it looks like this:
 
