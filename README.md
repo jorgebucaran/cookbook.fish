@@ -13,6 +13,13 @@ This document is a living book of recipes to solve particular programming proble
   * [How to find out where fish is installed?](#how-to-find-out-where-fish-is-installed)
   * [How to learn fish?](#how-to-learn-fish)
   * [Where to ask for help?](#where-to-ask-for-help)
+* [Variables](#variables)
+    * [How to set environment variables in fish?](#how-to-set-environment-variables-in-fish)
+    * [How to export a variable in fish?](#how-to-export-a-variable-in-fish)
+    * [How to list all environment variables in fish?](#how-to-list-all-environment-variables-in-fish)
+    * [How to set the `$PATH` persistently in fish?](#how-to-set-$PATH-persistently-in-fish)
+    * [How to remove a path from the `$PATH` in fish?](#how-to-remove-a-path-from-$PATH-variable-in-fish)
+    * [How to check if a path exists in the `$PATH` in fish?](#how-to-check-if-a-path-exists-in-the-$PATH-in-fish)
 * [Functions](#functions)
     * [How to create a function in fish?](#how-to-create-a-function-in-fish)
     * [How to create a private function in fish?](#how-to-create-a-private-function-in-fish)
@@ -22,9 +29,20 @@ This document is a living book of recipes to solve particular programming proble
     * [What's the difference between functions, builtins and commands in fish?](#whats-the-difference-between-functions-builtins-and-commands-in-fish)
     * [How do I list the functions defined in fish?](#how-do-i-list-the-functions-defined-in-fish)
     * [How to check if a function exists in fish?](#how-to-check-if-a-function-exists-in-fish)
+    * [How to parse command line arguments in fish?](#how-to-parse-command-line-arguments-in-fish)
 * [Aliases](#aliases)
     * [How to define an alias in fish?](#how-to-define-an-alias-in-fish)
     * [What's wrong with aliases?](#whats-wrong-with-aliases)
+* [Configuration](#configuration)
+    * [Where's the .bash_profile or .bashrc equivalent in fish?](#wheres-the-.bash_profile-or-.bashrc-equivalent-in-fish)
+* [IO](#io)
+    * [How to read a file in fish?](#how-to-read-a-file-in-fish)
+    * [How to read from stdin in fish?](#how-to-read-from-stdin-with-fish)
+    * [How to redirect stdout or stderr to a file in fish?](#how-to-redirect-stdout-or-stderr-to-a-file-in-fish)
+* [Concurrency](#concurrency)
+    * [How to run a command in the background in fish?](#how-to-run-a-command-in-the-background-in-fish)
+    * [How to synchronize two or more background tasks in fish?](#how-to-synchronize-two-or-more-background-tasks-in-fish)
+    * [How to wait for a background process in fish?](#how-to-wait-for-a-background-process-in-fish)
 
 ## Introduction
 Well-known shells are bash, ash, csh, ksh and the popular zsh. All these shells are [POSIX](https://en.wikipedia.org/wiki/POSIX), so well-written POSIX-compliant scripts should run without modification in any of them. That's about the only good reason to learn POSIX shell.
@@ -162,6 +180,25 @@ The best way to learn fish is to read the official [documentation](http://fishsh
 * [Gitter Channel](https://gitter.im/fish-shell/fish-shell)
 * [StackOverflow](http://stackoverflow.com/questions/tagged/fish)
 * [Subreddit](https://www.reddit.com/r/fishshell/)
+
+## Variables
+### How to set environment variables in fish?
+...
+
+### How to export a variable in fish?
+...
+
+### How to list all environment variables in fish?
+...
+
+### How to set the `$PATH` persistently in fish?
+...
+
+### How to remove a path from the `$PATH` in fish?
+...
+
+### How to check if a path exists in the `$PATH` in fish?
+...
 
 ## Functions
 ### How to create a function in fish?
@@ -334,6 +371,9 @@ end
 ```
 </details>
 
+### How to parse command line arguments in fish?
+...
+
 ## Aliases
 ### How to define an alias in fish?
 Create a [`function`](http://fishshell.com/docs/current/commands.html#function) and save it to ~/.config/fish/functions.
@@ -363,6 +403,30 @@ Using `alias` inside ~/.config/fish/config.fish will slow down your shell start 
 
 Licensed [CC BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)
 
+
+## Configuration
+### Where's the .bash_profile or .bashrc equivalent in fish?
+...
+
+## IO
+### How to read a file in fish?
+...
+
+### How to read from stdin in fish?
+...
+
+### How to redirect stdout or stderr to a file in fish?
+...
+
+## Concurrency
+### How to run a command in the background in fish?
+...
+
+### How to synchronize two or more background tasks in fish?
+...
+
+### How to wait for a background process in fish?
+...
 
 <!--
 <details>
