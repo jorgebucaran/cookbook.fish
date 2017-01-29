@@ -5,14 +5,19 @@
 This document is a living book of recipes to solve particular programming problems using fish-shell. Whether you are in the mood for mackerel or salmon on the grill, there is always a distinctive and delicious way to prepare any type of fish.
 
 ## Table of Contents
-* [Notes](#notes)
 * [Introduction](#introduction)
+    * [Why this guide?](#why-this-guide)
 * [Setup](#setup)
-  * [How to install fish?](#how-to-install-fish)
-  * [How to make fish my default shell?](#how-to-make-fish-my-default-shell)
-  * [How to find out where fish is installed?](#how-to-find-out-where-fish-is-installed)
-  * [How to learn fish?](#how-to-learn-fish)
-  * [Where to ask for help?](#where-to-ask-for-help)
+    * [How to install fish?](#how-to-install-fish)
+    * [How to make fish my default shell?](#how-to-make-fish-my-default-shell)
+    * [How to find out where fish is installed?](#how-to-find-out-where-fish-is-installed)
+* [Getting Started](#getting-started)
+    * [How to learn fish?](#how-to-learn-fish)
+    * [Where to ask for help?](#where-to-ask-for-help)
+    * [What's a prompt and what are all these ugly characters?](#whats-a-prompt-and-what-are-all-these-ugly-characters)
+    * [How to find my current location in fish?](#how-to-find-my-current-location-in-fish)
+    * [How to find and run commands in fish?](#how-to-find-and-run-commands-in-fish)
+    * [How to check if a command succeeded in fish?](#how-to-check-if-a-command-succeeded-in-fish)
 * [Variables](#variables)
     * [How to set environment variables in fish?](#how-to-set-environment-variables-in-fish)
     * [How to export a variable in fish?](#how-to-export-a-variable-in-fish)
@@ -34,9 +39,9 @@ This document is a living book of recipes to solve particular programming proble
     * [How to define an alias in fish?](#how-to-define-an-alias-in-fish)
     * [What's wrong with aliases?](#whats-wrong-with-aliases)
 * [Configuration](#configuration)
-    * [Where's the .bash_profile or .bashrc equivalent in fish?](#wheres-the-.bash_profile-or-.bashrc-equivalent-in-fish)
+    * [Where's the .bash_profile or .bashrc equivalent in fish?](#wheres-the-bash_profile-or-bashrc-equivalent-in-fish)
 * [IO](#io)
-    * [How to read a file in fish?](#how-to-read-a-file-in-fish)
+    * [How to read from a file in fish?](#how-to-read-from-a-file-in-fish)
     * [How to read from stdin in fish?](#how-to-read-from-stdin-with-fish)
     * [How to redirect stdout or stderr to a file in fish?](#how-to-redirect-stdout-or-stderr-to-a-file-in-fish)
 * [Concurrency](#concurrency)
@@ -64,6 +69,9 @@ make; and make install
 Here is a quote from the [fish design document](http://fishshell.com/docs/current/design.html):
 
 > Fish should be user friendly, but not at the expense of expressiveness. Most tradeoffs between power and ease of use can be avoided with careful design.
+
+### Why this guide?
+...
 
 ## Setup
 ### How to install fish?
@@ -173,6 +181,7 @@ which fish
 ```
 </details>
 
+## Getting Started
 ### How to learn fish?
 The best way to learn fish is to read the official [documentation](http://fishshell.com/docs/current/index.html) and [tutorial](http://fishshell.com/docs/current/tutorial.html).
 
@@ -180,6 +189,127 @@ The best way to learn fish is to read the official [documentation](http://fishsh
 * [Gitter Channel](https://gitter.im/fish-shell/fish-shell)
 * [StackOverflow](http://stackoverflow.com/questions/tagged/fish)
 * [Subreddit](https://www.reddit.com/r/fishshell/)
+
+### What's a prompt and what are all these ugly characters?
+The prompt is where you type commands and interact with your shell interpreter, i.e, fish. Read more about the prompt on UNIX [here](https://en.wikipedia.org/wiki/Command-line_interface#Command_prompt).
+
+Maybe it looks like this:
+
+```
+x@mbp ~/C/fish-shell>
+```
+
+The tilde `~` is an abbreviation of the [home directory](http://www.linfo.org/home_directory.html), for example /users/x/home, /Users/x, etc.
+
+The `@` means at. I can see `x`, my user, is logged into `mbp`, which is the name I gave to my workstation.
+
+The forward slash `/` is the path delimiter. At a glance, I can see the current directory is in the vicinity of `~`, somewhere inside C/fish-shell. The C is the first letter of the parent directory, Code in my case.
+
+<details>
+<summary>As of fish >=2.3, you can customize the length of the abbreviated path.</summary>
+
+```fish
+set fish_prompt_pwd_dir_length NUMBER
+```
+or
+```fish
+set fish_prompt_pwd_dir_length 0
+```
+for no abbreviations.
+
+```
+x@mbp ~/Code/fish-shell
+```
+</details>
+
+The greater than symbol `>` is used here to indicate the end of the prompt.
+
+You don't like these conventions? Create your own prompt the way you like it.
+
+See [How to create my own prompt in fish?](#how-to-create-my-own-prompt-in-fish)
+
+### How to find my current location in fish?
+You can find out where you are via the read-only environment variable `$PWD`.
+
+```fish
+echo $PWD
+/Users/x/Code/fish-shell
+```
+
+Another way to find out the current directory is via the `pwd` builtin.
+
+```fish
+pwd
+/Users/x/Code/fish-shell
+```
+
+In fish, both `$PWD` and `pwd` always resolve symbolic links. This means that, if you are inside a directory that is a symbolic reference to another, you always get the path to the real directory.
+
+Interactively, `pwd` is easier to type. For scripting, `$PWD` is a function call less expensive.
+
+<details>
+<summary>Example</summary>
+
+```fish
+set -l cwd (pwd)
+echo "The current working directory is: $cwd"
+
+# Versus
+
+echo "The current working directory is: $PWD"
+```
+</details>
+
+### How to find and run commands in fish?
+To run a command type the name of the command and press return.
+
+```fish
+ls
+```
+
+Or, start typing the command you are looking for, and press tab. fish will use the builtin pager which you can browse and select the command interactively.
+
+fish knows what commands are available by looking at the `$PATH` environment variable. This variable contains a list of paths, and every binary file inside any of those paths can be run by their name.
+
+Print your `$PATH` contents.
+
+```fish
+printf "%s\n" $PATH
+/usr/local/bin
+/usr/bin
+/bin
+```
+
+or list every command in your system and display them in columns.
+
+```fish
+ls $PATH | column
+```
+
+If the list is truncated, use:
+
+```fish
+ls $PATH | column | less
+```
+
+Use `k` and `j` to navigate the list down / up, and `q` to exit.
+
+The `$PATH` variable is created at the start of the fish process during the environment initialization. You can  modify, prepend or append to this variable yourself, e.g, in ~/.config/fish/config.fish.
+
+Similar to the `type`, `builtin` and `functions` builtins previously introduced, \*nix systems often include one or more shell-agnostic alternatives, e.g, `which`, `apropos`, `whatis`, etc.
+
+These commands overlap in functionality, but also possess unique features. Consult your system's manpage for details.
+
+# How to check if a command succeeded in fish?
+Every command returns an **exit code** to indicate whether they succeeded or not. An exit code of 0 means success. Anything else means failure. Different commands use different integers to represent the different errors that can happen.
+
+You can check the exit code of any command using the special, read-only variable `$status`.
+
+```fish
+my_command
+echo $status
+```
+
 
 ## Variables
 ### How to set environment variables in fish?
@@ -409,7 +539,7 @@ Licensed [CC BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)
 ...
 
 ## IO
-### How to read a file in fish?
+### How to read from a file in fish?
 ...
 
 ### How to read from stdin in fish?
