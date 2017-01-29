@@ -646,14 +646,10 @@ To persist aliases across shell sessions, create a [`function`](http://fishshell
 Using `alias` inside ~/.config/fish/config.fish will slow down your shell start as each alias/function will be eagerly loaded.
 
 
-Licensed [CC BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)
-
 
 ## Configuration
 ### Where's the .bash_profile or .bashrc equivalent in fish?
 Your fish configuration is saved to ~/.config/fish/config.fish.
-
-During shell start, fish looks for that file, and if it exists, sources its contents.
 
 ## IO
 ### How to read from a file in fish?
@@ -708,3 +704,5 @@ my_command 2>&1
 <summary>Template</summary>
 </details>
 -->
+
+Licensed [CC BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)
