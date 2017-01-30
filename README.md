@@ -45,6 +45,7 @@ This document is a living book of recipes to solve particular programming proble
     * [How to redirect stdout or stderr to a file in fish?](#how-to-redirect-stdout-or-stderr-to-a-file-in-fish)
 * [Concurrency](#concurrency)
     * [How to run a command in the background in fish?](#how-to-run-a-command-in-the-background-in-fish)
+    * [How to check if there are background jobs running in fish?](#how-to-check-if-there-are-background-jobs-running-in-fish)
     * [How to synchronize two or more background tasks in fish?](#how-to-synchronize-two-or-more-background-tasks-in-fish)
     * [How to wait for a background process in fish?](#how-to-wait-for-a-background-process-in-fish)
 
@@ -691,13 +692,95 @@ my_command 2>&1
 
 ## Concurrency
 ### How to run a command in the background in fish?
-...
+Use `&`.
+
+```fish
+sleep 10 &
+```
+
+### How to check if there are background jobs running in fish?
+Use the [`jobs`](http://fishshell.com/docs/current/commands.html#jobs) builtin.
+
+```fish
+if jobs > /dev/null
+    echo Busy
+end
+```
 
 ### How to synchronize two or more background tasks in fish?
-...
+fish has no [`wait`](http://man7.org/linux/man-pages/man2/waitpid.2.html) command, but you can write your own.
+
+First, to check if there are tasks running in the background, parse the output from the [`jobs`](http://fishshell.com/docs/current/commands.html#jobs) builtin.
+
+<details>
+<summary>Parse by Job ID</summary>
+
+```fish
+function get_jobs
+    jobs $argv | command awk -v FS=\t '
+        /[0-9]+\t/{
+            jobs[++nJobs] = $1
+        }
+        END {
+            for (i in jobs) {
+                print(jobs[i])
+            }
+            exit nJobs == 0
+        }
+    '
+end
+```
+</details>
+
+<details>
+<summary>Parse by Group ID</summary>
+
+```fish
+function get_jobs
+    jobs -g | command awk 'NR > 0 { print; i++ } END { exit i == 0 }'
+end
+```
+</details>
+
+Then, block the foreground until, all background jobs are finished.
+
+```fish
+function wait
+    while true
+        set -l has_jobs
+        set -l all_jobs (get_jobs)
+        or break
+
+        for j in $argv
+            if contains -- $j $all_jobs
+                set -e has_jobs
+                break
+            end
+        end
+
+        if set -q has_jobs
+            break
+        end
+    end
+end
+```
+
+<details>
+<summary>Example</summary>
+
+```fish
+set -l urls "https://"{google,twitter,youtube,facebook,github}".com"
+
+for url in $urls
+    fish -c "curl -Lw \"$url: %{time_total}s\n\" -o /dev/null -s $url" &
+end
+
+wait (get_jobs)
+```
+</details>
 
 ### How to wait for a background process in fish?
-...
+fish has no [`wait`](http://man7.org/linux/man-pages/man2/waitpid.2.html) builtin. To wait for a background process to finish, use the solution described in [How to synchronize two or more background tasks in fish?](#how-to-synchronize-two-or-more-background-tasks-in-fish).
 
 <!--
 <details>
