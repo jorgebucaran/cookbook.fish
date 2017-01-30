@@ -698,6 +698,8 @@ Use `&`.
 sleep 10 &
 ```
 
+See also [Background jobs](http://fishshell.com/docs/current/index.html#syntax-background) in the fish documentation.
+
 ### How to check if there are background jobs running in fish?
 Use the [`jobs`](http://fishshell.com/docs/current/commands.html#jobs) builtin.
 
