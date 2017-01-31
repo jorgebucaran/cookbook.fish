@@ -4,6 +4,8 @@
 
 This document is a living book of recipes to solve particular programming problems using fish-shell. Whether you are in the mood for mackerel or salmon on the grill, there is always a distinctive and delicious way to prepare any type of fish.
 
+Licensed [CC BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)
+
 ## Table of Contents
 * [Introduction](#introduction)
 * [Setup](#setup)
@@ -35,20 +37,21 @@ This document is a living book of recipes to solve particular programming proble
     * [What's the difference between functions, builtins and commands in fish?](#whats-the-difference-between-functions-builtins-and-commands-in-fish)
     * [How do I list the functions defined in fish?](#how-do-i-list-the-functions-defined-in-fish)
     * [How to check if a function exists in fish?](#how-to-check-if-a-function-exists-in-fish)
+* [Arguments](#arguments)
+    * [How to access the arguments passed to a function in fish?](#how-to-access-the-arguments-passed-to-a-function-in-fish)
     * [How to parse command line arguments in fish?](#how-to-parse-command-line-arguments-in-fish)
 * [Aliases](#aliases)
     * [How to define an alias in fish?](#how-to-define-an-alias-in-fish)
     * [What's wrong with aliases?](#whats-wrong-with-aliases)
 * [IO](#io)
     * [How to read from a file in fish?](#how-to-read-from-a-file-in-fish)
-    * [How to read from stdin in fish?](#how-to-read-from-stdin-with-fish)
+    * [How to read from stdin in fish?](#how-to-read-from-stdin-in-fish)
     * [How to redirect stdout or stderr to a file in fish?](#how-to-redirect-stdout-or-stderr-to-a-file-in-fish)
 * [Concurrency](#concurrency)
     * [How to run a command in the background in fish?](#how-to-run-a-command-in-the-background-in-fish)
     * [How to check if there are background jobs running in fish?](#how-to-check-if-there-are-background-jobs-running-in-fish)
     * [How to synchronize two or more background tasks in fish?](#how-to-synchronize-two-or-more-background-tasks-in-fish)
     * [How to wait for a background process in fish?](#how-to-wait-for-a-background-process-in-fish)
-
 
 ## Introduction
 Well-known shells are bash, ash, csh, ksh and the popular zsh. All these shells are [POSIX](https://en.wikipedia.org/wiki/POSIX), so well-written POSIX-compliant scripts should run without modification in any of them. That's about the only good reason to learn POSIX shell.
@@ -617,8 +620,55 @@ end
 ```
 </details>
 
+## Arguments
+### How to access the arguments passed to a function in fish?
+Use the `$argv` variable.
+
+```fish
+function Foo
+    printf "%s\n" $argv
+end
+
+Foo foo bar baz
+foo
+bar
+baz
+```
+
+### How to access the arguments passed to a script in fish?
+Use the `$argv` variable. Pass the arguments when running the script.
+
+```fish
+fish ./my_script foo bar baz
+foo
+bar
+baz
+```
+
+<details>
+<summary>Example: my_script</summary>
+
+```fish
+#!/usr/bin/env fish
+printf "%s\n" $argv
+```
+</details>
+
 ### How to parse command line arguments in fish?
-...
+Use a [`for`](http://fishshell.com/docs/current/commands.html#for) loop.
+
+```fish
+for option in $argv
+    switch "$option"
+        case -f --foo
+        case -b --bar
+        case \*
+            printf "error: Unknown option %s\n" $option
+    end
+end
+```
+
+For a more complete CLI parsing solution, see [`getopts`](https://github.com/fisherman/getopts).
 
 ## Aliases
 ### How to define an alias in fish?
@@ -663,7 +713,26 @@ end < $my_file
 ```
 
 ### How to read from stdin in fish?
-...
+Use the [`read`](http://fishshell.com/docs/current/commands.html#read) builtin.
+
+```fish
+read --prompt "echo 'Name: ' " -l name
+```
+```
+Name: Marvin
+```
+```fish
+echo $name
+Marvin
+```
+
+To read from an arbitrary input stream use `read` together with the [`while`](http://fishshell.com/docs/current/commands.html#while) builtin.
+
+```fish
+while read -la line
+    echo $line
+end
+```
 
 ### How to redirect stdout or stderr to a file in fish?
 Redirect stderr to `$my_file`.
@@ -789,5 +858,3 @@ fish has no [`wait`](http://man7.org/linux/man-pages/man2/waitpid.2.html) builti
 <summary>Template</summary>
 </details>
 -->
-
-Licensed [CC BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)
