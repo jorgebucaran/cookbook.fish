@@ -8,9 +8,6 @@ Licensed [CC BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 ## Table of Contents
 
-<details>
-<summary>Table of Contents</summary>
-
 * [Introduction](#introduction)
 * [Setup](#setup)
     * [How to install fish?](#how-to-install-fish)
@@ -56,7 +53,6 @@ Licensed [CC BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)
     * [How to check if there are background jobs running in fish?](#how-to-check-if-there-are-background-jobs-running-in-fish)
     * [How to synchronize two or more background tasks in fish?](#how-to-synchronize-two-or-more-background-tasks-in-fish)
     * [How to wait for a background process in fish?](#how-to-wait-for-a-background-process-in-fish)
-</details>
 
 ## Introduction
 Well-known shells are bash, ash, csh, ksh and the popular zsh. All these shells are [POSIX](https://en.wikipedia.org/wiki/POSIX), so well-written POSIX-compliant scripts should run without modification in any of them. That's about the only good reason to learn POSIX shell.
