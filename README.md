@@ -188,51 +188,6 @@ which fish
 /usr/local/bin/fish
 ```
 
-### What is the fish shebang?
-
-There is a special type of comment known as the [shebang](<https://en.wikipedia.org/wiki/Shebang_(Unix)>) used to tell the operating system to run a program using the path of your script as an argument. The shebang is always written at the beginning of the script.
-
-To run a script with `fish` use a shebang like so:
-
-```fish
-#!/usr/bin/env fish
-```
-
-<details>
-<summary>Example</summary>
-
-```fish
-#!/usr/bin/env fish
-
-if status --is-interactive
-    echo "We live in an interactive world!"
-end
-```
-
-Save that to a file and mark it as executable.
-
-```fish
-chmod +x my_script
-```
-
-The system above allow us to run the script directly by using its path
-
-```fish
-./my_script
-```
-
-instead of
-
-```fish
-fish my_script
-```
-
-</details>
-
-## See Also
-
-* https://github.com/fish-shell/fish-shell/issues/2583
-
 ## Getting Started
 
 ### How to learn fish?
@@ -363,7 +318,7 @@ Similar to the `type`, `builtin` and `functions` builtins previously introduced,
 
 These commands overlap in functionality, but also possess unique features. Consult your system's manpage for details.
 
-# How to check if a command succeeded in fish?
+### How to check if a command succeeded in fish?
 
 Every command returns an **exit code** to indicate whether they succeeded or not. An exit code of 0 means success. Anything else means failure. Different commands use different integers to represent the different errors that can happen.
 
@@ -373,6 +328,47 @@ You can check the exit code of any command using the special, read-only variable
 my_command
 echo $status
 ```
+
+### What is the fish shebang?
+
+There is a special type of comment known as the [shebang](<https://en.wikipedia.org/wiki/Shebang_(Unix)>) used to tell the operating system to run a program using the path of your script as an argument. The shebang is always written at the beginning of the script.
+
+To run a script with `fish` use a shebang like so:
+
+```fish
+#!/usr/bin/env fish
+```
+
+<details>
+<summary>Example</summary>
+
+```fish
+#!/usr/bin/env fish
+
+if status --is-interactive
+    echo "We live in an interactive world!"
+end
+```
+
+Save that to a file and mark it as executable.
+
+```fish
+chmod +x my_script
+```
+
+The system above allow us to run the script directly by using its path
+
+```fish
+./my_script
+```
+
+instead of
+
+```fish
+fish my_script
+```
+
+</details>
 
 ## Variables
 
