@@ -331,7 +331,7 @@ echo $status
 
 ### What is the fish shebang?
 
-There is a special type of comment known as the [shebang](<https://en.wikipedia.org/wiki/Shebang_(Unix)>) used to tell the operating system to run a program using the path of your script as an argument. The shebang is always written at the beginning of the script.
+There is a special type of comment known as the [shebang](<https://en.wikipedia.org/wiki/Shebang_(Unix)>) used to tell the shell system to run a program using the path of your script as an argument. The shebang is always written at the beginning of the script.
 
 To run a script with `fish` use a shebang like so:
 
