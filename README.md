@@ -4,6 +4,8 @@
 
 This document is a living book of recipes to solve particular programming problems using [fish-shell](https://github.com/fish-shell/fish-shell). Whether you are in the mood for mackerel or salmon on the grill, there is always a distinctive and delicious way to prepare any type of fish.
 
+Licensed [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+
 ## Table of Contents
 
 * [Introduction](#introduction)
@@ -799,7 +801,7 @@ To read a file line by line use the [`read`](http://fishshell.com/docs/current/c
 ```fish
 while read -la line
     echo $line
-end < $my_file
+end < my_file
 ```
 
 ### How to read from stdin in fish?
