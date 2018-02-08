@@ -801,7 +801,7 @@ To read a file line by line use the [`read`](http://fishshell.com/docs/current/c
 ```fish
 while read -la line
     echo $line
-end < $my_file
+end < my_file
 ```
 
 ### How to read from stdin in fish?
