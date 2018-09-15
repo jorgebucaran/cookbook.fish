@@ -1,7 +1,5 @@
 # fish-shell cookbook
 
-[![Slack Room](https://fisherman-wharf.herokuapp.com/badge.svg)](https://fisherman-wharf.herokuapp.com)
-
 This document is a living book of recipes to solve particular programming problems using [fish-shell](https://github.com/fish-shell/fish-shell). Whether you are in the mood for mackerel or salmon on the grill, there is always a distinctive and delicious way to prepare any type of fish.
 
 Licensed [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
