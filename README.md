@@ -1,4 +1,4 @@
-# fish-shell cookbook
+# The Fish Cookbook
 
 This document is a living book of recipes to solve particular programming problems using [fish-shell](https://github.com/fish-shell/fish-shell). Whether you are in the mood for mackerel or salmon on the grill, there is always a distinctive and delicious way to prepare any type of fish.
 
@@ -966,3 +966,5 @@ fish has no [`wait`](http://man7.org/linux/man-pages/man2/waitpid.2.html) builti
 <summary>Template</summary>
 </details>
 -->
+
+
