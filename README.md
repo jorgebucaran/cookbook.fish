@@ -6,58 +6,58 @@ Licensed [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 ## Table of Contents
 
-* [Introduction](#introduction)
-* [Setup](#setup)
-  * [How to install fish?](#how-to-install-fish)
-  * [How to make fish my default shell?](#how-to-make-fish-my-default-shell)
-  * [How to find out where fish is installed?](#how-to-find-out-where-fish-is-installed)
-* [Getting Started](#getting-started)
-  * [How to learn fish?](#how-to-learn-fish)
-  * [Where to ask for help?](#where-to-ask-for-help)
-  * [What's a prompt and what are all these ugly characters?](#whats-a-prompt-and-what-are-all-these-ugly-characters)
-  * [How to find my current location in fish?](#how-to-find-my-current-location-in-fish)
-  * [How to find and run commands in fish?](#how-to-find-and-run-commands-in-fish)
-  * [How to check if a command succeeded in fish?](#how-to-check-if-a-command-succeeded-in-fish)
-  * [What is the fish shebang?](#what-is-the-fish-shebang)
-* [Configuration](#configuration)
-  * [Where's the .bash_profile or .bashrc equivalent in fish?](#wheres-the-bash_profile-or-bashrc-equivalent-in-fish)
-* [Variables](#variables)
-  * [How to set environment variables in fish?](#how-to-set-environment-variables-in-fish)
-  * [How to export a variable in fish?](#how-to-export-a-variable-in-fish)
-  * [How to list all environment variables in fish?](#how-to-list-all-environment-variables-in-fish)
-  * [How to set the `$PATH` persistently in fish?](#how-to-set-$PATH-persistently-in-fish)
-  * [How to remove a path from the `$PATH` in fish?](#how-to-remove-a-path-from-$PATH-variable-in-fish)
-  * [How to check if a path exists in the `$PATH` in fish?](#how-to-check-if-a-path-exists-in-the-$PATH-in-fish)
-* [Functions](#functions)
-  * [How to create a function in fish?](#how-to-create-a-function-in-fish)
-  * [How to create a private function in fish?](#how-to-create-a-private-function-in-fish)
-  * [Should function names and file names match?](#should-function-names-and-file-names-match)
-  * [Can I define more than one function in a file?](#can-i-define-more-than-one-function-in-a-file)
-  * [How to show the definition of a function in fish?](#how-to-show-the-definition-of-a-function-in-fish)
-  * [What's the difference between functions, builtins and commands in fish?](#whats-the-difference-between-functions-builtins-and-commands-in-fish)
-  * [How do I list the functions defined in fish?](#how-do-i-list-the-functions-defined-in-fish)
-  * [How to check if a function exists in fish?](#how-to-check-if-a-function-exists-in-fish)
-* [Arguments](#arguments)
-  * [How to access the arguments passed to a function in fish?](#how-to-access-the-arguments-passed-to-a-function-in-fish)
-  * [How to parse command line arguments in fish?](#how-to-parse-command-line-arguments-in-fish)
-* [Aliases](#aliases)
-  * [How to define an alias in fish?](#how-to-define-an-alias-in-fish)
-  * [What's wrong with aliases?](#whats-wrong-with-aliases)
-* [IO](#io)
-  * [How to read from a file in fish?](#how-to-read-from-a-file-in-fish)
-  * [How to read from stdin in fish?](#how-to-read-from-stdin-in-fish)
-  * [How to redirect stdout or stderr to a file in fish?](#how-to-redirect-stdout-or-stderr-to-a-file-in-fish)
-* [Concurrency](#concurrency)
-  * [How to run a command in the background in fish?](#how-to-run-a-command-in-the-background-in-fish)
-  * [How to check if there are background jobs running in fish?](#how-to-check-if-there-are-background-jobs-running-in-fish)
-  * [How to synchronize two or more background tasks in fish?](#how-to-synchronize-two-or-more-background-tasks-in-fish)
-  * [How to wait for a background process in fish?](#how-to-wait-for-a-background-process-in-fish)
+- [Introduction](#introduction)
+- [Setup](#setup)
+  - [How to install fish?](#how-to-install-fish)
+  - [How to make fish my default shell?](#how-to-make-fish-my-default-shell)
+  - [How to find out where fish is installed?](#how-to-find-out-where-fish-is-installed)
+- [Getting Started](#getting-started)
+  - [How to learn fish?](#how-to-learn-fish)
+  - [Where to ask for help?](#where-to-ask-for-help)
+  - [What's a prompt and what are all these ugly characters?](#whats-a-prompt-and-what-are-all-these-ugly-characters)
+  - [How to find my current location in fish?](#how-to-find-my-current-location-in-fish)
+  - [How to find and run commands in fish?](#how-to-find-and-run-commands-in-fish)
+  - [How to check if a command succeeded in fish?](#how-to-check-if-a-command-succeeded-in-fish)
+  - [What is the fish shebang?](#what-is-the-fish-shebang)
+- [Configuration](#configuration)
+  - [Where's the .bash_profile or .bashrc equivalent in fish?](#wheres-the-bash_profile-or-bashrc-equivalent-in-fish)
+- [Variables](#variables)
+  - [How to set environment variables in fish?](#how-to-set-environment-variables-in-fish)
+  - [How to export a variable in fish?](#how-to-export-a-variable-in-fish)
+  - [How to list all environment variables in fish?](#how-to-list-all-environment-variables-in-fish)
+  - [How to set the `$PATH` persistently in fish?](#how-to-set-$PATH-persistently-in-fish)
+  - [How to remove a path from the `$PATH` in fish?](#how-to-remove-a-path-from-$PATH-variable-in-fish)
+  - [How to check if a path exists in the `$PATH` in fish?](#how-to-check-if-a-path-exists-in-the-$PATH-in-fish)
+- [Functions](#functions)
+  - [How to create a function in fish?](#how-to-create-a-function-in-fish)
+  - [How to create a private function in fish?](#how-to-create-a-private-function-in-fish)
+  - [Should function names and file names match?](#should-function-names-and-file-names-match)
+  - [Can I define more than one function in a file?](#can-i-define-more-than-one-function-in-a-file)
+  - [How to show the definition of a function in fish?](#how-to-show-the-definition-of-a-function-in-fish)
+  - [What's the difference between functions, builtins and commands in fish?](#whats-the-difference-between-functions-builtins-and-commands-in-fish)
+  - [How do I list the functions defined in fish?](#how-do-i-list-the-functions-defined-in-fish)
+  - [How to check if a function exists in fish?](#how-to-check-if-a-function-exists-in-fish)
+- [Arguments](#arguments)
+  - [How to access the arguments passed to a function in fish?](#how-to-access-the-arguments-passed-to-a-function-in-fish)
+  - [How to parse command line arguments in fish?](#how-to-parse-command-line-arguments-in-fish)
+- [Aliases](#aliases)
+  - [How to define an alias in fish?](#how-to-define-an-alias-in-fish)
+  - [What's wrong with aliases?](#whats-wrong-with-aliases)
+- [IO](#io)
+  - [How to read from a file in fish?](#how-to-read-from-a-file-in-fish)
+  - [How to read from stdin in fish?](#how-to-read-from-stdin-in-fish)
+  - [How to redirect stdout or stderr to a file in fish?](#how-to-redirect-stdout-or-stderr-to-a-file-in-fish)
+- [Concurrency](#concurrency)
+  - [How to run a command in the background in fish?](#how-to-run-a-command-in-the-background-in-fish)
+  - [How to check if background jobs are running in fish?](#how-to-check-if-background-jobs-are-running-in-fish)
+  - [How to synchronize two or more background tasks in fish?](#how-to-synchronize-two-or-more-background-tasks-in-fish)
+  - [How to wait for a background process in fish?](#how-to-wait-for-a-background-process-in-fish)
 
 ## Introduction
 
 Well-known shells are bash, ash, csh, ksh and the popular zsh. All these shells are [POSIX](https://en.wikipedia.org/wiki/POSIX), so well-written POSIX-compliant scripts should run without modification in any of them. That's about the only good reason to learn POSIX shell.
 
-fish is not a POSIX shell. Your bash scripts will **not** run in fish without some modification.
+Fish is not a POSIX shell. Your bash scripts will **not** run in fish without some modification.
 
 ```sh
 make && make install
@@ -73,13 +73,13 @@ make; and make install
 
 Here is a quote from the [fish design document](http://fishshell.com/docs/current/design.html):
 
-> Fish should be user friendly, but not at the expense of expressiveness. Most tradeoffs between power and ease of use can be avoided with careful design.
+> Fish should be user-friendly, but not at the expense of expressiveness. Most tradeoffs between power and ease of use can be avoided with careful design.
 
 ## Setup
 
 ### How to install fish?
 
-You can find directions in the official [website](https://fishshell.com) or follow the directions provided here for your OS.
+You can find directions in the official [website](https://fishshell.com) or follow the instructions provided here for your OS.
 
 <details>
 <summary>macOS with homebrew</summary>
@@ -194,13 +194,13 @@ The best way to learn fish is to read the official [documentation](http://fishsh
 
 ### Where to ask for help?
 
-* [Gitter Channel](https://gitter.im/fish-shell/fish-shell)
-* [StackOverflow](http://stackoverflow.com/questions/tagged/fish)
-* [Subreddit](https://www.reddit.com/r/fishshell/)
+- [Gitter Channel](https://gitter.im/fish-shell/fish-shell)
+- [StackOverflow](http://stackoverflow.com/questions/tagged/fish)
+- [Subreddit](https://www.reddit.com/r/fishshell/)
 
 ### What's a prompt and what are all these ugly characters?
 
-The prompt is where you type commands and interact with your shell interpreter, e.g, fish. Read more about the UNIX prompt [here](https://en.wikipedia.org/wiki/Command-line_interface#Command_prompt).
+The prompt is where you type commands and interact with your shell interpreter, e.g., fish. Read more about the UNIX prompt [here](https://en.wikipedia.org/wiki/Command-line_interface#Command_prompt).
 
 Maybe it looks like this:
 
@@ -235,9 +235,9 @@ x@mbp ~/Code/fish-shell
 
 </details>
 
-The greater than symbol `>` is used here to indicate the end of the prompt.
+The greater-than symbol `>` is used here to indicate the end of the prompt.
 
-You don't like these conventions? Create your own prompt the way you like it.
+You don't like these conventions? Create your own prompt the way you want it.
 
 See [How to create my own prompt in fish?](#how-to-create-my-own-prompt-in-fish)
 
@@ -257,7 +257,7 @@ pwd
 /Users/x/Code/fish-shell
 ```
 
-In fish, both `$PWD` and `pwd` always resolve symbolic links. This means that, if you are inside a directory that is a symbolic reference to another, you always get the path to the real directory.
+In fish, both `$PWD` and `pwd` always resolve symbolic links. This means that, if you are inside a directory that is a symbolic reference to another, you still get the path to the real directory.
 
 Interactively, `pwd` is easier to type. For scripting, `$PWD` is a function call less expensive.
 
@@ -266,11 +266,11 @@ Interactively, `pwd` is easier to type. For scripting, `$PWD` is a function call
 
 ```fish
 set -l cwd (pwd)
-echo "The current working directory is: $cwd"
+echo "The current working directory is $cwd"
 
 # Versus
 
-echo "The current working directory is: $PWD"
+echo "The current working directory is $PWD"
 ```
 
 </details>
@@ -283,9 +283,9 @@ To run a command type the name of the command and press return.
 ls
 ```
 
-Or, start typing the command you are looking for, and press tab. fish will use the builtin pager which you can browse and select the command interactively.
+Or, start typing the command you are looking for, and press tab. Fish will use the builtin pager which you can browse and select the command interactively.
 
-fish knows what commands are available by looking at the `$PATH` environment variable. This variable contains a list of paths, and every binary file inside any of those paths can be run by their name.
+Fish knows what commands are available by looking at the `$PATH` environment variable. This variable contains a list of paths, and every binary file inside any of those paths can be run by their name.
 
 Print your `$PATH` contents.
 
@@ -310,17 +310,17 @@ ls $PATH | column | less
 
 Use `k` and `j` to navigate the list down / up, and `q` to exit.
 
-The `$PATH` variable is created at the start of the fish process during the environment initialization. You can modify, prepend or append to this variable yourself, e.g, in ~/.config/fish/config.fish.
+The `$PATH` variable is created at the start of the fish process during the environment initialization. You can modify, prepend or append to this variable yourself, e.g., in ~/.config/fish/config.fish.
 
-Similar to the `type`, `builtin` and `functions` builtins previously introduced, \*nix systems often include one or more shell-agnostic alternatives, e.g, `which`, `apropos`, `whatis`, etc.
+Similar to the `type`, `builtin` and `functions` builtins previously introduced, \*nix systems often include one or more shell-agnostic alternatives, e.g., `which`, `apropos`, `whatis`, etc.
 
 These commands overlap in functionality, but also possess unique features. Consult your system's manpage for details.
 
 ### How to check if a command succeeded in fish?
 
-Every command returns an **exit code** to indicate whether they succeeded or not. An exit code of 0 means success. Anything else means failure. Different commands use different integers to represent the different errors that can happen.
+Every command returns an **exit code** to indicate whether they succeeded or not. An exit code of 0 means success. Anything else means failure. Different commands use different integers to represent what errors can happen.
 
-You can check the exit code of any command using the special, read-only variable `$status`.
+You can check the exit code of any command using the read-only variable `$status`.
 
 ```fish
 my_command
@@ -329,7 +329,7 @@ echo $status
 
 ### What is the fish shebang?
 
-There is a special type of comment known as the [shebang](<https://en.wikipedia.org/wiki/Shebang_(Unix)>) used to tell the shell system to run a program using the path of your script as an argument. The shebang is always written at the beginning of the script.
+There is a type of comment known as the [shebang](<https://en.wikipedia.org/wiki/Shebang_(Unix)>) used to tell the shell system to run a program using the path of your script as an argument. The shebang is always written at the beginning of the script.
 
 To run a script with `fish` use a shebang like so:
 
@@ -380,19 +380,19 @@ set foo 42
 
 The `set` builtin accepts the following flags to explicitly declare the scope of the variable:
 
-* `-l`, `--local`: available only to the innermost block
-* `-g`, `--global`: available outside blocks and by other functions
-* `-U`, `--universal`: shared between all fish sessions and persisted across restarts of the shell
-* `-x`, `--export`: available to any child process spawned in the current session
+- `-l`, `--local`: available only to the innermost block
+- `-g`, `--global`: available outside blocks and by other functions
+- `-U`, `--universal`: shared between all fish sessions and persisted across restarts of the shell
+- `-x`, `--export`: available to any child process spawned in the current session
 
-If no scope modifier is used, the variable will be local to the current function, otherwise it will be global.
+If no scope modifier is used, the variable will be local to the current function; otherwise, it will be global.
 
 If the variable has already been defined, the previous scope will be used.
 
 <details>
 <summary>Local Variables</summary>
 
-The variable `foo` will not be available outside the `if` block.
+The variable `foo` will not be available outside of the `if` block.
 
 ```fish
 if true
@@ -407,7 +407,7 @@ echo "foo=$foo" # foo=
 <details>
 <summary>Global Variables</summary>
 
-The variable `foo` will be avaiable outside the `if` block.
+The variable `foo` will be available outside the `if` block.
 
 ```fish
 if true
@@ -536,7 +536,7 @@ To make this function available in future fish sessions save it to ~/.config/fis
 funcsave mkdirp
 ```
 
-Alternative, you can use the [`functions`](http://fishshell.com/docs/current/commands.html#functions) builtin to write the function definition to a file.
+Alternatively, you can use the [`functions`](http://fishshell.com/docs/current/commands.html#functions) builtin to write the function definition to a file.
 
 ```fish
 functions mkdirp > ~/.config/fish/functions/mkdirp.fish
@@ -553,7 +553,7 @@ function _prefix_my_function
 end
 ```
 
-It's not impossible to simulate private scope using [`functions -e`](http://fishshell.com/docs/current/commands.html#functions), however it's likely to perform poorly.
+It's not impossible to simulate private scope using [`functions -e`](http://fishshell.com/docs/current/commands.html#functions).
 
 <details>
 <summary>Example</summary>
@@ -598,7 +598,7 @@ Create a new shell session.
 fish
 ```
 
-Try to run bar, then foo, then bar again.
+Try to run `bar`, then `foo`, then `bar` again.
 
 ```
 bar
@@ -613,7 +613,7 @@ bar
 
 ### Can I define more than one function in a file?
 
-Yes, you can. Note that [fish does not have private functions](http://stackoverflow.com/a/27657662/2903889), so every function in the file ends up in the global scope when the file is loaded. Also, every function is eagerly loaded as well, which it's not as effective as using one function per file.
+Yes, you can. Note that [fish does not have private functions](http://stackoverflow.com/a/27657662/2903889), so every function in the file ends up in the global scope when the file is loaded. Functions are eagerly loaded as well, which it's not as effective as using one function per file.
 
 ### How to show the definition of a function in fish?
 
@@ -630,11 +630,11 @@ type fish
 fish is /usr/local/bin/fish
 ```
 
-### What's the difference between functions, builtins and commands in fish?
+### What's the difference between functions, builtins, and commands in fish?
 
 System commands are executable scripts, binaries or symbolic links to binaries present in your [`$PATH`](https://fishshell.com/docs/current/tutorial.html#tut_path) variable. A command runs as a child process and has only access to environment variables which have been exported. Example: `fish`.
 
-Functions are used-defined. Some functions are included with your fish distribution. Example: [`eval`](http://fishshell.com/docs/current/commands.html#eval).
+Functions are user-defined. Some functions are included with your fish distribution. Example: [`eval`](http://fishshell.com/docs/current/commands.html#eval).
 
 Builtins are commands compiled with the fish executable. Builtins have access to the environment, so they behave like functions. Builtins do not spawn a child process. Example: [`functions`](http://fishshell.com/docs/current/commands.html#functions).
 
@@ -768,7 +768,7 @@ function rimraf
 end
 ```
 
-For backwards compatibility with POSIX shells, use the [`alias`](http://fishshell.com/docs/current/commands.html#alias) function.
+For backward compatibility with POSIX shells, use the [`alias`](http://fishshell.com/docs/current/commands.html#alias) function.
 
 ```fish
 alias rimraf "rm -rf"
@@ -794,7 +794,7 @@ Your fish configuration is saved to ~/.config/fish/config.fish.
 
 ### How to read from a file in fish?
 
-To read a file line by line use the [`read`](http://fishshell.com/docs/current/commands.html#read) builtin.
+To read a file line by line, use the [`read`](http://fishshell.com/docs/current/commands.html#read) builtin.
 
 ```fish
 while read -la line
@@ -871,7 +871,7 @@ sleep 10 &
 
 See also [Background jobs](http://fishshell.com/docs/current/index.html#syntax-background) in the fish documentation.
 
-### How to check if there are background jobs running in fish?
+### How to check if background jobs are running in fish?
 
 Use the [`jobs`](http://fishshell.com/docs/current/commands.html#jobs) builtin.
 
@@ -885,7 +885,7 @@ end
 
 fish has no [`wait`](http://man7.org/linux/man-pages/man2/waitpid.2.html) command, but you can write your own.
 
-First, to check if there are tasks running in the background, parse the output from the [`jobs`](http://fishshell.com/docs/current/commands.html#jobs) builtin.
+First, to check if tasks are running in the background, parse the output from the [`jobs`](http://fishshell.com/docs/current/commands.html#jobs) builtin.
 
 <details>
 <summary>Parse by Job ID</summary>
@@ -919,7 +919,7 @@ end
 
 </details>
 
-Then, block the foreground until, all background jobs are finished.
+Then, block the foreground until all background jobs are finished.
 
 ```fish
 function wait
@@ -959,12 +959,10 @@ wait (get_jobs)
 
 ### How to wait for a background process in fish?
 
-fish has no [`wait`](http://man7.org/linux/man-pages/man2/waitpid.2.html) builtin. To wait for a background process to finish, use the solution described in [How to synchronize two or more background tasks in fish?](#how-to-synchronize-two-or-more-background-tasks-in-fish).
+Fish has no [`wait`](http://man7.org/linux/man-pages/man2/waitpid.2.html) builtin. To wait for a background process to finish, use the solution described in [How to synchronize two or more background tasks in fish?](#how-to-synchronize-two-or-more-background-tasks-in-fish).
 
 <!--
 <details>
 <summary>Template</summary>
 </details>
 -->
-
-
