@@ -832,12 +832,6 @@ end
 Redirect stderr to `$my_file`.
 
 ```fish
-my_command ^ $my_file
-```
-
-or
-
-```fish
 my_command 2> $my_file
 ```
 
