@@ -187,14 +187,14 @@ Maybe it looks like this:
 jb@mbp ~/C/fish-shell>
 ```
 
-The tilde `~` is a short way to refer to the [home directory](http://www.linfo.org/home_directory.html), for example `/users/jb/home`, `/Users/jb`, etc.
+The tilde `~` is a short way to show the [home directory](http://www.linfo.org/home_directory.html), rather than `/users/jb/home`, `/Users/jb`, etc.
 
-The `@` means _at_ or _of_. At a glance, I can see `jb` (that's me!) is logged into `mbp`, which is my computer's name.
+The `@` is an arbitrary character I like to use to separate my username `jb` and my computer's name `mbp`. You can learn to customize your prompt to show only what matters to you.
 
-The forward slash `/` is the path delimiter. I can see the current directory is under the home directory, inside `Code/fish-shell`. I like abbreviated paths, so only the `C` is shown.
+The forward slash `/` is the path delimiter. At a glance, I can see the current directory is under the home directory, inside `Code/fish-shell`. I like abbreviated paths, so only `C` is actually shown.
 
 <details>
-<summary>As of fish `>=2.3`, you can customize the length of the abbreviated path.</summary>
+<summary>As of fish <code>>=2.3</code>, you can customize the length of the abbreviated path.</summary>
 
 ```fish
 set fish_prompt_pwd_dir_length NUMBER
@@ -214,7 +214,7 @@ jb@mbp ~/Code/fish-shell
 
 </details>
 
-The greater-than symbol `>` is used here to indicate the end of the prompt.
+The greater-than symbol `>` indicates the end of the prompt.
 
 You don't like these conventions? Create your own prompt the way you want it.
 
@@ -241,7 +241,7 @@ In fish, both `$PWD` and `pwd` always resolve symbolic links. This means that, i
 Interactively, `pwd` is easier to type. For scripting, `$PWD` is a function call less expensive.
 
 <details>
-<summary>Example</summary>
+<summary>Show me how!</summary>
 
 ```fish
 set -l cwd (pwd)
@@ -308,16 +308,16 @@ echo $status
 
 ### What is the fish shebang?
 
-There is a type of comment known as the [shebang](<https://en.wikipedia.org/wiki/Shebang_(Unix)>) used to tell the shell system to run a program using the path of your script as an argument. The shebang is always written at the beginning of the script.
+The [shebang](<https://en.wikipedia.org/wiki/Shebang_(Unix)>) is a special comment that tells the shell to run a script with a particular program, e.g., `node`, `python`.
 
-To run a script with `fish` use a shebang like so:
+To run a script with `fish` by default, add a shebang to the first line in your file:
 
 ```fish
 #!/usr/bin/env fish
 ```
 
 <details>
-<summary>Example</summary>
+<summary>Show me how!</summary>
 
 ```fish
 #!/usr/bin/env fish
@@ -535,7 +535,7 @@ end
 It's not impossible to simulate private scope using [`functions -e`](http://fishshell.com/docs/current/commands.html#functions).
 
 <details>
-<summary>Example</summary>
+<summary>Show me how!</summary>
 
 ```fish
 function foo
@@ -560,7 +560,7 @@ If you have a file ~/.config/fish/functions/foo.fish with a valid function defin
 3. Trying to run `bar` again now works as intended.
 
 <details>
-<summary>Example</summary>
+<summary>Show me how!</summary>
 
 Save `bar` to ~/.config/fish/functions/foo.fish.
 
@@ -856,7 +856,7 @@ end
 
 ### How do I synchronize two or more background tasks in fish?
 
-fish has no [`wait`](http://man7.org/linux/man-pages/man2/waitpid.2.html) command, but you can write your own.
+Since fish `3.0.0` there is a dedicated [`wait`](https://fishshell.com/docs/current/commands.html#wait), but you can write your own if you are using an older fish.
 
 First, to check if tasks are running in the background, parse the output from the [`jobs`](http://fishshell.com/docs/current/commands.html#jobs) builtin.
 
@@ -916,7 +916,7 @@ end
 ```
 
 <details>
-<summary>Example</summary>
+<summary>Show me how!</summary>
 
 ```fish
 set -l urls "https://"{google,twitter,youtube,facebook,github}".com"
@@ -932,7 +932,7 @@ wait (get_jobs)
 
 ### How do I wait for a background process in fish?
 
-Fish has no [`wait`](http://man7.org/linux/man-pages/man2/waitpid.2.html) builtin. To wait for a background process to finish, use the solution described in [How do I synchronize two or more background tasks in fish?](#how-do-i-synchronize-two-or-more-background-tasks-in-fish).
+Since fish `3.0.0` there is a dedicated [`wait`](https://fishshell.com/docs/current/commands.html#wait) builtin to wait for a background process. For older fish distributions without `wait`, use the technique described in [How do I synchronize two or more background tasks in fish?](#how-do-i-synchronize-two-or-more-background-tasks-in-fish).
 
 <!--
 <details>
