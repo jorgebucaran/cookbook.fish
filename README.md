@@ -106,9 +106,7 @@ yum install fish
 <summary>Fedora</summary>
 
 ```bash
-cd /etc/yum.repos.d/
-wget http://download.opensuse.org/repositories/shells:fish:release:2/Fedora_23/shells:fish:release:2.repo
-yum install fish
+dnf install fish
 ```
 
 </details>
