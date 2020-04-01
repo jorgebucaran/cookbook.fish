@@ -26,6 +26,7 @@ This document is a living book of recipes to solve specific programming problems
   - [How do I list all environment variables in fish?](#how-do-i-list-all-environment-variables-in-fish)
   - [How do I set the `$PATH` persistently in fish?](#how-do-i-set-$PATH-persistently-in-fish)
   - [How do I remove a path from the `$PATH` in fish?](#how-do-i-remove-a-path-from-$PATH-variable-in-fish)
+  - [How do I remove a path persistently from the `$PATH` in fish?](#how-do-i-remove-a-path-persistently-from-$PATH-variable-in-fish)
   - [How do I check if a path exists in the `$PATH` in fish?](#how-do-i-check-if-a-path-exists-in-the-$PATH-in-fish)
 - [Functions](#functions)
   - [How do I create a function in fish?](#how-do-i-create-a-function-in-fish)
@@ -482,6 +483,16 @@ Use the [`set`](http://fishshell.com/docs/current/commands.html#set) builtin wit
 ```fish
 if set -l index (contains -i $my_path $PATH)
     set -e PATH[$index]
+end
+```
+
+### How do I remove a path persistently from the `$PATH` in fish?
+
+Use the [`set`](http://fishshell.com/docs/current/commands.html#set) builtin with the `-e` or `--erase` flag in combination with the [`contains`](http://fishshell.com/docs/current/commands.html#contains) builtin to find the index of the path you want to remove.
+
+```fish
+if set -l index (contains -i $my_path $fish_user_paths)
+    set -e -U fish_user_paths[$index]
 end
 ```
 
