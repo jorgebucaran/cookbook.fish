@@ -742,7 +742,7 @@ for option in $argv
 end
 ```
 
-For a more complete CLI parsing solution, see [`getopts`](https://github.com/fisherman/getopts).
+For a more complete CLI parsing solution, see [`getopts`](https://github.com/jorgebucaran/fish-getopts).
 
 ## Aliases
 
