@@ -168,7 +168,7 @@ which fish
 
 ### How do I learn fish?
 
-The best way to learn fish is to dive in the official [documentation](http://fishshell.com/docs/current/index.html) and [tutorial](http://fishshell.com/docs/current/tutorial.html).
+The best way to learn fish is to dive in the official [documentation](https://fishshell.com/docs/current/index.html) and [tutorial](https://fishshell.com/docs/current/tutorial.html).
 
 ### Where can I get help?
 
@@ -439,7 +439,7 @@ set -Ux GPG_AGENT_INFO /Users/jb/.gnupg/S.gpg-agent:12345:2
 
 ### How do I export a variable in fish?
 
-Use the [`set`](http://fishshell.com/docs/current/cmds/set.html) builtin and the scope modifier `-x` or `--export`.
+Use the [`set`](https://fishshell.com/docs/current/cmds/set.html) builtin and the scope modifier `-x` or `--export`.
 
 ```fish
 set -x foo 42
@@ -448,7 +448,7 @@ fish -c 'echo "foo=$foo"' # foo=42
 
 ### How do I list all environment variables in fish?
 
-Use the [`set`](http://fishshell.com/docs/current/cmds/set.html) builtin without any modifier flags.
+Use the [`set`](https://fishshell.com/docs/current/cmds/set.html) builtin without any modifier flags.
 
 ```fish
 set
@@ -474,11 +474,11 @@ The correct way to persistently add a path to your `$PATH` is using fish `$fish_
 set -U fish_user_paths $fish_user_paths my_path
 ```
 
-> See [`$PATH`](http://fishshell.com/docs/current/tutorial.html#tut_path) in the fish tutorial for more information.
+> See [`$PATH`](https://fishshell.com/docs/current/tutorial.html#tut_path) in the fish tutorial for more information.
 
 ### How do I remove a path from the `$PATH` in fish?
 
-Use the [`set`](http://fishshell.com/docs/current/cmds/set.html) builtin with the `-e` or `--erase` flag in combination with the [`contains`](http://fishshell.com/docs/current/cmds/contains.html) builtin to find the index of the path you want to remove.
+Use the [`set`](https://fishshell.com/docs/current/cmds/set.html) builtin with the `-e` or `--erase` flag in combination with the [`contains`](https://fishshell.com/docs/current/cmds/contains.html) builtin to find the index of the path you want to remove.
 
 ```fish
 if set -l index (contains -i $my_path $PATH)
@@ -488,7 +488,7 @@ end
 
 ### How do I remove a path persistently from the `$PATH` in fish?
 
-Use the [`set`](http://fishshell.com/docs/current/cmds/set.html) builtin with the `-e` or `--erase` flag in combination with the [`contains`](http://fishshell.com/docs/current/cmds/contains.html) builtin to find the index of the path you want to remove.
+Use the [`set`](https://fishshell.com/docs/current/cmds/set.html) builtin with the `-e` or `--erase` flag in combination with the [`contains`](https://fishshell.com/docs/current/cmds/contains.html) builtin to find the index of the path you want to remove.
 
 ```fish
 if set -l index (contains -i $my_path $fish_user_paths)
@@ -498,7 +498,7 @@ end
 
 ### How do I check if a path exists in the `$PATH` in fish?
 
-Use the [`contains`](http://fishshell.com/docs/current/cmds/contains.html) builtin.
+Use the [`contains`](https://fishshell.com/docs/current/cmds/contains.html) builtin.
 
 ```fish
 if contains $my_path $PATH
@@ -510,7 +510,7 @@ end
 
 ### How do I create a function in fish?
 
-Use the [`function`](http://fishshell.com/docs/current/cmds/function.html) builtin.
+Use the [`function`](https://fishshell.com/docs/current/cmds/function.html) builtin.
 
 ```fish
 function mkdirp
@@ -518,13 +518,13 @@ function mkdirp
 end
 ```
 
-To make this function available in future fish sessions save it to ~/.config/fish/functions/mkdirp.fish. A clean way to accomplish this is using the [`funcsave`](http://fishshell.com/docs/current/cmds/funcsave.html) function.
+To make this function available in future fish sessions save it to ~/.config/fish/functions/mkdirp.fish. A clean way to accomplish this is using the [`funcsave`](https://fishshell.com/docs/current/cmds/funcsave.html) function.
 
 ```fish
 funcsave mkdirp
 ```
 
-Alternatively, you can use the [`functions`](http://fishshell.com/docs/current/cmds/functions.html) builtin to write the function definition to a file.
+Alternatively, you can use the [`functions`](https://fishshell.com/docs/current/cmds/functions.html) builtin to write the function definition to a file.
 
 ```fish
 functions mkdirp > ~/.config/fish/functions/mkdirp.fish
@@ -541,7 +541,7 @@ function _prefix_my_function
 end
 ```
 
-It's not impossible to simulate private scope using [`functions -e`](http://fishshell.com/docs/current/cmds/functions.html).
+It's not impossible to simulate private scope using [`functions -e`](https://fishshell.com/docs/current/cmds/functions.html).
 
 <details>
 <summary>Show me how!</summary>
@@ -560,7 +560,7 @@ end
 
 ### Should function names and file names match?
 
-Yes. The [lazy-loading / autoloading](http://fishshell.com/docs/current/tutorial.html#tut_autoload) mechanism relies on this convention to work.
+Yes. The [lazy-loading / autoloading](https://fishshell.com/docs/current/tutorial.html#tut_autoload) mechanism relies on this convention to work.
 
 If you have a file ~/.config/fish/functions/foo.fish with a valid function definition `bar`:
 
@@ -605,13 +605,13 @@ Yes, you can. Note that [fish does not have private functions](http://stackoverf
 
 ### How do I show the definition of a function in fish?
 
-If you know the command is a function, use the [`functions`](http://fishshell.com/docs/current/cmds/functions.html) builtin.
+If you know the command is a function, use the [`functions`](https://fishshell.com/docs/current/cmds/functions.html) builtin.
 
 ```fish
 functions my_function
 ```
 
-If you are not sure whether the command is a function, a builtin or a system command, use [`type`](http://fishshell.com/docs/current/cmds/type.html).
+If you are not sure whether the command is a function, a builtin or a system command, use [`type`](https://fishshell.com/docs/current/cmds/type.html).
 
 ```fish
 type fish
@@ -622,13 +622,13 @@ fish is /usr/local/bin/fish
 
 System commands are executable scripts, binaries or symbolic links to binaries present in your [`$PATH`](https://fishshell.com/docs/current/tutorial.html#tut_path) variable. A command runs as a child process and has only access to environment variables which have been exported. Example: `fish`.
 
-Functions are user-defined. Some functions are included with your fish distribution. Example: [`eval`](http://fishshell.com/docs/current/cmds/eval.html).
+Functions are user-defined. Some functions are included with your fish distribution. Example: [`eval`](https://fishshell.com/docs/current/cmds/eval.html).
 
-Builtins are commands compiled with the fish executable. Builtins have access to the environment, so they behave like functions. Builtins do not spawn a child process. Example: [`functions`](http://fishshell.com/docs/current/cmds/functions.html).
+Builtins are commands compiled with the fish executable. Builtins have access to the environment, so they behave like functions. Builtins do not spawn a child process. Example: [`functions`](https://fishshell.com/docs/current/cmds/functions.html).
 
 ### How do I list the functions defined in fish?
 
-Use the [`functions`](http://fishshell.com/docs/current/cmds/functions.html) builtin without arguments.
+Use the [`functions`](https://fishshell.com/docs/current/cmds/functions.html) builtin without arguments.
 
 The list will omit functions whose name start with an underscore. Functions that start with an underscore are often called _hidden_. To show everything, use `functions -a` or `functions --all`.
 
@@ -640,7 +640,7 @@ fish_config functions
 
 ### How do I check if a function exists in fish?
 
-Use the [`type`](http://fishshell.com/docs/current/cmds/type.html) function to query information about commands, builtins or functions.
+Use the [`type`](https://fishshell.com/docs/current/cmds/type.html) function to query information about commands, builtins or functions.
 
 ```fish
 if not type --quiet "$command_name"
@@ -649,7 +649,7 @@ end
 ```
 
 <details>
-<summary>Use <code><a href="http://fishshell.com/docs/current/cmds/builtin.html">builtin --names</a></code> to query builtins.</summary>
+<summary>Use <code><a href="https://fishshell.com/docs/current/cmds/builtin.html">builtin --names</a></code> to query builtins.</summary>
 
 ```fish
 if not contains -- "$command_name" (builtin --names)
@@ -660,7 +660,7 @@ end
 </details>
 
 <details>
-<summary>Use <code><a href="http://fishshell.com/docs/current/cmds/functions.html">functions --query</a></code> to check if a function exists.</summary>
+<summary>Use <code><a href="https://fishshell.com/docs/current/cmds/functions.html">functions --query</a></code> to check if a function exists.</summary>
 
 ```fish
 if not functions --query "$command_name"
@@ -671,7 +671,7 @@ end
 </details>
 
 <details>
-<summary>Use <code><a href="http://fishshell.com/docs/current/cmds/command.html">command --search</a></code> for other commands.</summary>
+<summary>Use <code><a href="https://fishshell.com/docs/current/cmds/command.html">command --search</a></code> for other commands.</summary>
 
 ```fish
 if not command --search "$command_name" > /dev/null
@@ -729,7 +729,7 @@ printf "%s\n" $argv
 
 ### How do I parse command line arguments in fish?
 
-Use a [`for`](http://fishshell.com/docs/current/cmds/for.html) loop.
+Use a [`for`](https://fishshell.com/docs/current/cmds/for.html) loop.
 
 ```fish
 for option in $argv
@@ -748,7 +748,7 @@ For a more complete CLI parsing solution, see [`getopts`](https://github.com/jor
 
 ### How do I define an alias in fish?
 
-Create a [`function`](http://fishshell.com/docs/current/cmds/function.html) and save it to ~/.config/fish/functions.
+Create a [`function`](https://fishshell.com/docs/current/cmds/function.html) and save it to ~/.config/fish/functions.
 
 ```fish
 function rimraf
@@ -756,7 +756,7 @@ function rimraf
 end
 ```
 
-For backward compatibility with POSIX shells, use the [`alias`](http://fishshell.com/docs/current/cmds/alias.html) function.
+For backward compatibility with POSIX shells, use the [`alias`](https://fishshell.com/docs/current/cmds/alias.html) function.
 
 ```fish
 alias rimraf "rm -rf"
@@ -768,7 +768,7 @@ Avoid using `alias` inside ~/.config/fish/config.fish.
 
 Aliases created with `alias` will not be available in new shell sessions. If that's the behavior you need, then `alias` is acceptable for interactive use.
 
-To persist aliases across shell sessions, create a [`function`](http://fishshell.com/docs/current/cmds/function.html) and save it to ~/.config/fish/functions. This takes advantage of fish function [lazy-loading / autoloading](http://fishshell.com/docs/current/tutorial.html#tut_autoload) mechanism.
+To persist aliases across shell sessions, create a [`function`](https://fishshell.com/docs/current/cmds/function.html) and save it to ~/.config/fish/functions. This takes advantage of fish function [lazy-loading / autoloading](https://fishshell.com/docs/current/tutorial.html#tut_autoload) mechanism.
 
 Using `alias` inside ~/.config/fish/config.fish will slow down your shell start as each alias/function will be eagerly loaded.
 
@@ -782,7 +782,7 @@ Your fish configuration is saved to ~/.config/fish/config.fish.
 
 ### How do I read from a file in fish?
 
-To read a file line by line, use the [`read`](http://fishshell.com/docs/current/cmds/read.html) builtin.
+To read a file line by line, use the [`read`](https://fishshell.com/docs/current/cmds/read.html) builtin.
 
 ```fish
 while read -la line
@@ -792,7 +792,7 @@ end < my_file
 
 ### How do I read from stdin in fish?
 
-Use the [`read`](http://fishshell.com/docs/current/cmds/read.html) builtin.
+Use the [`read`](https://fishshell.com/docs/current/cmds/read.html) builtin.
 
 ```fish
 read --prompt "echo 'Name: ' " -l name
@@ -807,7 +807,7 @@ echo $name
 Marvin
 ```
 
-To read from an arbitrary input stream use `read` together with the [`while`](http://fishshell.com/docs/current/cmds/while.html) builtin.
+To read from an arbitrary input stream use `read` together with the [`while`](https://fishshell.com/docs/current/cmds/while.html) builtin.
 
 ```fish
 while read -la line
@@ -851,11 +851,11 @@ Use `&`.
 sleep 10 &
 ```
 
-> See also [Background jobs](http://fishshell.com/docs/current/index.html#syntax-background) in the fish documentation.
+> See also [Background jobs](https://fishshell.com/docs/current/index.html#syntax-background) in the fish documentation.
 
 ### How do I check if background jobs are running in fish?
 
-Use the [`jobs`](http://fishshell.com/docs/current/cmds/jobs.html) builtin.
+Use the [`jobs`](https://fishshell.com/docs/current/cmds/jobs.html) builtin.
 
 ```fish
 if jobs > /dev/null
@@ -867,7 +867,7 @@ end
 
 Since fish `3.0.0` there is a dedicated [`wait`](https://fishshell.com/docs/current/cmds/wait.html), but you can write your own if you are using an older fish.
 
-First, to check if tasks are running in the background, parse the output from the [`jobs`](http://fishshell.com/docs/current/cmds/jobs.html) builtin.
+First, to check if tasks are running in the background, parse the output from the [`jobs`](https://fishshell.com/docs/current/cmds/jobs.html) builtin.
 
 <details>
 <summary>Parse by Job ID</summary>
