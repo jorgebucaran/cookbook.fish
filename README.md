@@ -307,7 +307,7 @@ echo $status
 
 ### What is the fish shebang?
 
-The [shebang](<https://en.wikipedia.org/wiki/Shebang_(Unix)>) is a special comment that tells the shell to run a script with a particular program, e.g., `node`, `python`.
+The [shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)) is a special comment that tells the shell to run a script with a particular program, e.g., `node`, `python`.
 
 To run a script with `fish` by default, add a shebang to the first line in your file:
 
