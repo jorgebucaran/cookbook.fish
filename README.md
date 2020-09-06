@@ -474,7 +474,7 @@ The correct way to persistently add a path to your `$PATH` is using fish `$fish_
 set -U fish_user_paths $fish_user_paths my_path
 ```
 
-> See [`$PATH`](https://fishshell.com/docs/current/tutorial.html#tut_path) in the fish tutorial for more information.
+> See [`$PATH`](https://fishshell.com/docs/current/tutorial.html#path) in the fish tutorial for more information.
 
 ### How do I remove a path from the `$PATH` in fish?
 
@@ -560,7 +560,7 @@ end
 
 ### Should function names and file names match?
 
-Yes. The [lazy-loading / autoloading](https://fishshell.com/docs/current/tutorial.html#tut_autoload) mechanism relies on this convention to work.
+Yes. The [lazy-loading / autoloading](https://fishshell.com/docs/current/tutorial.html#autoloading-functions) mechanism relies on this convention to work.
 
 If you have a file ~/.config/fish/functions/foo.fish with a valid function definition `bar`:
 
@@ -620,7 +620,7 @@ fish is /usr/local/bin/fish
 
 ### What's the difference between functions, builtins, and commands in fish?
 
-System commands are executable scripts, binaries or symbolic links to binaries present in your [`$PATH`](https://fishshell.com/docs/current/tutorial.html#tut_path) variable. A command runs as a child process and has only access to environment variables which have been exported. Example: `fish`.
+System commands are executable scripts, binaries or symbolic links to binaries present in your [`$PATH`](https://fishshell.com/docs/current/tutorial.html#path) variable. A command runs as a child process and has only access to environment variables which have been exported. Example: `fish`.
 
 Functions are user-defined. Some functions are included with your fish distribution. Example: [`eval`](https://fishshell.com/docs/current/cmds/eval.html).
 
@@ -768,7 +768,7 @@ Avoid using `alias` inside ~/.config/fish/config.fish.
 
 Aliases created with `alias` will not be available in new shell sessions. If that's the behavior you need, then `alias` is acceptable for interactive use.
 
-To persist aliases across shell sessions, create a [`function`](https://fishshell.com/docs/current/cmds/function.html) and save it to ~/.config/fish/functions. This takes advantage of fish function [lazy-loading / autoloading](https://fishshell.com/docs/current/tutorial.html#tut_autoload) mechanism.
+To persist aliases across shell sessions, create a [`function`](https://fishshell.com/docs/current/cmds/function.html) and save it to ~/.config/fish/functions. This takes advantage of fish function [lazy-loading / autoloading](https://fishshell.com/docs/current/tutorial.html#autoloading-functions) mechanism.
 
 Using `alias` inside ~/.config/fish/config.fish will slow down your shell start as each alias/function will be eagerly loaded.
 
