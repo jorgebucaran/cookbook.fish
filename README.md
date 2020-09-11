@@ -622,7 +622,7 @@ fish is /usr/local/bin/fish
 
 System commands are executable scripts, binaries or symbolic links to binaries present in your [`$PATH`](https://fishshell.com/docs/current/tutorial.html#path) variable. A command runs as a child process and has only access to environment variables which have been exported. Example: `fish`.
 
-Functions are user-defined. Some functions are included with your fish distribution. Example: [`wait`](https://fishshell.com/docs/current/cmds/wait.html).
+Functions are user-defined. Some functions are included with your fish distribution. Example: [`alias`](https://fishshell.com/docs/current/cmds/alias.html), [`type`](https://fishshell.com/docs/current/cmds/type.html), [`nextd`](https://fishshell.com/docs/current/cmds/nextd.html).
 
 Builtins are commands compiled with the fish executable. Builtins have access to the environment, so they behave like functions. Builtins do not spawn a child process. Example: [`functions`](https://fishshell.com/docs/current/cmds/functions.html).
 
