@@ -21,7 +21,7 @@ This document is a living book of recipes to solve specific programming problems
 - [Configuration](#configuration)
   - [Where's the .bash_profile or .bashrc equivalent in fish?](#wheres-the-bash_profile-or-bashrc-equivalent-in-fish)
 - [Variables](#variables)
-  - [How do I set environment variables in fish?](#how-do-i-set-environment-variables-in-fish)
+  - [How do I set variables in fish?](#how-do-i-set-variables-in-fish)
   - [How do I export a variable in fish?](#how-do-i-export-a-variable-in-fish)
   - [How do I list all environment variables in fish?](#how-do-i-list-all-environment-variables-in-fish)
   - [How do I set the `$PATH` persistently in fish?](#how-do-i-set-$PATH-persistently-in-fish)
@@ -348,7 +348,7 @@ fish my_script
 
 ## Variables
 
-### How do I set environment variables in fish?
+### How do I set variables in fish?
 
 Use the [`set`](https://fishshell.com/docs/current/cmds/set.html) builtin.
 
