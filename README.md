@@ -351,6 +351,12 @@ fish my_script
 
 Use the [`breakpoint`](https://fishshell.com/docs/current/cmds/breakpoint.html) builtin. Simply drop it anywhere in your script that you want to pause execution at and launch an interactive debugging prompt.
 
+```fish
+function helper
+    set files (ls ~)
+    breakpoint # when this is executed, an interactive prompt will be launched and you will be able to inspect $files
+    ...
+```
 ## Variables
 
 ### How do I set variables in fish?
