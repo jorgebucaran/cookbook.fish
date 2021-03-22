@@ -18,6 +18,7 @@ This document is a living book of recipes to solve specific programming problems
   - [How do I find and run commands in fish?](#how-do-i-find-and-run-commands-in-fish)
   - [How do I check if a command succeeded in fish?](#how-do-i-check-if-a-command-succeeded-in-fish)
   - [What is the fish shebang?](#what-is-the-fish-shebang)
+  - [How can I interactively debug my fish scripts?](#how-can-i-interactively-debug-my-fish-scripts)
 - [Configuration](#configuration)
   - [Where's the .bash_profile or .bashrc equivalent in fish?](#wheres-the-bash_profile-or-bashrc-equivalent-in-fish)
 - [Variables](#variables)
@@ -345,6 +346,10 @@ fish my_script
 ```
 
 </details>
+
+### How can I interactively debug my fish scripts?
+
+Use the [`breakpoint`](https://fishshell.com/docs/current/cmds/breakpoint.html) builtin. Simply drop it anywhere in your script that you want to pause execution at and launch an interactive debugging prompt.
 
 ## Variables
 
