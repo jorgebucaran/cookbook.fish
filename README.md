@@ -356,6 +356,7 @@ function helper
     set files (ls ~)
     breakpoint # when this is executed, an interactive prompt will be launched and you will be able to inspect $files
     ...
+end
 ```
 ## Variables
 
