@@ -355,7 +355,7 @@ Use the [`breakpoint`](https://fishshell.com/docs/current/cmds/breakpoint.html) 
 function helper
     set files (ls ~)
     breakpoint # when this is executed, an interactive prompt will be launched and you will be able to inspect $files
-    ...
+    # ... rest of function is not executed until you exit from debugger
 end
 ```
 ## Variables
