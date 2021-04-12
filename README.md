@@ -486,6 +486,12 @@ The correct way to persistently add a path to your `$PATH` is using fish `$fish_
 set -U fish_user_paths $fish_user_paths my_path
 ```
 
+In fish 3.2.1 and later, you can use the builtin `fish_add_path` function instead.
+
+```fish
+fish_add_path my_path
+```
+
 > See [`$PATH`](https://fishshell.com/docs/current/tutorial.html#path) in the fish tutorial for more information.
 
 ### How do I remove a path from the `$PATH` in fish?
