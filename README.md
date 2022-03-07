@@ -43,7 +43,7 @@ This document is a living book of recipes to solve specific programming problems
   - [How do I parse command line arguments in fish?](#how-do-i-parse-command-line-arguments-in-fish)
 - [Aliases](#aliases)
   - [How do I define an alias in fish?](#how-do-i-define-an-alias-in-fish)
-  - [What's wrong with aliases?](#whats-wrong-with-aliases)
+  - [What's wrong with aliases?](#whats-wrong-with-aliases-in-configfish)
 - [IO](#io)
   - [How do I read from a file in fish?](#how-do-i-read-from-a-file-in-fish)
   - [How do I read from stdin in fish?](#how-do-i-read-from-stdin-in-fish)
@@ -766,29 +766,32 @@ For a more complete CLI parsing solution, see [`getopts`](https://github.com/jor
 
 ### How do I define an alias in fish?
 
-Create a [`function`](https://fishshell.com/docs/current/cmds/function.html) and save it to ~/.config/fish/functions.
-
-```fish
-function rimraf
-    rm -rf $argv
-end
-```
-
-For backward compatibility with POSIX shells, use the [`alias`](https://fishshell.com/docs/current/cmds/alias.html) function.
+Fish has the [`alias`](https://fishshell.com/docs/current/cmds/alias.html) function, use it like this
 
 ```fish
 alias rimraf "rm -rf"
 ```
+  
+This will create a [`function`](https://fishshell.com/docs/current/cmds/function.html) like this:
 
-Avoid using `alias` inside ~/.config/fish/config.fish.
+```fish
+function rimraf --wraps='rm -rf' --description 'alias rimraf rm -rf'
+  rm -rf $argv; 
+end
+```
 
-### What's wrong with aliases?
+Aliases created with `alias` will not be available in new shell sessions. If you want them to persist, use
+```
+alias -s ...
+```
+which will save it to `~/.config/fish/functions/[alias-name].fish`
 
-Aliases created with `alias` will not be available in new shell sessions. If that's the behavior you need, then `alias` is acceptable for interactive use.
-
-To persist aliases across shell sessions, create a [`function`](https://fishshell.com/docs/current/cmds/function.html) and save it to ~/.config/fish/functions. This takes advantage of fish function [lazy-loading / autoloading](https://fishshell.com/docs/current/tutorial.html#autoloading-functions) mechanism.
+### What's wrong with aliases in config.fish?
 
 Using `alias` inside ~/.config/fish/config.fish will slow down your shell start as each alias/function will be eagerly loaded.
+  
+
+To persist aliases across shell sessions, use `alias -s`, which will create a [`function`](https://fishshell.com/docs/current/cmds/function.html) and save it to ~/.config/fish/functions. This takes advantage of fish function [lazy-loading / autoloading](https://fishshell.com/docs/current/tutorial.html#autoloading-functions) mechanism.
 
 ## Configuration
 
