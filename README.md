@@ -1,6 +1,6 @@
 # The Fish Cookbook
 
-This document is a living book of recipes to solve specific programming problems using the [fish-shell](https://github.com/fish-shell/fish-shell).
+This document is a living book of recipes to solve specific programming problems using [Fish](https://github.com/fish-shell/fish-shell). If you find this book useful, please [sponsor me](https://github.com/sponsors/jorgebucaran) to support my open source work.
 
 > Licensed [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0)
 
