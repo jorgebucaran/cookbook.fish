@@ -132,6 +132,33 @@ emerge fish
 </details>
 
 <details>
+<summary>FreeBSD</summary>
+
+```bash
+pkg install fish
+```
+
+</details>
+
+<details>
+<summary>NetBSD</summary>
+
+```bash
+pkgin install fish
+```
+
+</details>
+
+<details>
+<summary>OpenBSD</summary>
+
+```bash
+pkg_add fish
+```
+
+</details>
+
+<details>
 <summary>From source</summary>
 
 ```bash
