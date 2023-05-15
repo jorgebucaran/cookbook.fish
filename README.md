@@ -1,76 +1,78 @@
 # The Fish Cookbook
 
-This document is a living book of recipes to solve specific programming problems using [Fish](https://github.com/fish-shell/fish-shell). If you find this book useful, please [sponsor me](https://github.com/sponsors/jorgebucaran) to support my open source work.
+> From Shell to Plate: Savor the Zest of Fish 🦞
 
-> Licensed [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0)
+Welcome to The Fish Cookbook, your ultimate guide to unlocking the full potential of shell scripting with the delightful [Fish](https://fishshell.com). With its user-friendliness and convenient features, Fish stands out as a true gem among shells.
 
-## What's in the menu?
+Master programming challenges with our curated collection of Fish recipes. Glide through your code with ease, whether you're a seasoned pro or a shell scripting newbie.
 
-- [Setup](#setup)
-  - [How do I install fish?](#how-do-I-install-fish)
-  - [How do I make fish my default shell?](#how-do-i-make-fish-my-default-shell)
-  - [How do I find out where fish is installed?](#how-do-i-find-out-where-fish-is-installed)
-- [Getting started](#getting-started)
-  - [How do I learn fish?](#how-do-i-learn-fish)
-  - [Where can I get help?](#where-can-i-get-help)
-  - [What's a prompt and what are all these ugly characters?](#whats-a-prompt-and-what-are-all-these-ugly-characters)
-  - [How do I find my current location in fish?](#how-do-i-find-my-current-location-in-fish)
-  - [How do I find and run commands in fish?](#how-do-i-find-and-run-commands-in-fish)
-  - [How do I check if a command succeeded in fish?](#how-do-i-check-if-a-command-succeeded-in-fish)
-  - [What is the fish shebang?](#what-is-the-fish-shebang)
-  - [How can I interactively debug my fish scripts?](#how-can-i-interactively-debug-my-fish-scripts)
-- [Configuration](#configuration)
-  - [Where's the .bash_profile or .bashrc equivalent in fish?](#wheres-the-bash_profile-or-bashrc-equivalent-in-fish)
-- [Variables](#variables)
-  - [How do I set variables in fish?](#how-do-i-set-variables-in-fish)
-  - [How do I export a variable in fish?](#how-do-i-export-a-variable-in-fish)
-  - [How do I list all environment variables in fish?](#how-do-i-list-all-environment-variables-in-fish)
-  - [How do I set the `$PATH` persistently in fish?](#how-do-i-set-the-path-persistently-in-fish)
-  - [How do I remove a path from the `$PATH` in fish?](#how-do-i-remove-a-path-from-the-path-in-fish)
-  - [How do I remove a path persistently from the `$PATH` in fish?](#how-do-i-remove-a-path-persistently-from-the-path-in-fish)
-  - [How do I check if a path exists in the `$PATH` in fish?](#how-do-i-check-if-a-path-exists-in-the-path-in-fish)
-- [Functions](#functions)
-  - [How do I create a function in fish?](#how-do-i-create-a-function-in-fish)
-  - [How do I create a private function in fish?](#how-do-i-create-a-private-function-in-fish)
-  - [Should function names and file names match?](#should-function-names-and-file-names-match)
-  - [Can I define more than one function in a file?](#can-i-define-more-than-one-function-in-a-file)
-  - [How do I show the definition of a function in fish?](#how-do-i-show-the-definition-of-a-function-in-fish)
-  - [What's the difference between functions, builtins and commands in fish?](#whats-the-difference-between-functions-builtins-and-commands-in-fish)
-  - [How do I list the functions defined in fish?](#how-do-i-list-the-functions-defined-in-fish)
-  - [How do I check if a function exists in fish?](#how-do-i-check-if-a-function-exists-in-fish)
-- [Arguments](#arguments)
-  - [How do I access the arguments passed to a function in fish?](#how-do-i-access-the-arguments-passed-to-a-function-in-fish)
-  - [How do I parse command line arguments in fish?](#how-do-i-parse-command-line-arguments-in-fish)
-- [Aliases](#aliases)
-  - [How do I define an alias in fish?](#how-do-i-define-an-alias-in-fish)
-  - [What's wrong with aliases?](#whats-wrong-with-aliases-in-configfish)
+This cookbook is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0), ensuring knowledge and inspiration flow while respecting the rights of others.
+
+## What's on the Menu?
+
+- [Setting Sail](#setting-sail)
+  - [How the Shell do I Install Fish?](#how-the-shell-do-i-install-fish)
+  - [Making Fish Your Default Shell, Ahoy!](#making-fish-your-default-shell-ahoy)
+  - [Discovering Fish's Installation Location](#discovering-fishs-installation-location)
+  - [Where to Seek Help](#where-to-seek-help)
+- [Foundations](#foundations)
+  - [Decoding Prompts: What Are These Wiggly Characters?](#decoding-prompts-what-are-these-wiggly-characters)
+  - [Where Am I in Fish? Discovering Your Current Path](#where-am-i-in-fish-discovering-your-current-path)
+  - [Searching and Running Commands in Fish: How Do I Do That?](#searching-and-running-commands-in-fish-how-do-i-do-that)
+  - [Did My Command Succeed in Fish?](#did-my-command-succeed-in-fish)
+  - [What's the Fish Shebang All About? Making Scripts Executable](#whats-the-fish-shebang-all-about-making-scripts-executable)
+  - [How Do I Debug My Fish Scripts Interactively? Navigating with Breakpoints](#how-do-i-debug-my-fish-scripts-interactively-navigating-with-breakpoints)
+  - [Where to find Fish's equivalent of `.bash_profile` or `.bashrc`?](#where-to-find-fishs-equivalent-of-bash_profile-or-bashrc)
+- [All About Variables](#all-about-variables)
+  - [How Do I Set Variables in Fish? A Quick Guide to Variable Scopes](#how-do-i-set-variables-in-fish-a-quick-guide-to-variable-scopes)
+  - [How Do I Export a Variable in Fish?](#how-do-i-export-a-variable-in-fish)
+  - [How Do I List All Environment Variables in Fish?](#how-do-i-list-all-environment-variables-in-fish)
+  - [How Do I Set the `$PATH` Persistently in Fish?](#how-do-i-set-the-path-persistently-in-fish)
+  - [How Do I Remove a Path from the `$PATH` in Fish?](#how-do-i-remove-a-path-from-the-path-in-fish)
+  - [How Do I Remove a Path Persistently from the `$PATH` in Fish?](#how-do-i-remove-a-path-persistently-from-the-path-in-fish)
+  - [How Do I Check if a Path Exists in the `$PATH` in Fish?](#how-do-i-check-if-a-path-exists-in-the-path-in-fish)
+- [All About Functions](#all-about-functions)
+  - [How Do I Whip Up a Function in Fish?](#how-do-i-whip-up-a-function-in-fish)
+  - [How Do I Craft a "Private" Function in Fish?](#how-do-i-craft-a-private-function-in-fish)
+  - [Should Function Names and File Names Be a Perfect Match?](#should-function-names-and-file-names-be-a-perfect-match)
+  - [Can I Fit Multiple Functions in a Single File?](#can-i-fit-multiple-functions-in-a-single-file)
+  - [How Do I Reveal a Function's Definition in Fish?](#how-do-i-reveal-a-functions-definition-in-fish)
+  - [Exploring Functions, Builtins, and Commands in Fish](#exploring-functions-builtins-and-commands-in-fish)
+  - [Displaying the Fish Function Roster](#displaying-the-fish-function-roster)
+  - [Verifying a Function's Existence in Fish](#verifying-a-functions-existence-in-fish)
+- [All About Arguments](#all-about-arguments)
+  - [Accessing Function Arguments in Fish](#accessing-function-arguments-in-fish)
+  - [Accessing Script Arguments in Fish](#accessing-script-arguments-in-fish)
+  - [Parsing Command Line Arguments in Fish](#parsing-command-line-arguments-in-fish)
+- [All About Aliases](#all-about-aliases)
+  - [The Art of Defining Aliases in Fish](#the-art-of-defining-aliases-in-fish)
+  - [The Problem with Aliases in `config.fish`](#the-problem-with-aliases-in-configfish)
 - [IO](#io)
-  - [How do I read from a file in fish?](#how-do-i-read-from-a-file-in-fish)
-  - [How do I read from stdin in fish?](#how-do-i-read-from-stdin-in-fish)
-  - [How do I redirect stdout or stderr to a file in fish?](#how-do-i-redirect-stdout-or-stderr-to-a-file-in-fish)
-- [Concurrency](#concurrency)
-  - [How do I run a command in the background in fish?](#how-do-i-run-a-command-in-the-background-in-fish)
-  - [How do I check if background jobs are running in fish?](#how-do-i-check-if-background-jobs-are-running-in-fish)
-  - [How do I synchronize two or more background tasks in fish?](#how-do-i-synchronize-two-or-more-background-tasks-in-fish)
-  - [How do I wait for a background process in fish?](#how-do-i-wait-for-a-background-process-in-fish)
+  - [Reading a File with Fish](#reading-a-file-with-fish)
+  - [Reading from stdin and Redirecting Like a Pro in Fish](#reading-from-stdin-and-redirecting-like-a-pro-in-fish)
+  - [Mastering Redirection in Fish](#mastering-redirection-in-fish)
+- [Concurrency: Making Your Fish Swim Faster](#concurrency-making-your-fish-swim-faster)
+  - [Run Commands in the Background with Fish](#run-commands-in-the-background-with-fish)
+  - [Checking Background Jobs in Fish](#checking-background-jobs-in-fish)
+  - [Synchronize Background Tasks in Fish Like a Pro](#synchronize-background-tasks-in-fish-like-a-pro)
+- [Glossary](#glossary)
+- [Contributing](#contributing)
 
-## Setup
+## Setting Sail
 
-### How do I install fish?
+Ahoy there, matey! Prepare to embark on a grand adventure with our trusty mate, Fish. In this section, we'll guide you through the step-by-step setup process to ensure you're ready to navigate the command line seas like a true captain. Let's get your shipshape and ready for the voyage ahead!
 
-You can find directions in the official [website](https://fishshell.com) or follow the instructions provided here for your OS.
+### How the Shell do I Install Fish?
 
-<details>
-<summary>macOS with homebrew</summary>
+If you're ready to dive into the wonderful world of Fish, here's how you can get your hands wet. You can either follow the official [website](https://fishshell.com) for instructions, or stick around and sail through the directions provided here for your OS.
+
+**For macOS with Homebrew:**
 
 ```bash
 brew update && brew install fish
 ```
 
-</details>
-
-<details>
-<summary>Debian</summary>
+**For Debian:**
 
 ```bash
 wget http://download.opensuse.org/repositories/shells:fish:release:2/Debian_8.0/Release.key
@@ -80,10 +82,7 @@ apt-get update
 apt-get install fish
 ```
 
-</details>
-
-<details>
-<summary>Ubuntu</summary>
+**For Ubuntu:**
 
 ```bash
 sudo apt-add-repository ppa:fish-shell/release-2
@@ -91,10 +90,7 @@ sudo apt-get update
 sudo apt-get install fish
 ```
 
-</details>
-
-<details>
-<summary>CentOS</summary>
+**For CentOS:**
 
 ```bash
 cd /etc/yum.repos.d/
@@ -102,64 +98,43 @@ wget http://download.opensuse.org/repositories/shells:fish:release:2/CentOS_7/sh
 yum install fish
 ```
 
-</details>
-
-<details>
-<summary>Fedora</summary>
+**For Fedora:**
 
 ```bash
 dnf install fish
 ```
 
-</details>
-
-<details>
-<summary>Arch Linux</summary>
+**For Arch Linux:**
 
 ```bash
 pacman -S fish
 ```
 
-</details>
-
-<details>
-<summary>Gentoo</summary>
+**For Gentoo:**
 
 ```bash
 emerge fish
 ```
 
-</details>
-
-<details>
-<summary>FreeBSD</summary>
+**For FreeBSD:**
 
 ```bash
 pkg install fish
 ```
 
-</details>
-
-<details>
-<summary>NetBSD</summary>
+**For NetBSD:**
 
 ```bash
 pkgin install fish
 ```
 
-</details>
-
-<details>
-<summary>OpenBSD</summary>
+**For OpenBSD:**
 
 ```bash
 pkg_add fish
 ```
 
-</details>
-
-<details>
-<summary>From source</summary>
+**For the brave who want to build from source:**
 
 ```bash
 sudo apt-get -y install git gettext automake autoconf ncurses-dev build-essential libncurses5-dev
@@ -170,108 +145,103 @@ autoreconf && ./configure
 make && sudo make install
 ```
 
-</details>
+With Fish installed, a thrilling journey lies ahead. Gear up to explore the command line, unearthing Fish's core treasures and secrets. Here's to abundant and joyous fishing ventures! 🍻
 
-<h2></h2>
+### Making Fish Your Default Shell, Ahoy!
 
-### How do I make fish my default shell?
-
-Once you have installed fish and it's somewhere in your `$PATH`, e.g. /usr/local/bin, you can make it your default login shell.
+Once you've installed Fish and it's safely located in your `$PATH`, for example, at /usr/local/bin, you can make it your default shell for a smooth sailing command line experience.
 
 ```fish
 echo /usr/local/bin/fish | sudo tee -a /etc/shells
 chsh -s /usr/local/bin/fish
 ```
 
-### How do I find out where fish is installed?
+### Discovering Fish's Installation Location
 
-Use [`which`](https://linux.die.net/man/1/which).
+Curious about where Fish is installed? Utilize the handy [`which`](https://linux.die.net/man/1/which) command.
 
 ```fish
 which fish
 /usr/local/bin/fish
 ```
 
-## Getting started
+### Where to Seek Help
 
-### How do I learn fish?
+If you find yourself in need of assistance or have burning questions about Fish, fret not. There's a treasure trove of resources awaiting you:
 
-The best way to learn fish is to dive in the official [documentation](https://fishshell.com/docs/current/index.html) and [tutorial](https://fishshell.com/docs/current/tutorial.html).
+- [Official Repository](https://github.com/fish-shell/fish-shell) – Explore the official Fish repository on GitHub, where you can find the source code and contribute to the project.
+- [Tutorial](https://fishshell.com/docs/current/tutorial.html) – Set sail with the Fish tutorial, a step-by-step guide to help you master the shell's features and functionality.
+- [Documentation](https://fishshell.com/docs/current/index.html) – Dive into the official documentation for Fish, where you'll discover a wealth of information and guidance.
+- [`r/fishshell`](https://www.reddit.com/r/fishshell) – Join the community on Reddit, where fellow Fish enthusiasts gather to share their knowledge and adventures.
+- [Gitter Channel](https://gitter.im/fish-shell/fish-shell) – Hop aboard the Gitter Channel, a chat platform where you can engage with other Fish users and seek live assistance.
+- [StackOverflow `#fish`](http://stackoverflow.com/questions/tagged/fish) – Cast your questions into the StackOverflow sea, specifically in the `#fish` tag, to receive guidance from the wider programming community.
+- [awsm.fish](https://git.io/awsm.fish) – Discover a curated collection of prompts, plugins, and other hidden treasures to enhance your Fish journey. 🐚
 
-### Where can I get help?
+## Foundations
 
-- [r/fishshell](https://www.reddit.com/r/fishshell)
-- [Gitter Channel](https://gitter.im/fish-shell/fish-shell)
-- [StackOverflow `#fish`](http://stackoverflow.com/questions/tagged/fish)
+### Decoding Prompts: What Are These Wiggly Characters?
 
-### What's a prompt and what are all these ugly characters?
+The prompt is where you type commands and interact with Fish. Read more about the UNIX prompt [here](https://en.wikipedia.org/wiki/Command-line_interface#Command_prompt).
 
-The prompt is where you type commands and interact with fish. Read more about the UNIX prompt [here](https://en.wikipedia.org/wiki/Command-line_interface#Command_prompt).
-
-Maybe it looks like this:
+You might encounter something like this:
 
 ```console
-jb@mbp ~/C/fish-shell>
+jb@mbp ~/C/cookbook>
 ```
 
-The tilde `~` is a short way to show the [home directory](http://www.linfo.org/home_directory.html), rather than `/users/jb/home`, `/Users/jb`, etc.
+The tilde `~` represents the [home directory](http://www.linfo.org/home_directory.html) in a compact form, instead of `/users/jb/home`, `/Users/jb`, and so on.
 
-The `@` is an arbitrary character I like to use to separate my username `jb` and my computer's name `mbp`. You can learn to customize your prompt to show only what matters to you.
+The `@` symbol is an arbitrary character chosen to separate the username `jb` from the computer's name `mbp`. You can learn to tailor your prompt to display only what's relevant to you.
 
-The forward slash `/` is the path delimiter. At a glance, I can see the current directory is under the home directory, inside `Code/fish-shell`. I like abbreviated paths, so only `C` is actually shown.
+The forward slash `/` serves as the path delimiter. At a glance, you can see that the current directory is inside the home directory, under `Code/cookbook`. The abbreviated path displays just `C`.
 
-<details>
-<summary>As of fish <code>>=2.3</code>, you can customize the length of the abbreviated path.</summary>
+To customize the length of the abbreviated path, use:
 
 ```fish
 set fish_prompt_pwd_dir_length NUMBER
 ```
 
-or
+Or, if you prefer not to have abbreviated paths:
 
 ```fish
 set fish_prompt_pwd_dir_length 0
 ```
 
-if don't want abbreviated paths.
+Then, your prompt will look like this:
 
 ```console
-jb@mbp ~/Code/fish-shell
+jb@mbp ~/Code/cookbook>
 ```
 
-</details>
+The greater-than symbol `>` signifies the end of the prompt.
 
-The greater-than symbol `>` indicates the end of the prompt.
+Not a fan of these conventions? Feel free to craft your own prompt to suit your preferences.
 
-You don't like these conventions? Create your own prompt the way you want it.
+### Where Am I in Fish? Discovering Your Current Path
 
-> See [How do I create my own prompt in fish?](#how-do-i-create-my-own-prompt-in-fish)
-
-### How do I find my current location in fish?
-
-You can find out where you are via the read-only environment variable `$PWD`.
+To find your current location in Fish, simply refer to the read-only environment variable `$PWD`.
 
 ```fish
 echo $PWD
-/Users/jb/Code/fish-shell
+/Users/jb/Code/cookbook
 ```
 
-Another way to find out the current directory is via the `pwd` builtin.
+Alternatively, you can use the `pwd` builtin to determine the current directory.
 
 ```fish
 pwd
-/Users/jb/Code/fish-shell
+/Users/jb/Code/cookbook
 ```
 
-In fish, both `$PWD` and `pwd` always resolve symbolic links. This means that, if you are inside a directory that is a symbolic reference to another, you still get the path to the real directory.
+In Fish, both `$PWD` and `pwd` always resolve symbolic links. This means that if you're inside a directory that's a symbolic reference to another, you'll still get the path to the actual directory.
 
-Interactively, `pwd` is easier to type. For scripting, `$PWD` is a function call less expensive.
+Interactively, typing `pwd` is more convenient. For scripting, `$PWD` is less expensive in terms of function calls.
 
 <details>
-<summary>Show me how!</summary>
+<summary>Dazzle me!</summary>
 
 ```fish
-set -l cwd (pwd)
+set --local cwd (pwd)
 echo "The current working directory is $cwd"
 
 # Versus
@@ -281,19 +251,19 @@ echo "The current working directory is $PWD"
 
 </details>
 
-### How do I find and run commands in fish?
+### Searching and Running Commands in Fish: How Do I Do That?
 
-To run a command type the name of the command and press return.
+To run a command, type the command's name and press return.
 
 ```fish
 ls
 ```
 
-Or, start typing the command you are looking for, and press tab. Fish will use the builtin pager which you can browse and select the command interactively.
+Alternatively, begin typing the command you're looking for and press tab. Fish will use the built-in pager, allowing you to browse and select the command interactively.
 
-Fish knows what commands are available by looking at the `$PATH` environment variable. This variable contains a list of paths, and every binary file inside any of those paths can be run by their name.
+Fish determines which commands are available by examining the `$PATH` environment variable. This variable contains a list of paths, and every binary file inside any of those paths can be run by their name.
 
-Print your `$PATH` contents.
+Display your `$PATH` contents with:
 
 ```fish
 printf "%s\n" $PATH
@@ -302,49 +272,71 @@ printf "%s\n" $PATH
 /bin
 ```
 
-or list every command in your system and display them in columns.
+To list every command in your system and display them in columns, use:
 
 ```fish
 ls $PATH | column
 ```
 
-If the list is truncated, use:
+If the list is truncated, try:
 
 ```fish
 ls $PATH | column | less
 ```
 
-Use `k` and `j` to navigate the list down / up, and `q` to exit.
+Navigate the list using `k` and `j` to move down/up, and press `q` to exit.
 
-The `$PATH` variable is created at the start of the fish process during the environment initialization. You can modify, prepend or append to this variable yourself, e.g., in ~/.config/fish/config.fish.
+The `$PATH` variable is created at the beginning of the Fish process during environment initialization. You can modify, prepend, or append this variable yourself, for example, in `~/.config/fish/config.fish`.
 
-Similar to the `type`, `builtin` and `functions` builtins previously introduced, \*nix systems often include one or more shell-agnostic alternatives, e.g., `which`, `apropos`, `whatis`, etc.
+In addition to the `type`, `builtin`, and `functions` built-ins mentioned earlier, \*nix systems often include one or more shell-agnostic alternatives such as `which`, `apropos`, `whatis`, and others.
 
-These commands overlap in functionality, but also possess unique features. Consult your system's manpage for details.
+These commands have overlapping functionality but also possess unique features. Consult your system's manpage for more information.
 
-### How do I check if a command succeeded in fish?
+### Did My Command Succeed in Fish?
 
-Every command returns an **exit code** to indicate whether they succeeded or not. An exit code of 0 means success. Anything else means failure. Different commands use different integers to represent what errors can happen.
+Every command returns an **exit code** to indicate whether it succeeded or not. An exit code of 0 means success, while any other value signifies failure. Different commands use various integers to represent possible errors.
 
-You can check the exit code of any command using the read-only variable `$status`.
+In Fish, you can check the exit code of any command using the read-only variable `$status`.
 
 ```fish
 my_command
 echo $status
 ```
 
-### What is the fish shebang?
+When working with pipes, Fish provides a helpful variable called `$pipestatus` that allows you to check the exit codes of all commands in a pipeline.
 
-The [shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)) is a special comment that tells the shell to run a script with a particular program, e.g., `node`, `python`.
+Suppose you have a pipeline like this:
 
-To run a script with `fish` by default, add a shebang to the first line in your file:
+```fish
+command1 | command2 | command3
+```
+
+To find the exit codes of all commands in the pipeline, use `$pipestatus`:
+
+```fish
+echo $pipestatus
+```
+
+This will print an array of exit codes, one for each command in the pipeline. For example, if `command1` succeeded, `command2` failed with an exit code of 2, and `command3` failed with an exit code of 1, the output would look like this:
+
+```
+0 2 1
+```
+
+With `$pipestatus`, you can conveniently keep an eye on the success and failure of commands in your pipelines.
+
+### What's the Fish Shebang All About? Making Scripts Executable
+
+The [shebang](<https://en.wikipedia.org/wiki/Shebang_(Unix)>) is a special comment that instructs the shell to run a script using a specific program, such as `node` or `python`.
+
+To run a script with `fish` by default, add a shebang to the first line of your file:
 
 ```fish
 #!/usr/bin/env fish
 ```
 
 <details>
-<summary>Show me how!</summary>
+<summary>Give me the scoop!</summary>
 
 ```fish
 #!/usr/bin/env fish
@@ -360,13 +352,13 @@ Save that to a file and mark it as executable.
 chmod +x my_script
 ```
 
-The system above allow us to run the script directly by using its path
+The system above allows you to run the script directly by using its path:
 
 ```fish
 ./my_script
 ```
 
-instead of
+instead of:
 
 ```fish
 fish my_script
@@ -374,22 +366,29 @@ fish my_script
 
 </details>
 
-### How can I interactively debug my fish scripts?
+### How Do I Debug My Fish Scripts Interactively? Navigating with Breakpoints
 
-Use the [`breakpoint`](https://fishshell.com/docs/current/cmds/breakpoint.html) builtin. Simply drop it anywhere in your script that you want to pause execution at and launch an interactive debugging prompt.
+To interactively debug your Fish scripts, use the [`breakpoint`](https://fishshell.com/docs/current/cmds/breakpoint.html) builtin. Simply drop it anywhere in your script where you want to pause execution and launch an interactive debugging prompt.
 
 ```fish
-function helper
-    set files (ls ~)
+function some_function
+    set --local files (ls ~)
     breakpoint # when this is executed, an interactive prompt will be launched and you will be able to inspect $files
     # ... rest of function is not executed until you exit from debugger
 end
 ```
-## Variables
 
-### How do I set variables in fish?
+With `breakpoint`, you can take a closer look at your script's execution, inspect variables, and navigate through the script.
 
-Use the [`set`](https://fishshell.com/docs/current/cmds/set.html) builtin.
+### Where to find Fish's equivalent of `.bash_profile` or `.bashrc`?
+
+In Fish shell, your configuration is stored in the `config.fish` file located at `~/.config/fish/config.fish`. This file serves as Fish's equivalent to `.bash_profile` or `.bashrc` in Bash. It allows you to customize and configure your Fish shell environment by adding functions, environment variables, and other personalized settings.
+
+## All About Variables
+
+### How Do I Set Variables in Fish? A Quick Guide to Variable Scopes
+
+To set variables in Fish, use the [`set`](https://fishshell.com/docs/current/cmds/set.html) builtin.
 
 ```fish
 set foo 42
@@ -406,8 +405,7 @@ If no scope modifier is used, the variable will be local to the current function
 
 If the variable has already been defined, the previous scope will be used.
 
-<details>
-<summary>Local Variables</summary>
+#### Local Variables
 
 The variable `foo` will not be available outside of the `if` block.
 
@@ -419,10 +417,7 @@ end
 echo "foo=$foo" # foo=
 ```
 
-</details>
-
-<details>
-<summary>Global Variables</summary>
+#### Global Variables
 
 The variable `foo` will be available outside the `if` block.
 
@@ -434,10 +429,7 @@ end
 echo "foo=$foo" # foo=42
 ```
 
-</details>
-
-<details>
-<summary>Universal Variables</summary>
+#### Universal Variables
 
 The variable `foo` will be preserved and available to future shell sessions.
 
@@ -447,10 +439,7 @@ fish
 echo "foo=$foo" # foo=42
 ```
 
-</details>
-
-<details>
-<summary>Exported Variables</summary>
+#### Exported Variables
 
 The variable `foo` will be local and exported, therefore available to the `fish` child process created inside the `if` block.
 
@@ -474,56 +463,58 @@ The variable `GPG_AGENT_INFO` will be universal and exported, therefore preserve
 set -Ux GPG_AGENT_INFO /Users/jb/.gnupg/S.gpg-agent:12345:2
 ```
 
-</details>
+Now you're set to sail through the variable seas of Fish!
 
-### How do I export a variable in fish?
+### How Do I Export a Variable in Fish?
 
-Use the [`set`](https://fishshell.com/docs/current/cmds/set.html) builtin and the scope modifier `-x` or `--export`.
+To export a variable in Fish, use the [`set`](https://fishshell.com/docs/current/cmds/set.html) builtin along with the scope modifier `-x` or `--export`.
 
 ```fish
 set -x foo 42
 fish -c 'echo "foo=$foo"' # foo=42
 ```
 
-### How do I list all environment variables in fish?
+By using the `-x` or `--export` option, you're ensuring that the variable is available to any child process spawned in the current session.
 
-Use the [`set`](https://fishshell.com/docs/current/cmds/set.html) builtin without any modifier flags.
+### How Do I List All Environment Variables in Fish?
+
+To list all environment variables in Fish, use the [`set`](https://fishshell.com/docs/current/cmds/set.html) builtin without any modifier flags.
 
 ```fish
 set
 ```
 
-To print only the variable names, without the values, use `--name`.
+If you prefer to see only the variable names without the values, employ the `--names` option:
 
 ```fish
 set --names
 ```
 
-To not truncate long lines use `--long`.
+And for a full view of each variable without truncating long lines, go with `--long`:
 
 ```fish
 set --long
 ```
 
-### How do I set the `$PATH` persistently in fish?
+### How Do I Set the `$PATH` Persistently in Fish?
 
-The correct way to persistently add a path to your `$PATH` is using fish `$fish_user_paths` variable.
+To persistently add a path to your `$PATH` in Fish, make use of the `$fish_user_paths` variable.
 
 ```fish
 set -U fish_user_paths $fish_user_paths my_path
 ```
 
-In fish 3.2.1 and later, you can use the builtin `fish_add_path` function instead.
+If you're using Fish 3.2.1 or later, you can opt for the built-in `fish_add_path` function instead.
 
 ```fish
 fish_add_path my_path
 ```
 
-> See [`$PATH`](https://fishshell.com/docs/current/tutorial.html#path) in the fish tutorial for more information.
+> See [`$PATH`](https://fishshell.com/docs/current/tutorial.html#path) in the Fish tutorial for juicy information.
 
-### How do I remove a path from the `$PATH` in fish?
+### How Do I Remove a Path from the `$PATH` in Fish?
 
-Use the [`set`](https://fishshell.com/docs/current/cmds/set.html) builtin with the `-e` or `--erase` flag in combination with the [`contains`](https://fishshell.com/docs/current/cmds/contains.html) builtin to find the index of the path you want to remove.
+To remove a path from the `$PATH` in Fish, use the [`set`](https://fishshell.com/docs/current/cmds/set.html) builtin with the `-e` or `--erase` flag, combined with the [`contains`](https://fishshell.com/docs/current/cmds/contains.html) builtin to find the index of the path you'd like to remove.
 
 ```fish
 if set -l index (contains -i $my_path $PATH)
@@ -531,9 +522,9 @@ if set -l index (contains -i $my_path $PATH)
 end
 ```
 
-### How do I remove a path persistently from the `$PATH` in fish?
+### How Do I Remove a Path Persistently from the `$PATH` in Fish?
 
-Use the [`set`](https://fishshell.com/docs/current/cmds/set.html) builtin with the `-e` or `--erase` flag in combination with the [`contains`](https://fishshell.com/docs/current/cmds/contains.html) builtin to find the index of the path you want to remove.
+To remove a path persistently from the `$PATH` in Fish, use the [`set`](https://fishshell.com/docs/current/cmds/set.html) builtin with the `-e` or `--erase` flag, combined with the [`contains`](https://fishshell.com/docs/current/cmds/contains.html) builtin to find the index of the path you'd like to remove from the `$fish_user_paths` variable.
 
 ```fish
 if set -l index (contains -i $my_path $fish_user_paths)
@@ -541,9 +532,9 @@ if set -l index (contains -i $my_path $fish_user_paths)
 end
 ```
 
-### How do I check if a path exists in the `$PATH` in fish?
+### How Do I Check if a Path Exists in the `$PATH` in Fish?
 
-Use the [`contains`](https://fishshell.com/docs/current/cmds/contains.html) builtin.
+To check if a path exists in the `$PATH` in Fish, use the [`contains`](https://fishshell.com/docs/current/cmds/contains.html) builtin. This handy tool helps you verify whether your desired path is swimming along with the other paths in your `$PATH` variable. 🐠
 
 ```fish
 if contains $my_path $PATH
@@ -551,11 +542,11 @@ if contains $my_path $PATH
 end
 ```
 
-## Functions
+## All About Functions
 
-### How do I create a function in fish?
+### How Do I Whip Up a Function in Fish?
 
-Use the [`function`](https://fishshell.com/docs/current/cmds/function.html) builtin.
+Crafting a function in Fish is a piece of cake! Just use the [`function`](https://fishshell.com/docs/current/cmds/function.html) builtin to start creating your shell masterpiece.
 
 ```fish
 function mkdirp
@@ -563,33 +554,31 @@ function mkdirp
 end
 ```
 
-To make this function available in future fish sessions save it to ~/.config/fish/functions/mkdirp.fish. A clean way to accomplish this is using the [`funcsave`](https://fishshell.com/docs/current/cmds/funcsave.html) function.
+To make sure this function stays fresh in future Fish sessions, save it to ~/.config/fish/functions/mkdirp.fish. A neat way to accomplish this is by using the [`funcsave`](https://fishshell.com/docs/current/cmds/funcsave.html) function.
 
 ```fish
 funcsave mkdirp
 ```
 
-Alternatively, you can use the [`functions`](https://fishshell.com/docs/current/cmds/functions.html) builtin to write the function definition to a file.
+Alternatively, you can use the [`functions`](https://fishshell.com/docs/current/cmds/functions.html) builtin to write the function definition to a file, like a secret recipe for your custom shell commands.
 
 ```fish
 functions mkdirp > ~/.config/fish/functions/mkdirp.fish
 ```
 
-### How do I create a private function in fish?
+### How Do I Craft a "Private" Function in Fish?
 
-You can't. In fish, functions are always public.
-
-As a workaround, use a custom namespace to prefix any function you want to treat as private.
+While Fish doesn't have built-in private functions, you can still be sneaky! Use a custom namespace to prefix any function you want to treat as private.
 
 ```fish
 function _prefix_my_function
 end
 ```
 
-It's not impossible to simulate private scope using [`functions -e`](https://fishshell.com/docs/current/cmds/functions.html).
+You can also simulate private scope using [`functions -e`](https://fishshell.com/docs/current/cmds/functions.html).
 
 <details>
-<summary>Show me how!</summary>
+<summary>Show me the secret sauce!</summary>
 
 ```fish
 function foo
@@ -603,18 +592,20 @@ end
 
 </details>
 
-### Should function names and file names match?
+This workaround helps you keep some Fish functions under wraps, like a top-secret ingredient in your shell recipe.
 
-Yes. The [lazy-loading / autoloading](https://fishshell.com/docs/current/tutorial.html#autoloading-functions) mechanism relies on this convention to work.
+### Should Function Names and File Names Be a Perfect Match?
+
+Absolutely! Fish's [lazy-loading / autoloading](https://fishshell.com/docs/current/tutorial.html#autoloading-functions) mechanism depends on this match made in heaven.
 
 If you have a file ~/.config/fish/functions/foo.fish with a valid function definition `bar`:
 
 1. In a new shell, trying to run `bar` produces an unknown-command error.
 2. Typing `foo` will highlight as a valid command, but produce an unknown-command error.
-3. Trying to run `bar` again now works as intended.
+3. Trying to run `bar` again now works like a charm.
 
 <details>
-<summary>Show me how!</summary>
+<summary>Show me the magic!</summary>
 
 Save `bar` to ~/.config/fish/functions/foo.fish.
 
@@ -644,48 +635,55 @@ bar
 
 </details>
 
-### Can I define more than one function in a file?
+### Can I Fit Multiple Functions in a Single File?
 
-Yes, you can. Note that [fish does not have private functions](http://stackoverflow.com/a/27657662/2903889), so every function in the file ends up in the global scope when the file is loaded. Functions are eagerly loaded as well, which it's not as effective as using one function per file.
+Yes, indeed! You can define as many functions as you want in a single file. Just remember that Fish [doesn't have private functions](http://stackoverflow.com/a/27657662/2903889), so every function in the file will end up in the global scope when the file is loaded.
 
-### How do I show the definition of a function in fish?
+Since functions are eagerly loaded, defining multiple functions in a single file might not be as efficient as the one-function-per-file approach, which leverages Fish's autoloading capabilities. So, while it's possible to have multiple functions in one file, spreading them across separate files might give you a performance boost and a more organized structure.
 
-If you know the command is a function, use the [`functions`](https://fishshell.com/docs/current/cmds/functions.html) builtin.
+### How Do I Reveal a Function's Definition in Fish?
+
+If you're certain that the command you're looking for is a function, you can use the [`functions`](https://fishshell.com/docs/current/cmds/functions.html) builtin to display its definition:
 
 ```fish
 functions my_function
 ```
 
-If you are not sure whether the command is a function, a builtin or a system command, use [`type`](https://fishshell.com/docs/current/cmds/type.html).
+On the other hand, if you're not sure whether the command is a function, a builtin, or a system command, you can rely on the [`type`](https://fishshell.com/docs/current/cmds/type.html) command to reveal its true nature:
 
 ```fish
-type fish
-fish is /usr/local/bin/fish
+type my_function
+my_function is a function with definition
+# ... function definition ...
 ```
 
-### What's the difference between functions, builtins, and commands in fish?
+Using `type`, you can easily identify what kind of command you're dealing with and get the information you need.
 
-System commands are executable scripts, binaries or symbolic links to binaries present in your [`$PATH`](https://fishshell.com/docs/current/tutorial.html#path) variable. A command runs as a child process and has only access to environment variables which have been exported. Example: `fish`.
+### Exploring Functions, Builtins, and Commands in Fish
 
-Functions are user-defined. Some functions are included with your fish distribution. Example: [`alias`](https://fishshell.com/docs/current/cmds/alias.html), [`type`](https://fishshell.com/docs/current/cmds/type.html), [`nextd`](https://fishshell.com/docs/current/cmds/nextd.html).
+In Fish, commands, functions, and builtins each serve different purposes and are defined in different ways:
 
-Builtins are commands compiled with the fish executable. Builtins have access to the environment, so they behave like functions. Builtins do not spawn a child process. Example: [`functions`](https://fishshell.com/docs/current/cmds/functions.html).
+- **System commands** are executable scripts, binaries, or symbolic links to binaries that are located in directories listed in your [`$PATH`](https://fishshell.com/docs/current/tutorial.html#path) variable. When a command runs, it operates as a child process and can only access environment variables that have been exported. Example: `fish`.
 
-### How do I list the functions defined in fish?
+- **Functions** are user-defined commands that can be created within Fish. Some functions are included as part of the Fish distribution and serve as predefined helpers. Examples include [`alias`](https://fishshell.com/docs/current/cmds/alias.html), [`type`](https://fishshell.com/docs/current/cmds/type.html), and [`nextd`](https://fishshell.com/docs/current/cmds/nextd.html).
 
-Use the [`functions`](https://fishshell.com/docs/current/cmds/functions.html) builtin without arguments.
+- **Builtins** are commands that have been compiled directly into the Fish executable. Like functions, builtins can access the environment, but they do not spawn a separate child process. This allows them to execute more quickly and with lower overhead. Examples of builtins include [`functions`](https://fishshell.com/docs/current/cmds/functions.html) and [`set`](https://fishshell.com/docs/current/cmds/set.html).
 
-The list will omit functions whose name start with an underscore. Functions that start with an underscore are often called _hidden_. To show everything, use `functions -a` or `functions --all`.
+These different types of commands help make Fish a versatile and powerful shell, allowing for a wide range of customization and utility.
 
-Alternatively, launch the fish Web-based configuration and navigate to the /functions tab.
+### Displaying the Fish Function Roster
+
+To list all the functions defined in Fish, employ the [`functions`](https://fishshell.com/docs/current/cmds/functions.html) builtin without any arguments. Note that hidden functions—those with names starting with an underscore—won't be displayed. To reveal everything, including hidden functions, use `functions -a` or `functions --all`.
+
+For a different approach, launch the Fish web-based configuration and head to the /functions tab by running:
 
 ```
 fish_config functions
 ```
 
-### How do I check if a function exists in fish?
+### Verifying a Function's Existence in Fish
 
-Use the [`type`](https://fishshell.com/docs/current/cmds/type.html) function to query information about commands, builtins or functions.
+The [`type`](https://fishshell.com/docs/current/cmds/type.html) function is your go-to tool for checking whether a function exists in Fish. It provides information about commands, builtins, or functions.
 
 ```fish
 if not type --quiet "$command_name"
@@ -694,7 +692,7 @@ end
 ```
 
 <details>
-<summary>Use <code><a href="https://fishshell.com/docs/current/cmds/builtin.html">builtin --names</a></code> to query builtins.</summary>
+<summary>For builtins, use <code><a href="https://fishshell.com/docs/current/cmds/builtin.html">builtin --names</a></code>.</summary>
 
 ```fish
 if not contains -- "$command_name" (builtin --names)
@@ -705,7 +703,7 @@ end
 </details>
 
 <details>
-<summary>Use <code><a href="https://fishshell.com/docs/current/cmds/functions.html">functions --query</a></code> to check if a function exists.</summary>
+<summary>For functions, employ <code><a href="https://fishshell.com/docs/current/cmds/functions.html">functions --query</a></code>.</summary>
 
 ```fish
 if not functions --query "$command_name"
@@ -716,7 +714,7 @@ end
 </details>
 
 <details>
-<summary>Use <code><a href="https://fishshell.com/docs/current/cmds/command.html">command --search</a></code> for other commands.</summary>
+<summary>For other commands, utilize <code><a href="https://fishshell.com/docs/current/cmds/command.html">command --search</a></code>.</summary>
 
 ```fish
 if not command --search "$command_name" > /dev/null
@@ -724,7 +722,7 @@ if not command --search "$command_name" > /dev/null
 end
 ```
 
-Easier in fish >= 2.5
+In Fish >= 2.5, it's even easier:
 
 ```fish
 if not command --search --quiet "$command_name"
@@ -734,11 +732,11 @@ end
 
 </details>
 
-## Arguments
+## All About Arguments
 
-### How do I access the arguments passed to a function in fish?
+### Accessing Function Arguments in Fish
 
-Use the `$argv` variable.
+To access the arguments passed to a function in Fish, simply use the `$argv` variable.
 
 ```fish
 function Foo
@@ -751,9 +749,9 @@ bar
 baz
 ```
 
-### How do I access the arguments passed to a script in fish?
+### Accessing Script Arguments in Fish
 
-Use the `$argv` variable. Pass the arguments when running the script.
+To access the arguments passed to a script in Fish, use `$argv`.
 
 ```fish
 fish ./my_script foo bar baz
@@ -772,9 +770,9 @@ printf "%s\n" $argv
 
 </details>
 
-### How do I parse command line arguments in fish?
+### Parsing Command Line Arguments in Fish
 
-Use a [`for`](https://fishshell.com/docs/current/cmds/for.html) loop.
+To parse command line arguments in Fish, you can use a [`for`](https://fishshell.com/docs/current/cmds/for.html) loop.
 
 ```fish
 for option in $argv
@@ -787,50 +785,45 @@ for option in $argv
 end
 ```
 
-For a more complete CLI parsing solution, see [`getopts`](https://github.com/jorgebucaran/getopts.fish).
+For a more powerful parsing solution, you can explore Fish's official [`argparse`](https://fishshell.com/docs/current/cmds/argparse.html) builtin. Another option is to consider using [`getopts`](https://github.com/jorgebucaran/getopts.fish), which is a different approach to CLI parsing.
 
-## Aliases
+## All About Aliases
 
-### How do I define an alias in fish?
+### The Art of Defining Aliases in Fish
 
-Fish has the [`alias`](https://fishshell.com/docs/current/cmds/alias.html) function, use it like this
+Fish offers the [`alias`](https://fishshell.com/docs/current/cmds/alias.html) function to create a convenient alias:
 
 ```fish
 alias rimraf "rm -rf"
 ```
-  
-This will create a [`function`](https://fishshell.com/docs/current/cmds/function.html) like this:
+
+This creates a [`function`](https://fishshell.com/docs/current/cmds/function.html) like:
 
 ```fish
 function rimraf --wraps='rm -rf' --description 'alias rimraf rm -rf'
-  rm -rf $argv; 
+  rm -rf $argv;
 end
 ```
 
-Aliases created with `alias` will not be available in new shell sessions. If you want them to persist, use
+Be aware that aliases created with `alias` won't be available in new shell sessions. To make them persistent, use:
+
 ```
 alias -s ...
 ```
-which will save it to `~/.config/fish/functions/[alias-name].fish`
 
-### What's wrong with aliases in config.fish?
+This saves the alias to `~/.config/fish/functions/[alias-name].fish`
 
-Using `alias` inside ~/.config/fish/config.fish will slow down your shell start as each alias/function will be eagerly loaded.
-  
+### The Problem with Aliases in `config.fish`
 
-To persist aliases across shell sessions, use `alias -s`, which will create a [`function`](https://fishshell.com/docs/current/cmds/function.html) and save it to ~/.config/fish/functions. This takes advantage of fish function [lazy-loading / autoloading](https://fishshell.com/docs/current/tutorial.html#autoloading-functions) mechanism.
+Defining aliases inside `~/.config/fish/config.fish` slows down your shell start since each alias/function is eagerly loaded.
 
-## Configuration
-
-### Where's the .bash_profile or .bashrc equivalent in fish?
-
-Your fish configuration is saved to ~/.config/fish/config.fish.
+To persist aliases across shell sessions, use `alias -s`, which creates a [`function`](https://fishshell.com/docs/current/cmds/function.html) and saves it to `~/.config/fish/functions`. This leverages Fish function [lazy-loading / autoloading](https://fishshell.com/docs/current/tutorial.html#autoloading-functions) mechanism.
 
 ## IO
 
-### How do I read from a file in fish?
+### Reading a File with Fish
 
-To read a file line by line, use the [`read`](https://fishshell.com/docs/current/cmds/read.html) builtin.
+To gracefully read a file line by line in Fish, employ the [`read`](https://fishshell.com/docs/current/cmds/read.html) builtin.
 
 ```fish
 while read -la line
@@ -838,24 +831,24 @@ while read -la line
 end < my_file
 ```
 
-### How do I read from stdin in fish?
+### Reading from stdin and Redirecting Like a Pro in Fish
 
-Use the [`read`](https://fishshell.com/docs/current/cmds/read.html) builtin.
+To read from stdin in Fish, the [`read`](https://fishshell.com/docs/current/cmds/read.html) builtin is your best friend.
 
 ```fish
 read --prompt "echo 'Name: ' " -l name
 ```
 
 ```
-Name: Marvin
+Name: Flipper
 ```
 
 ```fish
 echo $name
-Marvin
+Flipper
 ```
 
-To read from an arbitrary input stream use `read` together with the [`while`](https://fishshell.com/docs/current/cmds/while.html) builtin.
+To read from an arbitrary input stream, combine `read` with the [`while`](https://fishshell.com/docs/current/cmds/while.html) builtin.
 
 ```fish
 while read -la line
@@ -863,47 +856,45 @@ while read -la line
 end
 ```
 
-### How do I redirect stdout or stderr to a file in fish?
+### Mastering Redirection in Fish
 
-Redirect stderr to `$my_file`.
+To redirect stderr to `$my_file`:
 
 ```fish
 my_command 2> $my_file
 ```
 
-Redirect stdout to `$my_file`.
+To redirect stdout to `$my_file`:
 
 ```fish
 my_command > $my_file
 ```
 
-Redirect stdout to stderr.
+To redirect stdout to stderr:
 
 ```fish
 my_command >&2
 ```
 
-Redirect stderr to stdout.
+To redirect stderr to stdout:
 
 ```fish
 my_command 2>&1
 ```
 
-## Concurrency
+## Concurrency: Making Your Fish Swim Faster
 
-### How do I run a command in the background in fish?
+### Run Commands in the Background with Fish
 
-Use `&`.
+To run a command in the background in Fish, simply use `&`.
 
 ```fish
 sleep 10 &
 ```
 
-> See also [Background jobs](https://fishshell.com/docs/current/index.html#syntax-background) in the fish documentation.
+### Checking Background Jobs in Fish
 
-### How do I check if background jobs are running in fish?
-
-Use the [`jobs`](https://fishshell.com/docs/current/cmds/jobs.html) builtin.
+To see if background jobs are running in Fish, use the [`jobs`](https://fishshell.com/docs/current/cmds/jobs.html) builtin.
 
 ```fish
 if jobs > /dev/null
@@ -911,9 +902,9 @@ if jobs > /dev/null
 end
 ```
 
-### How do I synchronize two or more background tasks in fish?
+### Synchronize Background Tasks in Fish Like a Pro
 
-Since fish `3.0.0` there is a dedicated [`wait`](https://fishshell.com/docs/current/cmds/wait.html), but you can write your own if you are using an older fish.
+Fish `3.0.0` introduced a dedicated [`wait`](https://fishshell.com/docs/current/cmds/wait.html) builtin for easy synchronization of background tasks. But if you're curious about how it was done before `wait` existed, here's a throwback recipe for you.
 
 First, to check if tasks are running in the background, parse the output from the [`jobs`](https://fishshell.com/docs/current/cmds/jobs.html) builtin.
 
@@ -949,7 +940,7 @@ end
 
 </details>
 
-Then, block the foreground until all background jobs are finished.
+Next, block the foreground until all background jobs are finished.
 
 ```fish
 function wait
@@ -972,8 +963,7 @@ function wait
 end
 ```
 
-<details>
-<summary>Show me how!</summary>
+Here's an example of our code in action.
 
 ```fish
 set -l urls "https://"{google,twitter,youtube,facebook,github}".com"
@@ -985,17 +975,52 @@ end
 wait (get_jobs)
 ```
 
-</details>
+## Glossary
 
-### How do I wait for a background process in fish?
+Here is a concise glossary of key terms and concepts mentioned in the Fish Shell Cookbook:
 
-Since fish `3.0.0` there is a dedicated [`wait`](https://fishshell.com/docs/current/cmds/wait.html) builtin to wait for a background process. For older fish distributions without `wait`, use the technique described in [How do I synchronize two or more background tasks in fish?](#how-do-i-synchronize-two-or-more-background-tasks-in-fish).
+- **Fish**: Fish, short for "Friendly Interactive Shell," is a command-line shell for Unix-like operating systems. It is known for its user-friendly features, syntax highlighting, auto-suggestions, and powerful scripting capabilities.
 
-<!--
-<details>
-<summary>Template</summary>
-</details>
--->
+- **Fish Installation**: Installing Fish involves obtaining the Fish shell and setting it up on your system. You can install Fish using package managers or by building it from source.
+
+- **Default Shell**: The default shell is the shell that is automatically launched when you open a terminal or log in to your system. Setting Fish as the default shell ensures that Fish is the shell you interact with by default.
+
+- **Fish Configuration**: The Fish configuration involves customizing the behavior and appearance of the Fish shell. Configuration options can be set in the `config.fish` file, which is loaded when Fish starts.
+
+- **Variables**: Variables in Fish are used to store and manipulate data. They can hold strings, numbers, or other types of values. Variables can be defined, assigned values, and accessed in Fish scripts and interactive sessions.
+
+- **Functions**: Functions in Fish allow you to group a series of commands together and give them a name. Functions can be defined with the `function` keyword and called by their name.
+
+- **IO (Input/Output)**: IO refers to the input and output operations performed by the shell. Fish provides various commands and techniques for reading from files, redirecting output, and handling input streams.
+
+- **Concurrency**: Concurrency in Fish involves running commands or tasks simultaneously. Fish allows you to run commands in the background, check the status of background jobs, synchronize tasks, and wait for background processes to complete.
+
+These terms provide a high-level understanding of the key concepts covered in the Fish Cookbook. Refer to the respective sections in this document for more detailed information and practical examples.
+
+## Contributing
+
+Ahoy there! We're excited to have you on board for the Fish Cookbook adventure! Your contributions can make this Cookbook a valuable resource for the Fish Shell community. So, let's dive in and follow the guidelines below.
+
+You can contribute to the Cookbook in a few ways:
+
+- **Adding new recipes**: If you have a useful Fish Shell recipe or a clever solution to a pesky problem, you can share your knowledge by adding a new recipe to the repository. Just make sure your recipe follows the established structure and provides clear instructions. Let's make this Cookbook even more diverse and flavorful!
+
+- **Enhancing existing recipes**: If you come across a recipe that could use some sprucing up, you can lend a hand and make it even better. Improve the content, add more information, fix any errors, or fine-tune the code. Together, we'll make those recipes shine!
+
+- **Keeping the Cookbook current**: The Fish shell is continuously evolving, with new features and updates being released regularly. Help us ensure the Cookbook stays relevant by identifying outdated content, highlighting new features or changes, and proposing updates to the existing recipes. By keeping the Cookbook in sync with the latest Fish shell developments, we'll maintain a valuable and current resource for everyone to enjoy.
+
+To join our crew and contribute to the Cookbook, follow these guidelines:
+
+1. Set your sails and fork the repository. Then, create a new branch for your contributions—a safe space for your changes.
+2. Work your magic in the new branch. Ensure that the content is accurate, clear, and follows the agreed-upon structure. We're all on the same ship here!
+3. If you're adding a new recipe, choose a catchy and informative title—one that grabs attention!
+4. Commit your changes and write a descriptive commit message to let us know what your changes are all about. Be as detailed as a well-crafted map!
+5. Push your branch to your forked repository, like a captain charting new waters.
+6. Open a pull request against the main repository. Share the story behind your changes and why they're valuable. The more we know, the better we can appreciate your work!
+
+Once your pull request is submitted, our trusty crew of maintainers will review it. They may provide feedback or request some tweaks before we hoist the flag and merge your contribution.
+
+You have our heartfelt gratitude for lending a hand in enhancing the Fish Cookbook. We value your efforts, and together, we'll create a fantastic resource for the Fish community. Ahoy!
 
 <h2></h2>
 
