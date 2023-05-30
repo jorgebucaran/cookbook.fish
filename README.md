@@ -241,8 +241,7 @@ Interactively, typing `pwd` is more convenient. For scripting, `$PWD` is less ex
 <summary>Dazzle me!</summary>
 
 ```fish
-set --local cwd (pwd)
-echo "The current working directory is $cwd"
+echo "The current working directory is "(pwd)
 
 # Versus
 
