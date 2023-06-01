@@ -64,7 +64,7 @@ Ahoy！準備好和我們最好的夥伴 Fish 展開一場偉大的冒險了嗎�
 
 ### 怎麼安裝 Fish？
 
-如果你準備好深入 Fish 的美妙世界了，這裡可以教你如何親手體驗。你可以按照[官方網站](https://fishshell.com)的說明，或根據你的作業系統向我們提供的航線前行。
+如果你準備好深入 Fish 的美妙世界了，這裡可以教你怎麼「出海」。你可以按照[官方網站](https://fishshell.com)的說明，或根據你的作業系統沿著我們提供的航線前行。
 
 **裝有 Homebrew 的 macOS：**
 
@@ -145,7 +145,7 @@ autoreconf && ./configure
 make && sudo make install
 ```
 
-安裝好 Fish 後，驚心動魄的旅程就在前方，準備好探索命令列、挖掘 Fish 的核心寶藏與秘密。敬豐收和喜悅，乾杯！🍻
+安裝好 Fish 後，驚心動魄的旅程就在不遠處了，快準備好探索命令列、挖掘 Fish 的核心寶藏與秘密。敬豐收和喜悅，乾杯！🍻
 
 ### 讓 Fish 成為你的預設殼層，Ahoy！
 
@@ -170,11 +170,11 @@ which fish
 如果你發現自己需要協助，或對 Fish 有所疑問，不用擔心，這裡有一座資源寶庫等著你：
 
 - [官方儲存庫](https://github.com/fish-shell/fish-shell)——探索 GitHub 上的官方 Fish 儲存庫，那裡可以找到原始碼和貢獻專案。
-- [教學](https://fishshell.com/docs/current/tutorial.html)——透過一步步講解的 Fish 教學揚帆啟航，精通各種特性與功能。
-- [文檔](https://fishshell.com/docs/current/index.html)——深入 Fish 官方文檔，在那你會發現大量資訊和指南。
+- [教學](https://fishshell.com/docs/current/tutorial.html)——按照一步步講解的 Fish 教學揚帆啟航，精通各種特性與功能。
+- [文件](https://fishshell.com/docs/current/index.html)——深入 Fish 官方文件，在那你會發現大量資訊和指南。
 - [`r/fishshell`](https://www.reddit.com/r/fishshell)——加入 Reddit 上的社群，「魚友」聚集於此分享他們的知識與歷險。
-- [Gitter 頻道](https://gitter.im/fish-shell/fish-shell)——跳到 Gitter 頻道上，在這個聊天平台可以與其他 Fish 使用者互動並找到幫助。
-- [StackOverflow `#fish`](https://stackoverflow.com/questions/tagged/fish)——將問題標上 `#fish` 標籤，投向 StackOverflow 之海，並收到來自廣闊程式社群的引導。
+- [Gitter 頻道](https://gitter.im/fish-shell/fish-shell)——登上 Gitter 頻道，在這個聊天平台可以與其他 Fish 使用者互動並找到幫助。
+- [StackOverflow `#fish`](https://stackoverflow.com/questions/tagged/fish)——為問題標上 `#fish` 標籤，投向 StackOverflow 之海，你將收到來自廣闊程式社群的引導。
 - [awsm.fish](https://git,io/awsm.fish)——找尋一系列精選的 prompt、插件、和其他隱藏的珍寶，來強化你的 Fish 之旅。
 
 ## 基礎
