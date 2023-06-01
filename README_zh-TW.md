@@ -181,7 +181,7 @@ which fish
 
 ### Prompt 解密：這些扭曲的字元是什麼？
 
-Prompt 是你敲打命令、和 Fish 互動的地方。更多有關 UNIX Prompt 的資訊在[此](https://en.wikipedia.org/wiki/Command-line_interface#Command_prompt)。
+prompt 是你敲打命令、和 Fish 互動的地方。更多有關 UNIX prompt 的資訊在[此](https://en.wikipedia.org/wiki/Command-line_interface#Command_prompt)。
 
 你可能會遇到像這樣的東西：
 
@@ -191,7 +191,7 @@ jb@mbp ~/C/cookbook>
 
 波浪號（`~`）代表[家目錄](http://www.linfo.org/home_directory.html)，但比起 `/users/jb/home` 或 `/Users/jb` 之類的更簡短。
 
-`@` 符號則只是用來分隔使用者名稱 `jb` 與電腦的名稱 `mbp`，你可以學習定製 Prompt 來顯示你想要的東西。
+`@` 符號則只是用來分隔使用者名稱 `jb` 與電腦的名稱 `mbp`，你可以學習定製 prompt 來顯示你想要的東西。
 
 斜線（`/`）分隔了路徑。可以看出目前位於家目錄中的 `Code/cookbook` 下，但縮寫路徑只會顯示 `C`。
 
@@ -313,9 +313,9 @@ echo $pipestatus
 
 ### Fish Shebang 是什麼？讓腳本可以被執行
 
-[Shebang](https://zh.wikipedia.org/zh-tw/Shebang) 是一種特殊的註解，用以告訴殼層使用特定程式執行腳本。
+[shebang](https://zh.wikipedia.org/zh-tw/Shebang) 是一種特殊的註解，用以告訴殼層使用特定程式執行腳本。
 
-要預設使用 `fish` 執行腳本，將 Shebang 加到檔案的第一行：
+要預設使用 `fish` 執行腳本，將 shebang 加到檔案的第一行：
 
 ```fish
 #!/usr/bin/env fish
@@ -338,7 +338,7 @@ end
 chmod +x my_script
 ```
 
-Shebang 讓你可以直接用檔案路徑執行腳本：
+shebang 讓你可以直接用檔案路徑執行腳本：
 
 ```fish
 ./my_script
@@ -354,12 +354,12 @@ fish my_script
 
 ### 怎麼互動式地除錯 Fish 腳本？斷點
 
-內建命令 [`breakpoint`](https://fishshell.com/docs/current/cmds/breakpoint.html) 可以讓你輕鬆除錯你的 Fish 腳本，只要放到腳本中任何你想要暫停執行並開啟互動式除錯 Prompt 的地方就好：
+內建命令 [`breakpoint`](https://fishshell.com/docs/current/cmds/breakpoint.html) 可以讓你輕鬆除錯你的 Fish 腳本，只要放到腳本中任何你想要暫停執行並開啟互動式除錯 prompt 的地方就好：
 
 ```fish
 function some_function
     set --local files (ls ~)
-    breakpoint # 當執行到這時，會開啟互動式 Prompt，你可以在其中檢查 $files。
+    breakpoint # 當執行到這時，會開啟互動式 prompt，你可以在其中檢查 $files。
     # ... 函式剩餘的部分不會執行，直到你退出除錯器。
 end
 ```
