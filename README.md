@@ -903,7 +903,7 @@ end
 
 ### Synchronize Background Tasks in Fish Like a Pro
 
-Fish `3.0.0` introduced a dedicated [`wait`](https://fishshell.com/docs/current/cmds/wait.html) builtin for easy synchronization of background tasks. But if you're curious about how it was done before `wait` existed, here's a throwback recipe for you.
+Fish 3.0.0 introduced a dedicated [`wait`](https://fishshell.com/docs/current/cmds/wait.html) builtin for easy synchronization of background tasks. But if you're curious about how it was done before `wait` existed, here's a throwback recipe for you.
 
 First, to check if tasks are running in the background, parse the output from the [`jobs`](https://fishshell.com/docs/current/cmds/jobs.html) builtin.
 
