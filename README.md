@@ -553,7 +553,7 @@ function mkdirp
 end
 ```
 
-To make sure this function stays fresh in future Fish sessions, save it to ~/.config/fish/functions/mkdirp.fish. A neat way to accomplish this is by using the [`funcsave`](https://fishshell.com/docs/current/cmds/funcsave.html) function.
+To make sure this function stays fresh in future Fish sessions, save it to `~/.config/fish/functions/mkdirp.fish`. A neat way to accomplish this is by using the [`funcsave`](https://fishshell.com/docs/current/cmds/funcsave.html) function.
 
 ```fish
 funcsave mkdirp
@@ -597,7 +597,7 @@ This workaround helps you keep some Fish functions under wraps, like a top-secre
 
 Absolutely! Fish's [lazy-loading / autoloading](https://fishshell.com/docs/current/tutorial.html#autoloading-functions) mechanism depends on this match made in heaven.
 
-If you have a file ~/.config/fish/functions/foo.fish with a valid function definition `bar`:
+If you have a file `~/.config/fish/functions/foo.fish` with a valid function definition `bar`:
 
 1. In a new shell, trying to run `bar` produces an unknown-command error.
 2. Typing `foo` will highlight as a valid command, but produce an unknown-command error.
@@ -606,7 +606,7 @@ If you have a file ~/.config/fish/functions/foo.fish with a valid function defin
 <details>
 <summary>Show me the magic!</summary>
 
-Save `bar` to ~/.config/fish/functions/foo.fish.
+Save `bar` to `~/.config/fish/functions/foo.fish`.
 
 ```fish
 function bar
