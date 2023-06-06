@@ -16,7 +16,7 @@
   - [尋找 Fish 的安裝位置](#%E5%B0%8B%E6%89%BE-fish-%E7%9A%84%E5%AE%89%E8%A3%9D%E4%BD%8D%E7%BD%AE)
   - [尋求幫助之處](#%E5%B0%8B%E6%B1%82%E5%B9%AB%E5%8A%A9%E4%B9%8B%E8%99%95)
 - [基礎](#%E5%9F%BA%E7%A4%8E)
-  - [Prompt 解密：這些扭曲的字元是什麼？](#prompt-%E8%A7%A3%E5%AF%86%E9%80%99%E4%BA%9B%E6%89%AD%E6%9B%B2%E7%9A%84%E5%AD%97%E5%85%83%E6%98%AF%E4%BB%80%E9%BA%BC)
+  - [提示字元解密：這些扭曲的字元是什麼？](#%E6%8F%90%E7%A4%BA%E5%AD%97%E5%85%83%E8%A7%A3%E5%AF%86%E9%80%99%E4%BA%9B%E6%89%AD%E6%9B%B2%E7%9A%84%E5%AD%97%E5%85%83%E6%98%AF%E4%BB%80%E9%BA%BC)
   - [我在哪？得到目前所在路徑](#%E6%88%91%E5%9C%A8%E5%93%AA%E5%BE%97%E5%88%B0%E7%9B%AE%E5%89%8D%E6%89%80%E5%9C%A8%E8%B7%AF%E5%BE%91)
   - [搜尋和執行命令：該怎麼做？](#%E6%90%9C%E5%B0%8B%E5%92%8C%E5%9F%B7%E8%A1%8C%E5%91%BD%E4%BB%A4%E8%A9%B2%E6%80%8E%E9%BA%BC%E5%81%9A)
   - [我的命令執行成功了嗎？](#%E6%88%91%E7%9A%84%E5%91%BD%E4%BB%A4%E5%9F%B7%E8%A1%8C%E6%88%90%E5%8A%9F%E4%BA%86%E5%97%8E)
@@ -175,13 +175,13 @@ which fish
 - [`r/fishshell`](https://www.reddit.com/r/fishshell)——加入 Reddit 上的社群，「魚友」聚集於此分享他們的知識與歷險。
 - [Gitter 頻道](https://gitter.im/fish-shell/fish-shell)——登上 Gitter 頻道，在這個聊天平台可以與其他 Fish 使用者互動並找到幫助。
 - [StackOverflow `#fish`](https://stackoverflow.com/questions/tagged/fish)——為問題標上 `#fish` 標籤，投向 StackOverflow 之海，你將收到來自廣闊程式社群的引導。
-- [awsm.fish](https://git,io/awsm.fish)——找尋一系列精選的 prompt、插件、和其他隱藏的珍寶，來強化你的 Fish 之旅。
+- [awsm.fish](https://git,io/awsm.fish)——找尋一系列精選的提示字元、插件、和其他隱藏的珍寶，來強化你的 Fish 之旅。
 
 ## 基礎
 
-### Prompt 解密：這些扭曲的字元是什麼？
+### 提示字元解密：這些扭曲的字元是什麼？
 
-prompt 是你敲打命令、和 Fish 互動的地方。更多有關 UNIX prompt 的資訊在[此](https://en.wikipedia.org/wiki/Command-line_interface#Command_prompt)。
+提示字元是你敲打命令、和 Fish 互動的地方。更多有關 UNIX 提示字元的資訊在[此](https://en.wikipedia.org/wiki/Command-line_interface#Command_prompt)。
 
 你可能會遇到像這樣的東西：
 
@@ -191,7 +191,7 @@ jb@mbp ~/C/cookbook>
 
 波浪號（`~`）代表[家目錄](http://www.linfo.org/home_directory.html)，但比起 `/users/jb/home` 或 `/Users/jb` 之類的更簡短。
 
-`@` 符號則只是用來分隔使用者名稱 `jb` 與電腦的名稱 `mbp`，你可以學習定製 prompt 來顯示你想要的東西。
+`@` 符號則只是用來分隔使用者名稱 `jb` 與電腦的名稱 `mbp`，你可以學習定製提示字元來顯示你想要的東西。
 
 斜線（`/`）分隔了路徑。可以看出目前位於家目錄中的 `Code/cookbook` 下，但縮寫路徑只會顯示 `C`。
 
@@ -207,15 +207,15 @@ set fish_prompt_pwd_dir_length NUMBER
 set fish_prompt_pwd_dir_length 0
 ```
 
-那麼你的 prompt 看起來會像：
+那麼你的提示字元看起來會像：
 
 ```console
 jb@mbp ~/Code/cookbook>
 ```
 
-大於號（`>`）標示了 prompt 的結尾。
+大於號（`>`）標示了提示字元的結尾。
 
-不太喜歡這些慣例？隨意製作你自己的 prompt 吧！
+不太喜歡這些慣例？隨意製作你自己的提示字元吧！
 
 ### 我在哪？得到目前所在路徑
 
@@ -354,12 +354,12 @@ fish my_script
 
 ### 怎麼互動式地除錯 Fish 腳本？斷點
 
-內建命令 [`breakpoint`](https://fishshell.com/docs/current/cmds/breakpoint.html) 可以讓你輕鬆除錯你的 Fish 腳本，只要放到腳本中任何你想要暫停執行並開啟互動式除錯 prompt 的地方就好：
+內建命令 [`breakpoint`](https://fishshell.com/docs/current/cmds/breakpoint.html) 可以讓你輕鬆除錯你的 Fish 腳本，只要放到腳本中任何你想要暫停執行並開啟互動式除錯提示字元的地方就好：
 
 ```fish
 function some_function
     set --local files (ls ~)
-    breakpoint # 當執行到這時，會開啟互動式 prompt，你可以在其中檢查 $files。
+    breakpoint # 當執行到這時，會開啟互動式提示字元，你可以在其中檢查 $files。
     # ... 函式剩餘的部分不會執行，直到你退出除錯器。
 end
 ```
