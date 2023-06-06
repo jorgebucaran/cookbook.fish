@@ -175,7 +175,7 @@ which fish
 - [`r/fishshell`](https://www.reddit.com/r/fishshell)——加入 Reddit 上的社群，「魚友」聚集於此分享他們的知識與歷險。
 - [Gitter 頻道](https://gitter.im/fish-shell/fish-shell)——登上 Gitter 頻道，在這個聊天平台可以與其他 Fish 使用者互動並找到幫助。
 - [StackOverflow `#fish`](https://stackoverflow.com/questions/tagged/fish)——為問題標上 `#fish` 標籤，投向 StackOverflow 之海，你將收到來自廣闊程式社群的引導。
-- [awsm.fish](https://git,io/awsm.fish)——找尋一系列精選的提示字元、插件、和其他隱藏的珍寶，來強化你的 Fish 之旅。
+- [awsm.fish](https://git.io/awsm.fish)——找尋一系列精選的提示字元、插件、和其他隱藏的珍寶，來強化你的 Fish 之旅。
 
 ## 基礎
 
