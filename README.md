@@ -340,9 +340,7 @@ To run a script with `fish` by default, add a shebang to the first line of your 
 ```fish
 #!/usr/bin/env fish
 
-if status --is-interactive
-    echo "We live in an interactive world!"
-end
+echo "Check this out, ma'! I'm a Fish on wheels 🛼"
 ```
 
 Save that to a file and mark it as executable.
