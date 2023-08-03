@@ -207,7 +207,7 @@ set fish_prompt_pwd_dir_length NUMBER
 set fish_prompt_pwd_dir_length 0
 ```
 
-那麼你的提示字元看起來會像：
+不縮寫的路徑看起來會像是：
 
 ```console
 jb@mbp ~/Code/cookbook>
@@ -219,7 +219,7 @@ jb@mbp ~/Code/cookbook>
 
 ### 我在哪？得到目前所在路徑
 
-在 Fish 中要得到目前位置，只要用唯讀環境變數 `$PWD` 就好。
+在 Fish 中只要透過唯讀環境變數 `$PWD` 就能得到你目前的位置。
 
 ```fish
 echo $PWD
@@ -270,13 +270,13 @@ ls $PATH | column
 ls $PATH | column | less
 ```
 
-用 `k` 和 `j` 上下捲動，按下 `q` 退出。
+在 less 中可以按 `k` 和 `j` 上下捲動，按 `q` 退出。
 
-Fish 在行程剛開始時的環境初始化中會創建 `$PATH` 變數，你可以在 `~/.config/fish/config.fish` 中修改、
+在 Fish 行程剛開始的環境初始化時會創建 `$PATH` 變數，你可以在 `~/.config/fish/config.fish` 中修改。
 
 除了內建命令 `type`、`builtin`、`functions`，\*nix 作業系統通常還有一些殼層無關的命令如 `which`、`apropos`、`whatis` 等。
 
-這些命令有些相同的功能，但也有不同之處。詳情請見你系統的首冊頁。
+這些命令有些相同的功能，但也有不同之處。詳情請見你系統的手冊頁。
 
 ### 我的命令執行成功了嗎？
 
