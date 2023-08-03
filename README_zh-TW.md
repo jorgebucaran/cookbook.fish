@@ -882,7 +882,7 @@ end
 
 ### 像專家一樣同步背景工作
 
-Fish `3.0.0` 加入了 [`wait`](https://fishshell.com/docs/current/cmds/wait.html)，用以簡單地同步背景工作。但如果你好奇在沒有 `wait` 時要怎麼做，這裡也有一份懷舊配方。
+Fish 3.0.0 加入了 [`wait`](https://fishshell.com/docs/current/cmds/wait.html)，用以簡單地同步背景工作。但如果你好奇在沒有 `wait` 時要怎麼做，這裡也有一份懷舊配方。
 
 首先，檢查是否有工作在背景執行，解析 [`jobs`](https://fishshell.com/docs/current/cmds/jobs.html) 內建命令的輸出。
 
