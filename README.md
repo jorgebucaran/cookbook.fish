@@ -149,7 +149,7 @@ With Fish installed, a thrilling journey lies ahead. Gear up to explore the comm
 
 ### Making Fish Your Default Shell, Ahoy!
 
-Once you've installed Fish and it's safely located in your `$PATH`, for example, at /usr/local/bin, you can make it your default shell for a smooth sailing command line experience.
+Once you've installed Fish and it's safely located in your `$PATH`, for example, at `/usr/local/bin`, you can make it your default shell for a smooth sailing command line experience.
 
 ```fish
 echo /usr/local/bin/fish | sudo tee -a /etc/shells
