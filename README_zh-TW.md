@@ -149,7 +149,7 @@ make && sudo make install
 
 ### 讓 Fish 成為你的預設殼層，Ahoy！
 
-只要你安裝 Fish 到你的 `$PATH` 了，例如到 /usr/local/bin，你可以將其設為預設殼層，以一帆風順地體驗命令列。
+只要你安裝 Fish 到你的 `$PATH` 了，例如到 `/usr/local/bin`，你可以將其設為預設殼層，以一帆風順地體驗命令列。
 
 ```fish
 echo /usr/local/bin/fish | sudo tee -a /etc/shells
@@ -538,7 +538,7 @@ function mkdirp
 end
 ```
 
-為了保持這個函式在未來的會話仍新鮮可用，需將其儲存至 ~/.config/fish/functions/mkdirp.fish。一個簡單的方法是用 [`funcsave`](https://fishshell.com/docs/current/cmds/funcsave.html) 函式。
+為了保持這個函式在未來的會話仍新鮮可用，需將其儲存至 `~/.config/fish/functions/mkdirp.fish`。一個簡單的方法是用 [`funcsave`](https://fishshell.com/docs/current/cmds/funcsave.html) 函式。
 
 ```fish
 funcsave mkdirp
@@ -582,7 +582,7 @@ end
 
 必須一致！Fish 的[惰性載入／自動載入](https://fishshell.com/docs/current/tutorial.html#autoloading-functions)機制依賴於天衣無縫的一致名稱。
 
-如果你的 ~/.config/fish/functions/foo.fish 包含有效的函式 `bar`：
+如果你的 `~/.config/fish/functions/foo.fish` 包含有效的函式 `bar`：
 
 1. 在新的殼層中，嘗試執行 `bar` 會導致未知命令的錯誤。
 2. 輸入 `foo` 會高亮為一個有效的命令，但會導致未知命令的錯誤。
@@ -591,7 +591,7 @@ end
 <details>
 <summary>魔術表演！</summary>
 
-將 `bar` 存入 ~/.config/fish/functions/foo.fish。
+將 `bar` 存入 `~/.config/fish/functions/foo.fish`。
 
 ```fish
 function bar
