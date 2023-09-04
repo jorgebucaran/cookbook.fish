@@ -24,7 +24,11 @@
   - [怎麼互動式地除錯 Fish 腳本？斷點](#%E6%80%8E%E9%BA%BC%E4%BA%92%E5%8B%95%E5%BC%8F%E5%9C%B0%E9%99%A4%E9%8C%AF-fish-%E8%85%B3%E6%9C%AC%E6%96%B7%E9%BB%9E)
   - [Fish 的 `.bash_profile` 或 `.bashrc` 等價物呢？](#fish-%E7%9A%84-bash_profile-%E6%88%96-bashrc-%E7%AD%89%E5%83%B9%E7%89%A9%E5%91%A2)
 - [關於變數的那些事](#%E9%97%9C%E6%96%BC%E8%AE%8A%E6%95%B8%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B)
-  - [怎麼設定一個變數？變數作用域快速導覽](#%E6%80%8E%E9%BA%BC%E8%A8%AD%E5%AE%9A%E4%B8%80%E5%80%8B%E8%AE%8A%E6%95%B8%E8%AE%8A%E6%95%B8%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%BF%AB%E9%80%9F%E5%B0%8E%E8%A6%BD)
+  - [怎麼設定變數？變數作用域快速導覽](#%E6%80%8E%E9%BA%BC%E8%A8%AD%E5%AE%9A%E8%AE%8A%E6%95%B8%E8%AE%8A%E6%95%B8%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%BF%AB%E9%80%9F%E5%B0%8E%E8%A6%BD)
+    - [區域變數](#%E5%8D%80%E5%9F%9F%E8%AE%8A%E6%95%B8)
+    - [全域變數](#%E5%85%A8%E5%9F%9F%E8%AE%8A%E6%95%B8)
+    - [通用變數](#%E9%80%9A%E7%94%A8%E8%AE%8A%E6%95%B8)
+    - [導出變數](#%E5%B0%8E%E5%87%BA%E8%AE%8A%E6%95%B8)
   - [怎麼導出變數](#%E6%80%8E%E9%BA%BC%E5%B0%8E%E5%87%BA%E8%AE%8A%E6%95%B8)
   - [怎麼列出環境變數](#%E6%80%8E%E9%BA%BC%E5%88%97%E5%87%BA%E7%92%B0%E5%A2%83%E8%AE%8A%E6%95%B8)
   - [怎麼永久地新增路徑到 `$PATH`？](#%E6%80%8E%E9%BA%BC%E6%B0%B8%E4%B9%85%E5%9C%B0%E6%96%B0%E5%A2%9E%E8%B7%AF%E5%BE%91%E5%88%B0-path)
@@ -149,7 +153,7 @@ make && sudo make install
 
 ### 讓 Fish 成為你的預設殼層，Ahoy！
 
-只要你安裝 Fish 到你的 `$PATH` 了，例如到 `/usr/local/bin`，你可以將其設為預設殼層，以一帆風順地體驗命令列。
+只要 Fish 安裝到你的 `$PATH` 了，例如到 `/usr/local/bin`，你可以將其設為預設殼層，以一帆風順地體驗命令列。
 
 ```fish
 echo /usr/local/bin/fish | sudo tee -a /etc/shells
@@ -219,14 +223,14 @@ jb@mbp ~/Code/cookbook>
 
 ### 我在哪？得到目前所在路徑
 
-在 Fish 中只要透過唯讀環境變數 `$PWD` 就能得到你目前的位置。
+在 Fish 中可以透過唯讀環境變數 `$PWD` 得到你目前的位置。
 
 ```fish
 echo $PWD
 /Users/jb/Code/cookbook
 ```
 
-你也可以用 `pwd` 內建命令來確定目前在哪個目錄下：
+可以用 `pwd` 內建命令來確定目前在哪個目錄下：
 
 ```fish
 pwd
@@ -372,9 +376,9 @@ end
 
 ## 關於變數的那些事
 
-### 怎麼設定一個變數？變數作用域快速導覽
+### 怎麼設定變數？變數作用域快速導覽
 
-使用內建命令 [`set`](https://fishshell.com/docs/current/cmds/set.html) 來設定變數。
+內建命令 [`set`](https://fishshell.com/docs/current/cmds/set.html) 用以設定變數。
 
 ```fish
 set foo 42
@@ -389,7 +393,7 @@ set foo 42
 
 如果沒有宣告作用域，預設情況下只作用於所在的函式，或是全域（如果不是在函式中設定）。
 
-如果該變數先前已定義，會使用當時的作用域。
+如果該變數先前已定義，會使用當時宣告的作用域。
 
 #### 區域變數
 
@@ -417,7 +421,7 @@ echo "foo=$foo" # foo=42
 
 #### 通用變數
 
-`foo` 將被保留，並且作用於未來的其他會話。
+`foo` 將被保留，並且作用於之後的其他會話。
 
 ```fish
 set -U foo 42
@@ -443,7 +447,7 @@ set -g foo 42
 fish -c 'echo "foo=$foo"' # foo=
 ```
 
-第三個例子中，`GPG_AGENT_INFO` 是通用變數且已導出，所以會被保留並作用於未來的會話和子行程。
+第三個例子中，`GPG_AGENT_INFO` 是通用變數且已導出，所以會被保留並作用於之後的會話和子行程。
 
 ```fish
 set -Ux GPG_AGENT_INFO /Users/jb/.gnupg/S.gpg-agent:12345:2
@@ -789,7 +793,7 @@ function rimraf --wraps='rm -rf' --description 'alias rimraf rm -rf'
 end
 ```
 
-不過用 `alias` 創建的別名不會作用於新的會話。如果要讓其持續存在，用：
+不過用 `alias` 創建的別名不會作用於新的會話。如果要讓其持續存在，改用：
 
 ```fish
 alias -s ...
@@ -799,7 +803,7 @@ alias -s ...
 
 ### 在 `config.fish` 中定義別名的問題
 
-在 `~/.config/fish/config.fish` 中定義別名會使殼層在啟動時變慢，因為每個別名（函式）都會急切載入。
+在 `~/.config/fish/config.fish` 中定義別名會使殼層需要花更多時間啟動，因為所有別名（函式）都將在啟動時就載入。
 
 如果要在會話間保留別名，應該用 `alias -s`，來創建一個函式並儲存其至 `~/.config/fish/functions`。如此一來，便能利用 Fish 的函式[惰性載入／自動載入](https://fishshell.com/docs/current/tutorial.html#autoloading-functions)機制。
 
@@ -957,7 +961,7 @@ wait (get_jobs)
 
 以下是在《Fish 食譜》中提到的術語與概念表：
 
-- **Fish**：Fish，「Friendly Interactive Shell」的縮寫，一個類 Unix 作業系統的命令列殼層。以使用者友善的功能、語法高亮、自動建議、強大的腳本能力等聞名。
+- **Fish**：Fish，「Friendly Interactive Shell」（友善互動式殼層）的縮寫，一個類 Unix 作業系統的命令列殼層。以使用者友善的功能、語法高亮、自動建議、強大的腳本能力等聞名。
 
 - **安裝 Fish**：包括在你的系統上獲取 Fish 並設置好的安裝過程。你可以用套件管理器安裝，或從原始碼建置。
 
@@ -971,7 +975,7 @@ wait (get_jobs)
 
 - **IO（Input/Output，輸入／輸出）**：IO 指殼層的輸入和輸出操作。Fish 提供了多個命令和技巧用以讀取檔案、重導向輸出、和處理輸入流。
 
-- **並行**：並行在 Fish 中指同時執行命令或工作。Fish 允許你在背景執行命令、檢查背景作業的狀態、同步工作、等待背景行程結束。
+- **並行**：並行指同時有多個命令或工作在執行。Fish 允許你在背景執行命令、檢查背景作業的狀態、同步工作、等待背景行程結束。
 
 這些術語提供了對《Fish 食譜》涵蓋的關鍵概念的高階理解。請參閱文件中對應的章節以獲取更多詳細資訊與實際示例。
 
